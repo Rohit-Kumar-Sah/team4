@@ -1,3 +1,4 @@
+import { FireBaseService } from '../firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -9,7 +10,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class SignUpComponent implements OnInit {
   newDetails: {name : string, email : string , password : string};
   
-  constructor(private fb : FormBuilder){}
+  constructor(private userinfo : FireBaseService,private fb : FormBuilder ){
+   
+  }
 
   signUpForm  
  
@@ -27,10 +30,18 @@ export class SignUpComponent implements OnInit {
 
 
   //will be used in signing up user successfully
+  
   SignUp(form){
+    let name = this.signUpForm.controls.name.value;
+    let email = this.signUpForm.controls.email.value;
+    let password = this.signUpForm.controls.password.value;
+    
+    //sending value to firebase service
+     this.userinfo.addNewUser(name,email,password)
   }
 
 }
+
 
 
 

@@ -6,8 +6,11 @@
     </div>
 
     <div class="form-label-group">
-        <label for="inputEmail">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" [ngClass]="signUpForm.controls.email.invalid && signUpForm.controls.email.touched?'is-invalid':''" formControlName="email">
+        <label for="inputEmail " class="">Email address</label>
+        <div class="d-flex">
+       <input type="email " id="inputEmail" class="form-control " placeholder="Email address" required="" autofocus="" [ngClass]="signUpForm.controls.email.invalid && signUpForm.controls.email.touched?'is-invalid':''" formControlName="email"> 
+       <button class="btn border border-muted ">.com</button>
+        </div>
         <small *ngIf="signUpForm.controls.email.invalid && signUpForm.controls.email.touched">Please Enter Valid Email</small>
         
     </div>
@@ -22,7 +25,7 @@
     <div class="form-label-group mb-3">
         <label for="inputPassword">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" formControlName="password" [ngClass]="signUpForm.controls.password.invalid && signUpForm.controls.password.touched?'is-invalid':''">
-        <small *ngIf="signUpForm.controls.password.invalid && signUpForm.controls.password.touched"> Min length 5 </small>
+        <small *ngIf="signUpForm.controls.password.invalid && signUpForm.controls.password.touched">Allowed Only Letters & Numbers & Minimum length 5 </small>
 
     </div>
 
@@ -32,9 +35,5 @@
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block text-wrap" [disabled]="signUpForm.invalid" type="submit">Sign Up</button>
-     
-    <p class=" pb-2 text-muted text-right pr-3 pt-2 fixed-bottom bg-dark mb-0">© 2020-2021</p>
-    <span class="text-primary pl-5  pb-2 text-left pr-3 fixed-bottom">Terms & Conditions</span>
     
 </form>
-
