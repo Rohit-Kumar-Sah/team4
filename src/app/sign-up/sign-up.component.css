@@ -1,0 +1,7 @@
+small {
+    color: tomato;
+}
+button:disabled{
+background-color: gray;
+border: none;
+}
