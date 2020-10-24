@@ -1,4 +1,4 @@
-<form class="form-signin container w-50 " [formGroup]="signinForm" >
+<form class="form-signin container w-50" [formGroup]="signinForm" (ngSubmit)="signin(signinForm)">
     <div class="text-center mb-4">
         <img class="mb-4 mt-3" src="https://i.dlpng.com/static/png/6770178_preview.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Movie King</h1>
@@ -25,7 +25,5 @@
            <i >By Signing in you agree to accept all our <span class="text-primary">Terms & Conditions</span></i>
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block text-wrap" [disabled]="signinForm.invalid" type="submit">Sign In</button>
-    
+    <button class="btn btn-lg btn-primary btn-block text-wrap"  [disabled]="signinForm.invalid" type="submit">Sign In</button>
 </form>
-
