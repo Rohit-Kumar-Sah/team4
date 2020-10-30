@@ -1,0 +1,96 @@
+
+<div class="carrers">
+    <h3 class="text-center" style="color:rebeccapurple;">we are delighted to see you over here!</h3>
+    
+        <form #carrersform="ngForm">
+            <div class="form-group ">
+                <label for="inputEmail4">NAME</label>
+                <input type="text" class="form-control" name="name" id="inputEmaile" placeholder="FULL NAME" required #name="ngModel" ngModel >
+                <div *ngIf="name.touched && name.hasError('required')" class="text-danger">
+                  please fill name.
+                </div>
+              </div>
+            
+              <div class="form-group ">
+                <label for="inputEmail4">Email</label>
+                <div class="input-group">
+                 <div class="input-group-prepend">
+                  <span class="input-group-text text-danger" id="inputGroupPrepend" >@</span>
+                 </div>
+                 <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email" required #email="ngModel" ngModel aria-describedby="inputGroupPrepend">
+               </div>
+               <div *ngIf="email.touched && email.hasError('required')" class="text-danger">
+                  please fill email.
+               </div>  
+              </div>
+              
+            
+            <div class="form-group">
+              <label for="inputAddress">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="Address1" ngModel #address1="ngModel" required>
+              <div *ngIf="address1.touched && address1.hasError('required')" class="text-danger">
+                please fill address1.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2" ngModel #address2="ngModel" required>
+              <div *ngIf="address2.touched && address2.hasError('required')" class="text-danger">
+                please fill address2.
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" name="city" ngModel #city="ngModel" required>
+                <div *ngIf="city.touched && city.hasError('required')" class="text-danger">
+                    please fill city.
+                  </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State</label>
+                <select id="inputState" class="form-control">
+                  <option selected>ANDHRA</option>
+                  <option>TELANGANA</option>
+                  <OPTION>MUMBAI</OPTION>
+                  <OPTION>CHENNAI</OPTION>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">PIN</label>
+                <input type="text" class="form-control" id="inputZip" name="pincode" ngModel #pin="ngModel" required>
+                <div *ngIf="pin.touched && pin.hasError('required')" class="text-danger">
+                    please fill pin.
+                  </div>
+              </div>
+            </div>
+
+            <div class="form-group ">
+                <label for="profilephoto">profile photo</label>
+                <input type="file" accept="image/*" class="form-control" name="profilephoto" id="inputEmaile"  required #photo="ngModel" ngModel >
+                <div *ngIf="photo.touched && photo.hasError('required')" class="text-danger">
+                  please upload your photo.
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label for="RESUME">Resume</label>
+                <input type="file" accept=".pdf" class="form-control" name="resume" id="inputEmaile"  required #resume="ngModel" ngModel  >
+                <div *ngIf="resume.touched && resume.hasError('required')" class="text-danger">
+                  please submit resume.
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-info submitbutton " [disabled]="!carrersform.valid" style="margin-left:47%;">submit</button>
+          </form>
+    
+</div>
+<style>
+    .carrers{
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ8J2LnokxPhVLol-I6OdMwTV4sn58ggpk0SA&usqp=CAU');
+        padding: 20px;
+    }
+    .submitbutton:disabled{
+        cursor: not-allowed;
+    }
+</style>
