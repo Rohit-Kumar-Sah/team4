@@ -5,7 +5,7 @@ import{FormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -18,8 +18,8 @@ import { TopmoviesComponent } from './topmovies/topmovies.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 
 import { SignInComponent } from './sign-in/sign-in.component';
-import { MyWallComponent } from './my-wall/my-wall.component';
-import { CommentsComponent } from './comments/comments.component';
+// import { MyWallComponent } from './my-wall/my-wall.component';
+// import { CommentsComponent } from './comments/comments.component';
 
 
 
@@ -29,12 +29,12 @@ import { CommentsComponent } from './comments/comments.component';
     SignUpComponent,
 
     TopmoviesComponent,
-    MoviedetailsComponent
+    MoviedetailsComponent,
 
 
     SignInComponent,
-    MyWallComponent,
-    CommentsComponent,
+    // MyWallComponent,
+    // CommentsComponent,
 
     HomepageComponent,
     Commentpage872957Component,
