@@ -12,6 +12,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { WatchlistdataService } from './watchlistdata.service';
 import { Commentpage872957Component } from './commentpage872957/commentpage872957.component';
 import { CarrerspageComponent } from './carrerspage/carrerspage.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 @NgModule({
@@ -20,11 +22,12 @@ import { CarrerspageComponent } from './carrerspage/carrerspage.component';
     SignUpComponent,
     HomepageComponent,
     Commentpage872957Component,
-    CarrerspageComponent
+    CarrerspageComponent,SignInComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,NgbModule,FormsModule
+    AppRoutingModule,HttpClientModule,NgbModule,FormsModule,
+     ReactiveFormsModule
   ],
   providers: [WatchlistdataService],
   bootstrap: [AppComponent]

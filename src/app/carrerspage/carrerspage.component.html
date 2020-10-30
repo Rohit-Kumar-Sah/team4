@@ -5,7 +5,7 @@
         <form #carrersform="ngForm">
             <div class="form-group ">
                 <label for="inputEmail4">NAME</label>
-                <input type="text" class="form-control" name="name" id="inputEmaile" placeholder="FULL NAME" required #name="ngModel" ngModel >
+                <input type="text" class="form-control" name="name" id="inputEmaile" placeholder="FULL NAME" required #name="ngModel" ngModel autofocus >
                 <div *ngIf="name.touched && name.hasError('required')" class="text-danger">
                   please fill name.
                 </div>

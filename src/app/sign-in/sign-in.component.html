@@ -1,0 +1,29 @@
+<form class="form-signin container w-50" [formGroup]="signinForm" (ngSubmit)="signin(signinForm)">
+    <div class="text-center mb-4">
+        <img class="mb-4 mt-3" src="https://i.dlpng.com/static/png/6770178_preview.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Movie King</h1>
+        <p>The Official Home of Correct Movie Opinions </p>
+    </div>
+
+   
+    <div class="form-label-group">
+        <label for="inputName">Name</label>
+        <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="" formControlName="name" [ngClass]="(signinForm.controls.name.invalid && signinForm.controls.name.touched)?'is-invalid':''">
+        <small *ngIf="signinForm.controls.name.invalid && signinForm.controls.name.touched">Only Valid names , with letters and underscores without space</small>
+
+    </div>
+
+    <div class="form-label-group mb-3">
+        <label for="inputPassword">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" formControlName="password" [ngClass]="signinForm.controls.password.invalid && signinForm.controls.password.touched?'is-invalid':''">
+        <small *ngIf="signinForm.controls.password.invalid && signinForm.controls.password.touched">Allowed Only Letters & Numbers & Minimum length 5 </small>
+
+    </div>
+
+    <div class="mb-3 mt-2">
+        <label>
+           <i >By Signing in you agree to accept all our <span class="text-primary">Terms & Conditions</span></i>
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block text-wrap"  [disabled]="signinForm.invalid" type="submit">Sign In</button>
+</form>

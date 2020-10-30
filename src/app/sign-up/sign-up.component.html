@@ -1,31 +1,39 @@
-<form class="form-signin container">
+<form class="form-signin container " [formGroup]="signUpForm" (ngSubmit)="SignUp(signUpForm)">
     <div class="text-center mb-4">
-        <img class="mb-4" src="https://i.dlpng.com/static/png/6770178_preview.png" alt="" width="72" height="72">
+        <img class="mb-4 mt-3" src="https://i.dlpng.com/static/png/6770178_preview.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Movie King</h1>
         <p>The Official Home of Correct Movie Opinions </p>
     </div>
 
     <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-        <label for="inputEmail">Email address</label>
+        <label for="inputEmail " class="">Email address</label>
+        <div class="d-flex">
+       <input type="email " id="inputEmail" class="form-control " placeholder="Email address" required="" autofocus="" [ngClass]="signUpForm.controls.email.invalid && signUpForm.controls.email.touched?'is-invalid':''" formControlName="email"> 
+       <button class="btn border border-muted ">.com</button>
+        </div>
+        <small *ngIf="signUpForm.controls.email.invalid && signUpForm.controls.email.touched">Please Enter Valid Email</small>
+        
     </div>
 
     <div class="form-label-group">
-        <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="">
         <label for="inputName">Name</label>
+        <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="" formControlName="name" [ngClass]="(signUpForm.controls.name.invalid && signUpForm.controls.name.touched)?'is-invalid':''">
+        <small *ngIf="signUpForm.controls.name.invalid && signUpForm.controls.name.touched">Only Valid names , with letters and underscores without space</small>
+
     </div>
 
-    <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <div class="form-label-group mb-3">
         <label for="inputPassword">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" formControlName="password" [ngClass]="signUpForm.controls.password.invalid && signUpForm.controls.password.touched?'is-invalid':''">
+        <small *ngIf="signUpForm.controls.password.invalid && signUpForm.controls.password.touched">Allowed Only Letters & Numbers & Minimum length 5 </small>
+
     </div>
 
-    <div class="checkbox mb-3">
+    <div class="mb-3 mt-2">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+           <i >By Signing up you agree to accept all our <span class="text-primary">Terms & Conditions</span></i>
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
-    <p class="mt-5 mb-3 text-muted text-center">© 2020-2021</p>
+    <button class="btn btn-lg btn-primary btn-block text-wrap" [disabled]="signUpForm.invalid" type="submit">Sign Up</button>
+    
 </form>
-
