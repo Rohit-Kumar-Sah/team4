@@ -37,7 +37,7 @@
 
     <div class="col-sm-3">
      <h6>Top reviews</h6>
-     <h6>Worst rated</h6>
+     <h6 (click)="newreleases()">new releases</h6>
     </div>
 
     <div class="col-sm-3">
@@ -197,7 +197,12 @@
  </div><br>
 
 <!--my watch list-->
-<h1 style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">MY WATCH LIST</h1>
+<h1 style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">MY WATCH LIST
+  <span *ngIf="forfun.length" style="color:red;position: relative;">
+    <i class="fas fa-shopping-bag"></i> 
+    <span style="position: absolute;left:7px;top:25px;color: purple;border-radius:50%;background-color: white;width: 20px;height: 20px;font-size: 20px;padding-left:6px;padding-bottom: 23px;">{{forfun.length}}</span>
+  </span>
+</h1>
 
 <div class="watch list" style="display:flex; flex-wrap: wrap; width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
   <div class="wistlistitem" style="width:250px; text-align: center; background-color:blue; margin:10px" *ngFor="let data of forfun">

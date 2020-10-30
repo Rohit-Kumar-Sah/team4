@@ -17,7 +17,7 @@ export class HomepageComponent implements OnInit {
   dataset2:any;
   datapopular:any="sastraa";
   watchlistdata:any;
-  forfun:any;
+  forfun:any=[];
   liked:any=false;
 
   loggedin = false;
@@ -82,6 +82,12 @@ export class HomepageComponent implements OnInit {
     carrers(){
       console.log("clicked on carrers page");
       this.router.navigate(['carrers'])
+    }
+    login(){
+      this.router.navigate(['sign-in'])
+    }
+    newreleases(){
+      this.router.navigate(['newreleases'])
     }
     
 }

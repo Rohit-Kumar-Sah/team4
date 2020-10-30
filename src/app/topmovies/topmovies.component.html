@@ -1,4 +1,6 @@
+
 <div class=" topmovies">
+  <a routerLink="" ><button style="margin-left: 90%;">home page</button></a>
   <div class="alert heading">
     <p class="text-center h1 yellowtext">TOP MOVIES</p>
   </div>
@@ -14,8 +16,8 @@
           <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" class="card-img-top" style="height: 200px;" alt="...">
           <div class="card-body">
             <div class="like&cmt">
-              <i class="far fa-heart" style="color: blueviolet;margin-left:5px ;"></i>
-              <i class="far fa-comment"style="margin-left:65%;color:red;"> </i>
+              <span  (click)="item.video=!item.video" [style.color]="item.video?'red':'white'"><i class="fas fa-heart" style="margin-left:5px ;"></i></span>
+              <span (click)="loadcommentpage(item.id)"><i class="far fa-comment"style="margin-left:65%;color:pink;"> </i></span>
 
             </div>
             <h5 class="card-title">{{item.original_title}}</h5>
@@ -24,7 +26,7 @@
             </svg>&nbsp;&nbsp;&nbsp;{{item.vote_average}}</p>
              <div class="btnclass">
             <button type="button" class="btn btn-primary" [routerLink]="['/topmovies',item.id]"  >Details</button>
-             <button type="button" href="#" class="btn btn-success" style="margin-left: 40px;"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+             <button type="button" href="#" class="btn btn-success" style="margin-left: 40px; "(click)="mywatchlist(item)"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
             </svg> WatchList</button> 
             <!-- <button class="btn btn-primary" ng-init="toggle = true" ng-click="toggle = !toggle">

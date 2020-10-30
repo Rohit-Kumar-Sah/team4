@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieapiService } from '../movieapi.service';
+import { WatchlistdataService } from '../watchlistdata.service';
+import{Router}from '@angular/router';
 
 @Component({
   selector: 'app-topmovies',
@@ -12,7 +14,7 @@ export class TopmoviesComponent implements OnInit {
   public popular:any;
   public rated:any;
   public moviePopular:any;
-  constructor(private _movieapi:MovieapiService) { 
+  constructor(private _movieapi:MovieapiService,private watchlist:WatchlistdataService,private router:Router ) { 
     this._movieapi.getDataPopular().subscribe(data =>{
       this.movieData=data;
       console.log(this.movieData);
@@ -29,20 +31,18 @@ export class TopmoviesComponent implements OnInit {
 
       
     });
-    
-
   }
  
- 
-  
-
-  
-
-
-
   ngOnInit(): void {
     
     
   }
 
+  mywatchlist(item){
+    console.log(item);
+    this.watchlist. watchlistarray.push(item)
+  }
+  loadcommentpage(id){
+    this.router.navigate(['/commentpage',id]);
+  }
 }

@@ -9,6 +9,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { Commentpage872957Component } from './commentpage872957/commentpage872957.component';
 import { CarrerspageComponent } from './carrerspage/carrerspage.component';
+import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
 
 
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'carrers',component:CarrerspageComponent},
   {path : 'sign-in' , component : SignInComponent},
   {path : 'mywall' , component : MyWallComponent},
-  {path : 'comments' , component : CommentsComponent}
+  {path : 'comments' , component : CommentsComponent},
+  {path:'newreleases',component:NewreleaseslodhiComponent}
 
 ];
 

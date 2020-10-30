@@ -20,6 +20,7 @@ import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { MyWallComponent } from './my-wall/my-wall.component';
 import { CommentsComponent } from './comments/comments.component';
+import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
 
 
 
@@ -34,9 +35,9 @@ import { CommentsComponent } from './comments/comments.component';
     CommentsComponent,
     TopmoviesComponent,
     MoviedetailsComponent,
-    HomepageComponent
-
-
+    HomepageComponent,
+    NewreleaseslodhiComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -44,7 +45,8 @@ import { CommentsComponent } from './comments/comments.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule  ],
+    NgbModule
+  ],
   providers: [WatchlistdataService],
   bootstrap: [AppComponent]
 })
