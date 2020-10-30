@@ -13,21 +13,39 @@ import { WatchlistdataService } from './watchlistdata.service';
 import { Commentpage872957Component } from './commentpage872957/commentpage872957.component';
 import { CarrerspageComponent } from './carrerspage/carrerspage.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { TopmoviesComponent } from './topmovies/topmovies.component';
+import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
+
 import { SignInComponent } from './sign-in/sign-in.component';
+import { MyWallComponent } from './my-wall/my-wall.component';
+import { CommentsComponent } from './comments/comments.component';
+import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    MyWallComponent,
+    SignInComponent,
     SignUpComponent,
-    HomepageComponent,
     Commentpage872957Component,
-    CarrerspageComponent,SignInComponent
+    CarrerspageComponent,
+    CommentsComponent,
+    TopmoviesComponent,
+    MoviedetailsComponent,
+    HomepageComponent,
+    NewreleaseslodhiComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,NgbModule,FormsModule,
-     ReactiveFormsModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule
   ],
   providers: [WatchlistdataService],
   bootstrap: [AppComponent]

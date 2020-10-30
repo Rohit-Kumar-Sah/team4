@@ -1,0 +1,10 @@
+.btn, .card-title{
+    font-size: small;
+}
+.btn{
+    margin-left: -18px;;
+}
+.card-title{
+    overflow: none;
+
+}

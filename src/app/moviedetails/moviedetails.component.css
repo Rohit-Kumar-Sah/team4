@@ -1,0 +1,19 @@
+.body{
+    background-color: black;
+    height:auto;
+}
+.moviedetails{
+    background-color: #121212;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+.crossimage{
+    /* padding-bottom: 15px;
+    padding-left: 90%; */
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 1;
+    
+}

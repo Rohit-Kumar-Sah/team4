@@ -1,12 +1,16 @@
 <form class="form-signin container w-50" [formGroup]="signinForm" (ngSubmit)="signin(signinForm)">
     <div class="text-center mb-4">
-        <img class="mb-4 mt-3" src="https://i.dlpng.com/static/png/6770178_preview.png" alt="" width="72" height="72">
+        <img class="mb-4 mt-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Movie King</h1>
         <p>The Official Home of Correct Movie Opinions </p>
     </div>
 
+    
    
     <div class="form-label-group">
+        <div class="bg-danger p-3 text-center" *ngIf="invalid">
+        Username or Password incorrect ! 
+        </div>
         <label for="inputName">Name</label>
         <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="" formControlName="name" [ngClass]="(signinForm.controls.name.invalid && signinForm.controls.name.touched)?'is-invalid':''">
         <small *ngIf="signinForm.controls.name.invalid && signinForm.controls.name.touched">Only Valid names , with letters and underscores without space</small>
@@ -26,4 +30,9 @@
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block text-wrap"  [disabled]="signinForm.invalid" type="submit">Sign In</button>
+
 </form>
+
+<div class="container w-50 mt-5">
+   <button class="btn border-0"> <span class="text-primary " routerLink="/sign-up">Sign-Up</span></button>here if not already registered.
+</div>

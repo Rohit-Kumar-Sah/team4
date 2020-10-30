@@ -8,10 +8,15 @@
          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
       </h1>
     </div>
-    <div class="col-sm-6 text-right mt-4 formbtns" >
-      <span class="mr-5" (click)="login()">Login </span><span class="mr-5" (click)="signup()" >SignUp</span>
+    <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="!loggedin" >
+      <span class="mr-5" routerLink="/sign-in">Login </span><span class="mr-5" (click)="signup()" >SignUp</span>
      
-      
+    </div>
+    <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="loggedin" >
+      <b><i>{{user}}</i></b>
+      <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png" width="70px" height="50px" 
+                            class="ml-2"     alt="...">
+     
     </div>
   </div>
 </div>
@@ -22,17 +27,17 @@
   <div class="row">
     <div class="col-sm-3">
       <h6>Home</h6>
-      <h6>My wall</h6>
+      <h6  routerLink="/mywall">My wall</h6>
     </div>
 
     <div class="col-sm-3">
-      <h6>Top movies</h6>
+      <h6 routerLink="/topmovies">Top movies</h6>
       <h6>Top Reviewers</h6>
     </div>
 
     <div class="col-sm-3">
      <h6>Top reviews</h6>
-     <h6>Worst rated</h6>
+     <h6 (click)="newreleases()">new releases</h6>
     </div>
 
     <div class="col-sm-3">
