@@ -44,8 +44,13 @@ import { SignInComponent } from './sign-in/sign-in.component';
   ],
   imports: [
     BrowserModule,
+<<<<<<< HEAD
     AppRoutingModule,HttpClientModule,NgModule,FormsModule,
+=======
+    AppRoutingModule,HttpClientModule,FormsModule,
+>>>>>>> 937395cf9401479bdc71508e88b8f43c30fa5063
      ReactiveFormsModule
+     ,NgbModule
   ],
   providers: [WatchlistdataService],
   bootstrap: [AppComponent]

@@ -13,16 +13,15 @@ import { CarrerspageComponent } from './carrerspage/carrerspage.component';
 
 
 const routes: Routes = [
+  {path:'',component: HomepageComponent},
 
   {path : 'sign-up' , component : SignUpComponent},
   {path:'topmovies/:id',component:MoviedetailsComponent},
   {path:'topmovies',component:TopmoviesComponent},
 
-  {path:'',component:HomepageComponent},
   {path : 'sign-up' , component : SignUpComponent},
   {path:'commentpage/:id',component:Commentpage872957Component},
   {path:'carrers',component:CarrerspageComponent},
-  {path : 'sign-up' , component : SignUpComponent},
   {path : 'sign-in' , component : SignInComponent},
   // {path : 'mywall' , component : MyWallComponent},
   // {path : 'comments' , component : CommentsComponent}

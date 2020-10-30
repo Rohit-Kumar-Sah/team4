@@ -1,0 +1,35 @@
+<div class=body>
+    <div class="container moviedetails">
+        <div class="crossimage">
+        <a routerLink="/topmovies" class=""><svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-x-square-fill" fill="red" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+          </svg></a>
+        </div>
+        <div class="row">
+            
+            <img class="col-6" src="https://image.tmdb.org/t/p/w500{{movieDetails.poster_path}}" style="height :400px;">
+            <div class="col-6 pl-3">
+                <p class="h3 " style="color: white;margin-bottom: 30px;">{{movieDetails.original_title}}</p>
+                <p class="h5 text-white">Release Date:&nbsp;&nbsp;{{movieDetails.release_date}}</p>
+                <p *ngFor="let data of movieDetails.spoken_languages" class="h5 text-white">
+                    language:&nbsp;&nbsp;{{data.name}}</p>
+                <p class="h5 text-white">Tagline:&nbsp;&nbsp;{{movieDetails.tagline}}</p>
+                <p class="h5 text-white">Rating:&nbsp;&nbsp;{{movieDetails.vote_average}}</p>
+                <p class="h5 text-white">Genres:&nbsp;&nbsp; <span *ngFor="let data of movieDetails.genres"
+                        class="mr-2">{{data.name}}</span></p>
+
+            </div>
+
+
+        </div>
+        <div>
+            <p class="h5 text-white mt-5"><u>Description</u>:&nbsp;&nbsp;{{movieDetails.overview}}</p>
+            <p class="h5 text-white"><u>Production Company</u>:&nbsp;&nbsp; <span *ngFor="let data of movieDetails.production_companies"
+                class="mr-2">{{data.name}}</span></p>
+            <p class="h5 text-white mt-5" *ngFor="let data of movieDetails.production_countries"><u>Production Country</u>:&nbsp;&nbsp;{{data.name}}</p>
+            
+
+
+        </div>
+    </div>
+</div>
