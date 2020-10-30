@@ -8,13 +8,15 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TopmoviesComponent } from './topmovies/topmovies.component';
+import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
-    TopmoviesComponent
+    TopmoviesComponent,
+    MoviedetailsComponent
   ],
   imports: [
     BrowserModule,
