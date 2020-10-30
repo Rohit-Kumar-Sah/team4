@@ -234,8 +234,10 @@
         style="position: absolute;left:7px;top:25px;color: purple;border-radius:50%;background-color: white;width: 20px;height: 20px;font-size: 20px;padding-left:6px;padding-bottom: 23px;">{{forfun.length}}</span>
     </span>
   </h1>
+  
 
-  <div class="watch list"
+  
+  <div class="watch list" *ngIf="forfun?.length>0; else elseblock"
     style="display:flex; flex-wrap: wrap; width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
     <div class="wistlistitem" style="width:250px; text-align: center; background-color:blue; margin:10px"
       *ngFor="let data of forfun">
@@ -249,6 +251,11 @@
 
     </div>
   </div><br><br>
+  <ng-template #elseblock>
+  <div ><h3 style="padding-left: 20%; color: white;">Nothing in Your Watchlist</h3></div>
+</ng-template>
+
+
 
 
 
