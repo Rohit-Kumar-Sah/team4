@@ -5,6 +5,7 @@
 .topmovies{
     width: 100%;
     background-color: black;
+    padding-bottom: 50px;
 }
 .yellowtext{
     padding-left: 50px;
@@ -15,6 +16,7 @@
     box-sizing: border-box;
     max-width: 85%;
     margin-bottom: 50px;
+    padding-bottom: 30px;
 }
 
 
