@@ -1,0 +1,335 @@
+<div id="topofpage"></div>
+<div class="topdiv" style="background-color: black;">
+<!--top header-->
+<div class="container-fluid bg-primary text-light" >
+  <div class="row" >
+    <div class="col-sm-6 ">
+      <h1 class="align-middle">MOVIE KING 
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
+      </h1>
+    </div>
+    <div class="col-sm-6 text-right mt-4 formbtns" >
+      <span class="mr-5">Login </span><span class="mr-5" (click)="signup()" >SignUp</span>
+     
+      
+    </div>
+  </div>
+</div>
+<!-- end of header component-->
+
+ <!--categories section-->
+<div class="container-fluid text-light text-center categories py-3" style="background-color: rgb(55, 55, 139);">
+  <div class="row">
+    <div class="col-sm-3">
+      <h6>Home</h6>
+      <h6>My wall</h6>
+    </div>
+
+    <div class="col-sm-3">
+      <h6>Top movies</h6>
+      <h6>Top Reviewers</h6>
+    </div>
+
+    <div class="col-sm-3">
+     <h6>Top reviews</h6>
+     <h6>Worst rated</h6>
+    </div>
+
+    <div class="col-sm-3">
+     <h6  (click)="carrers()" style="color:black;">Carrers</h6>  
+     <h6>Watch list</h6>
+    </div>
+  </div>
+</div>
+<!--End of categories section-->
+
+
+ <!-- advertisement section-->
+ <div id="carouselExampleIndicators" class="carousel slide text-center " data-ride="carousel" >
+    <div class="carousel-inner">
+      <div class="carousel-item active " data-interval="2000">
+        <img src="https://dynaimage.cdn.cnn.com/cnn/q_auto,h_600/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F160505174531-18-coca-cola-anniversary.jpg " width="900px" height="300px" style="object-fit:fill;" alt="...">
+      </div>
+      <div class="carousel-item"  data-interval="5000">
+        <img src=" https://mir-s3-cdn-cf.behance.net/projects/404/4d0bed88579211.Y3JvcCw5NjcsNzU3LDIxNSww.png" width="900px" height="300px" alt="...">
+      </div>
+      <div class="carousel-item "  data-interval="5000">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTCtoca3yKNhwNVGouU9IbOOstXC9YGu-VT5g&usqp=CAU " width="900px" height="300px" alt="..." style="object-fit:fill;">
+      </div>
+    </div>
+ </div><br>
+ <!--- end of advertisement section-->
+
+ <h1 style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">suggestions</h1>
+
+<!--corousel start-->
+<div style="margin:auto;width:75%">
+  <div id="carouselExampleIndicators872957" class="carousel slide" data-ride="carousel" >
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators872957" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators872957" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner " >
+
+      <div class="carousel-item active " >
+        <div class="row  " style="background-color: black; color: silver;">
+          <div class="col-sm-2" *ngFor="let data of dataset1">
+             <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px" class="text-center" alt="...">
+             <div class="moviedetails" style="background-color: rgb(40, 40, 40); ">
+              <div class="likecomment" style="width: 100%;display: flex;">
+                <div style="margin-left:5px ;" (click)="data.video=!data.video" [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
+                <div  (click)="loadcommentpage(data.id)"  style="margin-left:65%;color:rgb(220, 43, 226);"><i class="far fa-comment"></i></div>
+              </div>
+              <div class="moviename" style="text-align: center; height:50px; overflow: hidden;">
+               <b>{{data.original_title}}</b>
+               </div>
+              <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
+              <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data.id)"> watch list </button> 
+             </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel-item " >
+        <div class="row  " style="background-color: black; color: silver;">
+          <div class="col-sm-2" *ngFor="let data of dataset2">
+             <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px" class="text-center" alt="...">
+             <div class="moviedetails" style="background-color: rgb(40, 40, 40); ">
+              <div class="likecomment" style="width: 100%;display: flex;">
+                <div style="margin-left:5px ;" (click)="data.video=!data.video" [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
+                <div  (click)="loadcommentpage(data.id)"  style="margin-left:65%;color:rgb(220, 43, 226);"><i class="far fa-comment"></i></div>
+              </div>
+              <div class="moviename" style="text-align: center; height:50px; overflow: hidden;">
+               <b>{{data.original_title}}</b>
+               </div>
+              <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
+              <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data.id)"> watch list </button> 
+             </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators872957" role="button" data-slide="prev"  >
+      <span class="carousel-control-prev-icon corouselpbutton" aria-hidden="true" ></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators872957" role="button" data-slide="next">
+      <span class="carousel-control-next-icon corouselnbutton" aria-hidden="true" ></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+ <!--end of corousel-->
+</div><br><br>
+
+<!--born tis day-->
+<h1 style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">PEOPLE BORN TODAY</h1>
+<div class="row" style="margin:auto;width:75%">
+  <div class="col-sm-3" >
+    <img src="https://cdn.dnaindia.com/sites/default/files/styles/full/public/2018/01/25/645273-amitabhbachchan.jpg"
+         width="200px" height="200px" style="border-radius:50%;object-fit: cover;" class="borntodayimages"><br>
+    <div style="width: 100%;text-align: center;color: silver;">   
+    <h6>AMITABH BACHAN</h6>
+    </div>     
+  </div>
+  <div class="col-sm-3" >
+    <img src="https://i.pinimg.com/474x/26/57/66/2657664658565243d6af5371dac45bf9.jpg"
+         width="200px" height="200px" style="border-radius:50%;object-fit: cover;">
+    <div style="width: 100%;text-align: center;color: silver;">    
+    <h6>RAJINIKANTH</h6>
+    </div>     
+  </div>
+  <div class="col-sm-3" >
+    <img src="https://timesofindia.indiatimes.com/thumb/msid-72168734,width-800,height-600,resizemode-4/72168734.jpg?imglength=277599"
+         width="200px" height="200px" style="border-radius:50%;object-fit: cover;">
+    <div style="width: 100%;text-align: center;color: silver;">    
+    <h6>AKSHAY KUMAR</h6>
+    </div>     
+  </div>
+  <div class="col-sm-3" >
+    <img src="https://www.pinkvilla.com/files/styles/fbimagesection/public/vijay_deverakonda_overtakes_three_top_heroes_of_tollywood_prabhas_mahesh_babu_and_allu_ajun_check_1.jpg?itok=iX1KHOAi"
+         width="200px" height="200px" style="border-radius:50%;object-fit: cover;">
+    <div style="width: 100%;text-align: center;color: silver;">    
+    <h6>DEVERKONDA</h6>
+    </div>     
+  </div>
+
+</div><BR>
+
+  <h1 style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">TOP NEWS</h1>
+ <div class="row" style="width:70%;margin-left: 15%;color: silver;">
+   <div class="col-sm-4">
+     <div style="display:flex">  
+      <img src="https://www.usmagazine.com/wp-content/uploads/2020/10/Scarlett-Johansson-and-Colin-Jost-Marry-in-Intimate-Ceremony.jpg?w=700&quality=86&strip=all" width="40%" height="150px" style="object-fit: cover;">
+      <div style="padding-left: 3px;">
+       <h6>Scarlett Johansson and Colin Jost Are Married</h6>
+       <p>29 oct</p>
+      </div>
+     </div>
+   </div>
+
+   <div class="col-sm-4">
+    <div style="display:flex">  
+     <img src="https://filmmusicreporter.com/wp-content/uploads/2020/08/vcs-8.jpg" width="40%" height="150px" style="object-fit: cover;">
+     <div style="padding-left: 3px;">
+      <h6>‘Ted Lasso’ Renewed For Season 3 By Apple</h6>
+      <p>28 oct</p>
+     </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div style="display:flex">  
+     <img src="data:image/jpeg;base64,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"
+       width="40%" height="150px" style="object-fit: cover;">
+     <div style="padding-left: 3px;">
+      <h6>John Ridley to Write, Direct New Paranormal Thriller for Blumhouse</h6>
+      <p>29 oct</p>
+     </div>
+    </div>
+  </div>
+   
+ </div><br>
+
+<!--my watch list-->
+<h1 style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">MY WATCH LIST</h1>
+
+<div class="watch list" style="display:flex; flex-wrap: wrap; width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
+  <div class="wistlistitem" style="width:250px; text-align: center; background-color:blue; margin:10px" *ngFor="let data of forfun">
+    <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="250px" height="300px;" >
+    <div class="details text-left" style=" color:black">
+     <h6>RATING:  <ngb-rating [rate]="data.vote_average"></ngb-rating></h6>
+     <h6 style="min-height: 30px;">NAME : {{data.original_title}}</h6>
+     <a href="https://youtu.be/KK8FHdFluOQ"><button style="width:200px;margin-left:10%;">watch now</button></a>
+    </div>
+   
+  </div>
+ </div><br><br>
+
+ 
+
+ <!--footer-->
+ <div class="row" style="width:75%; margin: auto;">
+   <div class="col-sm-6" style="color:silver">
+     Contact us
+   </div>  
+   <div class="col-sm-6">
+     <div class="text-center footer ">
+        <a href="https://www.facebook.com/venkatabalaji.myapala"><i class="fab fa-facebook-f" style="background-color: rgb(55, 55, 139);"></i></a>
+        <i class="fab fa-instagram" style="background-color: rgb(171, 230, 8); color:rgb(228, 255, 192)"></i> 
+        <i class="fab fa-twitch"></i> 
+        <i class="fab fa-twitter" style="background-color: turquoise;"></i>
+        <i class="fab fa-youtube" style="background-color: rgb(173, 27, 27); color: white;"></i>
+        
+     </div>
+    </div> 
+  </div>  
+ <!--end of footer-->
+ <a href="#topofpage"><button class="btn" style="color: silver;border: 1px solid yellow;">MOVE TO TOP</button></a>
+
+</div>
+
+
+
+
+
+
+<style>
+ .main h3{
+     padding-left: 14px;
+     margin-left: 5px;
+     border-left:8px solid yellow;
+     color: silver;
+     
+  }
+.lovebtn :hover{
+  transform:scale(1.5,1.5);
+
+}
+  .likecomment :hover{
+   cursor: pointer;
+   transform:scale(1.3,1.3);
+  }
+
+  .main p{
+      color:silver
+   }
+
+.formbtns span{
+  color: white;
+  background-color: coral;
+  width:fit-content;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.formbtns span:hover{
+  background-color: crimson;
+  cursor: pointer;
+}
+
+
+.categories h6{
+  width: 70%;
+  background-color:yellow;
+  padding:15px 0px ;
+  color: black;
+  margin-bottom:13px;
+  border-radius: 30px;
+  box-shadow:5px  5px 4px grey ;
+}
+
+.categories h6:hover{
+  background-color: seagreen;
+  font-size: 14px;
+  transition-delay: 0.2s;
+  
+}
+
+
+
+ .footer i {
+     font-size: 25px;
+      padding-top:7px;
+      margin: 2px 7px;
+      color:white;
+      border-radius: 30px ;
+      width: 40px;
+      height: 40px;
+      background-color: blue;
+     
+ }
+
+ .footer i:hover{
+     color: yellow;
+     transition-delay: .2s;
+    
+     outline: 3px dotted white;
+    }
+
+.corouselpbutton{
+ 
+  position: absolute; top:150px; left:0px;width: 50px;height: 50px; border: 2px solid silver; background-image:100px;
+}
+.corouselnbutton{
+  position: absolute; top:150px; right:-0px; border: 2px solid silver;width: 50px;height: 50px;
+}
+
+.watchlistbutton{
+  border: 1px dotted red;
+  background-color: white;
+  color: aqua;
+  width: 80%;
+  margin: auto;
+}
+.watchlistbutton:hover{
+ width: 100%;
+ color: red;
+}
+a{
+  text-decoration: none;
+}
+
+
+    
+</style>
