@@ -5,7 +5,7 @@ import{FormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -25,7 +25,7 @@ import { CommentsComponent } from './comments/comments.component';
 
     SignInComponent,
     MyWallComponent,
-    CommentsComponent
+    CommentsComponent,
 
     HomepageComponent,
     Commentpage872957Component,
@@ -34,8 +34,9 @@ import { CommentsComponent } from './comments/comments.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,NgbModule,FormsModule,
+    AppRoutingModule,HttpClientModule,FormsModule,
      ReactiveFormsModule
+    //  ,NgbModule
   ],
   providers: [WatchlistdataService],
   bootstrap: [AppComponent]
