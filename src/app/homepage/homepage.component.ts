@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WatchlistdataService } from '../watchlistdata.service';
 import{Router}from '@angular/router';
+import { FireBaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-homepage',
@@ -18,9 +19,20 @@ export class HomepageComponent implements OnInit {
   watchlistdata:any;
   forfun:any;
   liked:any=false;
-  constructor(private watchlistitems:WatchlistdataService,private router:Router) { }
+
+  loggedin = false;
+  user = ""
+  constructor(private watchlistitems:WatchlistdataService,private router:Router , private userinfo : FireBaseService ) { }
 
   ngOnInit(): void {
+
+    if(this.userinfo.user){
+      this.loggedin=true
+      this.user= this.userinfo.username
+    }
+    else{
+      this.loggedin=false
+    }
 
      fetch("https://api.themoviedb.org/3/movie/popular/?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1").then(response => response.json())
     .then(data =>{

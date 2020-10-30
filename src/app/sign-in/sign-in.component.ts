@@ -34,7 +34,7 @@ invalid=false
     this.userinfo.signinUser(formdata.controls.name.value, formdata.controls.password.value).subscribe(data =>{
        this.success= data; 
        if(this.success)
-      { this.router.navigate(['/mywall']) }
+      { this.router.navigate(['/']) }
       else{
         this.invalid=true
       }

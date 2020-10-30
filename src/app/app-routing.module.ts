@@ -2,8 +2,8 @@ import { TopmoviesComponent } from './topmovies/topmovies.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-// import { CommentsComponent } from './comments/comments.component';
-// import { MyWallComponent } from './my-wall/my-wall.component';
+import { CommentsComponent } from './comments/comments.component';
+import { MyWallComponent } from './my-wall/my-wall.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -19,12 +19,11 @@ const routes: Routes = [
   {path:'topmovies/:id',component:MoviedetailsComponent},
   {path:'topmovies',component:TopmoviesComponent},
 
-  {path : 'sign-up' , component : SignUpComponent},
   {path:'commentpage/:id',component:Commentpage872957Component},
   {path:'carrers',component:CarrerspageComponent},
   {path : 'sign-in' , component : SignInComponent},
-  // {path : 'mywall' , component : MyWallComponent},
-  // {path : 'comments' , component : CommentsComponent}
+  {path : 'mywall' , component : MyWallComponent},
+  {path : 'comments' , component : CommentsComponent}
 
 ];
 
