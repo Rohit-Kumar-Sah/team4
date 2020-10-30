@@ -1,0 +1,28 @@
+.heading{
+    background-color: black;
+    color: yellow;
+}
+.topmovies{
+    width: 100%;
+    background-color: black;
+}
+.yellowtext{
+    padding-left: 50px;
+    color:yellow;
+}
+.toppopular,.toprated{
+    background-color:#121212 ;
+    box-sizing: border-box;
+    max-width: 85%;
+    margin-bottom: 50px;
+}
+
+
+.btnclass{
+    position: absolute;
+    bottom: 20px;
+}
+.ratingclass{
+    position: absolute;
+    bottom:50px;
+}

@@ -13,15 +13,24 @@ import { WatchlistdataService } from './watchlistdata.service';
 import { Commentpage872957Component } from './commentpage872957/commentpage872957.component';
 import { CarrerspageComponent } from './carrerspage/carrerspage.component';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { TopmoviesComponent } from './topmovies/topmovies.component';
+import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
+
 import { SignInComponent } from './sign-in/sign-in.component';
 import { MyWallComponent } from './my-wall/my-wall.component';
 import { CommentsComponent } from './comments/comments.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
+
+    TopmoviesComponent,
+    MoviedetailsComponent
+
 
     SignInComponent,
     MyWallComponent,
@@ -30,6 +39,7 @@ import { CommentsComponent } from './comments/comments.component';
     HomepageComponent,
     Commentpage872957Component,
     CarrerspageComponent,SignInComponent
+
 
   ],
   imports: [
