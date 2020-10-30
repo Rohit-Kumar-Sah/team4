@@ -5,7 +5,7 @@ import{FormsModule} from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -29,7 +29,7 @@ import { CommentsComponent } from './comments/comments.component';
     SignUpComponent,
 
     TopmoviesComponent,
-    MoviedetailsComponent
+    MoviedetailsComponent,
 
 
     SignInComponent,
@@ -46,7 +46,7 @@ import { CommentsComponent } from './comments/comments.component';
     BrowserModule,
     AppRoutingModule,HttpClientModule,FormsModule,
      ReactiveFormsModule
-    //  ,NgbModule
+     ,NgbModule
   ],
   providers: [WatchlistdataService],
   bootstrap: [AppComponent]
