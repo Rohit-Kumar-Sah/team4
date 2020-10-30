@@ -26,34 +26,26 @@ import { CommentsComponent } from './comments/comments.component';
 @NgModule({
   declarations: [
     AppComponent,
+    MyWallComponent,
+    SignInComponent,
     SignUpComponent,
-
+    Commentpage872957Component,
+    CarrerspageComponent,
+    CommentsComponent,
     TopmoviesComponent,
     MoviedetailsComponent,
-
-
-    SignInComponent,
-    MyWallComponent,
-    CommentsComponent,
-
-    HomepageComponent,
-    Commentpage872957Component,
-    CarrerspageComponent,SignInComponent
-
-
+    HomepageComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,FormsModule,
-
-    AppRoutingModule,HttpClientModule,NgModule,FormsModule,
-
-    AppRoutingModule,HttpClientModule,FormsModule,
-
-     ReactiveFormsModule
-     ,NgbModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    NgbModule
   ],
-  providers: [WatchlistdataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
