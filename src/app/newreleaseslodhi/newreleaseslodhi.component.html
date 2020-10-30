@@ -3,9 +3,9 @@
     <h2 style="width: 50%;">New Releases</h2>
     <a routerLink="" style="margin-left: 40%;"><button >home page</button></a>
 </div>
-
-<div class="d-flex justify-content-between">
-<div class="card" style="width: 8rem;" *ngFor="let data of newmovies">
+<div class="ng-container ml-5">
+<div class="d-flex ml-5 mb-5">
+<div class="card mr-5 ml-5" style="width: 13rem;" *ngFor="let data of newmovies">
   <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
   <div class="card-body">
     <h5 class="card-title"  >
@@ -18,8 +18,8 @@
 </div>
 </div>
 
-<div class="d-flex justify-content-between">
-  <div class="card" style="width: 8rem;" *ngFor="let data of newmovies2">
+<div class="d-flex ml-5">
+  <div class="card  mr-5 ml-5 " style="width: 13rem;" *ngFor="let data of newmovies2">
     <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
     <div class="card-body" style="position: relative;">
       <h5 class="card-title"  >
@@ -32,3 +32,4 @@
   </div>
   </div>
 
+</div>
