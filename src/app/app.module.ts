@@ -14,15 +14,23 @@ import { Commentpage872957Component } from './commentpage872957/commentpage87295
 import { CarrerspageComponent } from './carrerspage/carrerspage.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { MyWallComponent } from './my-wall/my-wall.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
+
+    SignInComponent,
+    MyWallComponent,
+    CommentsComponent
+
     HomepageComponent,
     Commentpage872957Component,
     CarrerspageComponent,SignInComponent
+
   ],
   imports: [
     BrowserModule,

@@ -5,8 +5,12 @@
         <p>The Official Home of Correct Movie Opinions </p>
     </div>
 
+    
    
     <div class="form-label-group">
+        <div class="bg-danger p-3 text-center" *ngIf="invalid">
+        Username or Password incorrect ! 
+        </div>
         <label for="inputName">Name</label>
         <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="" formControlName="name" [ngClass]="(signinForm.controls.name.invalid && signinForm.controls.name.touched)?'is-invalid':''">
         <small *ngIf="signinForm.controls.name.invalid && signinForm.controls.name.touched">Only Valid names , with letters and underscores without space</small>
@@ -26,4 +30,9 @@
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block text-wrap"  [disabled]="signinForm.invalid" type="submit">Sign In</button>
+
 </form>
+
+<div class="container w-50 mt-5">
+   <button class="btn border-0"> <span class="text-primary " routerLink="/sign-up">Sign-Up</span></button>here if not already registered.
+</div>

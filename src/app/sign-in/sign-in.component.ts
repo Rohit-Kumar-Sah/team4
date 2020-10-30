@@ -2,6 +2,8 @@
 import { FireBaseService } from '../firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { invalid } from '@angular/compiler/src/render3/view/util';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,7 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class SignInComponent implements OnInit {
   newDetails: { name: string, password: string };
 
-  constructor(private userinfo: FireBaseService, private fb: FormBuilder) {
+  constructor(private userinfo: FireBaseService, private fb: FormBuilder, private router : Router) {
 
   }
 
@@ -19,7 +21,7 @@ export class SignInComponent implements OnInit {
   success=false //determines whether signin was sussessfull or not
 
   signinForm
-
+invalid=false
   ngOnInit(): void {
     this.signinForm = this.fb.group({
       name: ['', [Validators.required, Validators.pattern('^[A-Za-z_]+$'), Validators.minLength(2)]],
@@ -31,6 +33,11 @@ export class SignInComponent implements OnInit {
     this.success=true
     this.userinfo.signinUser(formdata.controls.name.value, formdata.controls.password.value).subscribe(data =>{
        this.success= data; 
+       if(this.success)
+      { this.router.navigate(['/mywall']) }
+      else{
+        this.invalid=true
+      }
       })
   }
 

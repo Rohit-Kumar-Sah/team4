@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CommentsComponent } from './comments/comments.component';
+import { MyWallComponent } from './my-wall/my-wall.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path:'commentpage/:id',component:Commentpage872957Component},
   {path:'carrers',component:CarrerspageComponent},
   {path : 'sign-up' , component : SignUpComponent},
-  {path : 'sign-in' , component : SignInComponent}
+  {path : 'sign-in' , component : SignInComponent},
+  {path : 'mywall' , component : MyWallComponent},
+  {path : 'comments' , component : CommentsComponent}
 ];
 
 @NgModule({
