@@ -35,7 +35,8 @@ import { CommentsComponent } from './comments/comments.component';
     TopmoviesComponent,
     MoviedetailsComponent,
     HomepageComponent
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -43,9 +44,8 @@ import { CommentsComponent } from './comments/comments.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
-  ],
-  providers: [],
+    NgbModule  ],
+  providers: [WatchlistdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
