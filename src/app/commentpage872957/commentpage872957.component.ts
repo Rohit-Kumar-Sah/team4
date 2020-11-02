@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{ActivatedRoute} from'@angular/router';
 import { WatchlistdataService } from '../watchlistdata.service';
+import { MovieapiService } from '../movieapi.service';
 
 @Component({
   selector: 'app-commentpage872957',
@@ -9,26 +10,30 @@ import { WatchlistdataService } from '../watchlistdata.service';
 })
 export class Commentpage872957Component implements OnInit {
 
-  constructor(private route:ActivatedRoute,private watchlistservice:WatchlistdataService) { }
+  constructor(private route:ActivatedRoute,private watchlistservice:WatchlistdataService,private _movieapi:MovieapiService) {
+    this._movieapi.getDataPopular().subscribe(data =>{
+      this.moviedata=data;
+      this.moviedata1 = this.moviedata.results;
+      this.commentid = parseInt(this.route.snapshot.params['id']);
+      for(let movie of this.moviedata1)
+        {
+          if(movie.id == this.commentid)
+          {
+            this.commentdata=movie;
+          }
+        }
+        
+    });
+  }//end of constructor
+
   commentdata:any="sastra";
   commentid:any;
   datacomment : any;
   review1 : any=false;
-  ngOnInit(): void {
-    
-    this.commentid = parseInt(this.route.snapshot.params['id']);
+  public moviedata:any=[];
+  public moviedata1:any=[];
 
-      fetch("https://api.themoviedb.org/3/movie/popular/?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1").then(response => response.json())
-      .then(data =>{
-        
-        for(let i=0;i<data.results.length;i++)
-        {
-          if(data.results[i].id == this.commentid)
-          {
-             this.commentdata=data.results[i];
-          }
-        }
-      });
+  ngOnInit(): void {
  }
   
   review()
