@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WatchlistdataService } from '../watchlistdata.service';
-import{Router}from '@angular/router';
+import { Router } from '@angular/router';
 import { FireBaseService } from '../firebase.service';
 import { MovieapiService } from '../movieapi.service';
 
@@ -31,22 +31,20 @@ export class HomepageComponent implements OnInit {
        this.dataset2 = this.somedata.results.slice(6,12);
     })
   }
+  
 
   ngOnInit(): void {
 
-    if(this.userinfo.user){
-      this.loggedin=true
-      this.user= this.userinfo.username
+    if (this.userinfo.user) {
+      this.loggedin = true
+      this.user = this.userinfo.username
     }
-    else{
-      this.loggedin=false
+    else {
+      this.loggedin = false
     }
 
      
 
-    this.forfun=this.watchlistitems.watchlistarray;
-    
-    
   }
   
     pushdataintowatchlist(data:any)//upon clicking add to list list button corresponding movie data gets exported to services.
@@ -55,28 +53,33 @@ export class HomepageComponent implements OnInit {
             this.watchlistitems.watchlistarray.push(data);
           
     }
+    
+  
 
-    loadcommentpage(data:any)
-    {  
-      console.log(data);
-      this.router.navigate(['/commentpage',data])
-       
-    }
+  loadcommentpage(data: any) {
+    console.log(data);
+    this.router.navigate(['/commentpage', data])
 
-   
-    signup(){
-      console.log("sastra");
-      this.router.navigate(['sign-up'])
-    }
-    carrers(){
-      console.log("clicked on carrers page");
-      this.router.navigate(['carrers'])
-    }
-    login(){
-      this.router.navigate(['sign-in'])
-    }
-    newreleases(){
-      this.router.navigate(['newreleases'])
-    }
+  }
+
+  sastra() {
+    console.log("this is lakshmi");
+  }
+
+  signup() {
+    console.log("sastra");
+    this.router.navigate(['sign-up'])
+  }
+  carrers() {
+    console.log("clicked on carrers page");
+    this.router.navigate(['carrers'])
+  }
+  login() {
+    this.router.navigate(['sign-in'])
+  }
+  newreleases() {
+    this.router.navigate(['newreleases'])
+  }
+
     
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { WatchlistdataService } from '../watchlistdata.service';
 import{Router}from '@angular/router';
@@ -24,13 +25,7 @@ export class NewreleaseslodhiComponent implements OnInit {
       this.newmovies2 = this.moviedata.results.slice(15,20);
    })
 
-  /*fetch("https://api.themoviedb.org/3/movie/popular/?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1").then(response => response.json())
-    .then(data =>{
-       console.log(data);
-       this.newmovies=data.results.slice(10,14);
-       this.newmovies2=data.results.slice(15,19);
-       
-      });*/
+  
     }
     mywatchlist(data:any){
       console.log("pushed data from new releases to watchlist ");
