@@ -1,33 +1,31 @@
-<div id="topofpage"></div>
-<div class="topdiv" style="background-color: black;">
-  <!--top header-->
-  <div class="container-fluid bg-primary text-light">
-    <div class="row">
-      <div class="col-sm-6 ">
-        <h1 class="align-middle">MOVIE KING
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU"
-            width="70px" height="70px" style="object-fit: cover;">
-        </h1>
-      </div>
-      <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="!loggedin">
-        <span class="mr-5" routerLink="/sign-in">Login </span><span class="mr-5" (click)="signup()">SignUp</span>
-
-      </div>
-      <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="loggedin">
-        <b><i>{{user}}</i></b>
-        <img
-          src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png"
-          width="70px" height="50px" class="ml-2" alt="...">
-
-      </div>
+<div id="mypage"></div>
+<div  style="background-color: black;" >
+<!--top header-->
+<div class="container-fluid bg-primary text-light" >
+  <div class="row" >
+    <div class="col-sm-6 ">
+      <h1 class="align-middle">MOVIE KING 
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
+      </h1>
+    </div>
+    <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="!loggedin" >
+      <span class="mr-5" routerLink="/sign-in">Login </span><span class="mr-5" (click)="signup()" >SignUp</span>
+     
+    </div>
+    <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="loggedin" >
+      <b><i>{{user}}</i></b>
+      <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png" width="70px" height="50px" 
+                            class="ml-2"     alt="...">
+     
     </div>
   </div>
-  <!-- end of header component-->
+</div>
+<!-- end of header component-->
 
   <!--categories section-->
   <div class="container-fluid text-light text-center categories py-3" style="background-color: rgb(55, 55, 139);">
     <div class="row">
+
       <div class="col-sm-3">
         <h6>Home</h6>
         <h6 routerLink="/mywall">My wall</h6>
@@ -38,15 +36,15 @@
         <h6>Top Reviewers</h6>
       </div>
 
-      <div class="col-sm-3">
+     <div class="col-sm-3">
         <h6>Top reviews</h6>
         <h6 (click)="newreleases()">new releases</h6>
-      </div>
+     </div>
 
-      <div class="col-sm-3">
-        <h6 (click)="carrers()" style="color:black;">Carrers</h6>
-        <h6>Watch list</h6>
-      </div>
+     <div class="col-sm-3">
+      <h6  (click)="carrers()" style="color:black;">Carrers</h6>  
+      <h6 routerLink='/watchlist'>Watch list</h6>
+     </div>
     </div>
   </div>
   <!--End of categories section-->
@@ -94,18 +92,22 @@
               <div class="moviedetails" style="background-color: rgb(40, 40, 40); ">
                 <div class="likecomment" style="width: 100%;display: flex;">
                   <div style="margin-left:5px ;" (click)="data.video=!data.video"
-                    [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
+                    [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i>
+                  </div>
                   <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
-                      class="far fa-comment"></i></div>
+                      class="far fa-comment"></i>
+                  </div>
                 </div>
                 <div class="moviename" style="text-align: center; height:50px; overflow: hidden;">
                   <b>{{data.original_title}}</b>
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
-                <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data.id)">
+                <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data)">
                   watch list </button>
               </div>
-            </div>
+              
+               
+             </div>
           </div>
         </div>
 
@@ -125,10 +127,10 @@
                   <b>{{data.original_title}}</b>
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
-                <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data.id)">
+                <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data)">
                   watch list </button>
               </div>
-            </div>
+             </div>
           </div>
         </div>
 
@@ -223,35 +225,7 @@
     </div>
 
   </div><br>
-
-  <!--my watch list-->
-  <h1
-    style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">
-    MY WATCH LIST
-    <span *ngIf="forfun.length" style="color:red;position: relative;">
-      <i class="fas fa-shopping-bag"></i>
-      <span
-        style="position: absolute;left:7px;top:25px;color: purple;border-radius:50%;background-color: white;width: 20px;height: 20px;font-size: 20px;padding-left:6px;padding-bottom: 23px;">{{forfun.length}}</span>
-    </span>
-  </h1>
-
-  <div class="watch list"
-    style="display:flex; flex-wrap: wrap; width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
-    <div class="wistlistitem" style="width:250px; text-align: center; background-color:blue; margin:10px"
-      *ngFor="let data of forfun">
-      <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="250px" height="300px;">
-      <div class="details text-left" style=" color:black">
-        <h6>RATING: <ngb-rating [rate]="data.vote_average"></ngb-rating>
-        </h6>
-        <h6 style="min-height: 30px;">NAME : {{data.original_title}}</h6>
-        <a href="https://youtu.be/KK8FHdFluOQ"><button style="width:200px;margin-left:10%;">watch now</button></a>
-      </div>
-
-    </div>
-  </div><br><br>
-
-
-
+  
   <!--footer-->
   <div class="row" style="width:75%; margin: auto;">
     <div class="col-sm-6" style="color:silver">
@@ -270,7 +244,7 @@
     </div>
   </div>
   <!--end of footer-->
-  <a href="#topofpage"><button class="btn" style="color: silver;border: 1px solid yellow;">MOVE TO TOP</button></a>
+  <a href="#mypage"><button class="btn" style="color: silver;border: 1px solid yellow;">MOVE TO TOP</button></a>
 
 </div>
 

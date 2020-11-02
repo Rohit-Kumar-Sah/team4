@@ -1,35 +1,39 @@
-
+<!-- top navbar which shows-->
 <div style="display:flex">
     <h2 style="width: 50%;">New Releases</h2>
     <a routerLink="" style="margin-left: 40%;"><button >home page</button></a>
 </div>
-<div class="ng-container ml-5">
-<div class="d-flex ml-5 mb-5">
-<div class="card mr-5 ml-5" style="width: 13rem;" *ngFor="let data of newmovies">
-  <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"  >
-        <b style="overflow: hidden;">{{data.original_title}}</b>
-    </h5>
-    
-    <p class="card-text" style="overflow: hidden;"></p>
-    <a href="#" class="btn btn-primary">Add to Watchlist</a>
-  </div>
-</div>
-</div>
 
-<div class="d-flex ml-5">
-  <div class="card  mr-5 ml-5 " style="width: 13rem;" *ngFor="let data of newmovies2">
+<div class="d-flex justify-content-between">
+  <div class="card" style="width: 12rem;" *ngFor="let data of newmovies">
     <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
-    <div class="card-body" style="position: relative;">
-      <h5 class="card-title"  >
-          <b style="overflow: hidden;">{{data.original_title}}</b>
+    <div class="card-body bg-secondary w-100 ">
+      <h5 class="card-title text-center" style="min-height: 30px;overflow: hidden;" >
+        <b >{{data.original_title}}</b>
       </h5>
-      
-      <p class="card-text" style="overflow: hidden;"></p>
-      <a href="#" class="btn btn-primary">Add to Watchlist</a>
+      <div class="likecomment bg-secondary" style="width: 100%;display: flex;">
+        <div  (click)="data.video=!data.video" [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
+        <div (click)="loadcommentpage(data.id)"   style="margin-left:65%;color:rgb(220, 43, 226);"><i class="far fa-comment"></i></div>
+      </div>
+      <div class="btn btn-primary " (click)="mywatchlist(data)" style="margin: auto;">Add to Watchlist</div>
+    </div>
+  </div>  
+</div>
+<br><br>
+
+<div class="d-flex justify-content-between">
+  <div class="card" style="width: 12rem;" *ngFor="let data of newmovies2">
+    <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
+    <div class="card-body bg-secondary" style="position: relative;">
+      <h5 class="card-title text-center " style="min-height: 30px;overflow: hidden;" >
+        <b >{{data.original_title}}</b>
+      </h5>
+      <div class="likecomment bg-secondary" style="width: 100%;display: flex;">
+        <div  (click)="data.video=!data.video" [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
+        <div (click)="loadcommentpage(data.id)"   style="margin-left:65%;color:rgb(220, 43, 226);"><i class="far fa-comment"></i></div>
+      </div>
+      <div class="btn btn-primary " (click)="mywatchlist(data)" style="margin: auto;">Add to Watchlist</div>
     </div>
   </div>
-  </div>
-
 </div>
+
