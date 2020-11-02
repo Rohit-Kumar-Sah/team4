@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WatchlistdataService } from '../watchlistdata.service';
 import{Router}from '@angular/router';
 import { FireBaseService } from '../firebase.service';
+import { MovieapiService } from '../movieapi.service';
 
 @Component({
   selector: 'app-homepage',
@@ -19,10 +20,17 @@ export class HomepageComponent implements OnInit {
   watchlistdata:any;
   forfun:any=[];
   liked:any=false;
+  public somedata:any;
 
   loggedin = false;
   user = ""
-  constructor(private watchlistitems:WatchlistdataService,private router:Router , private userinfo : FireBaseService ) { }
+  constructor(private watchlistitems:WatchlistdataService,private router:Router , private userinfo : FireBaseService ,private _movieapi:MovieapiService) { 
+    this._movieapi.getDataPopular().subscribe(data =>{
+       this.somedata=data;
+      this.dataset1 = this.somedata.results.slice(0,6);
+       this.dataset2 = this.somedata.results.slice(6,12);
+    })
+  }
 
   ngOnInit(): void {
 
@@ -34,35 +42,18 @@ export class HomepageComponent implements OnInit {
       this.loggedin=false
     }
 
-     fetch("https://api.themoviedb.org/3/movie/popular/?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1").then(response => response.json())
-    .then(data =>{
-       this.datapopular = data;
-       this.dataset1 = data.results.slice(0,6);
-       this.dataset2 = data.results.slice(6,12);
-      });
+     
 
     this.forfun=this.watchlistitems.watchlistarray;
     
     
   }
   
-    pushdataintowatchlist(id:number)//upon clicking add to list list button data gets exported to services.
+    pushdataintowatchlist(data:any)//upon clicking add to list list button corresponding movie data gets exported to services.
     {
-        /*let myarray = this.datapopular.results;
-        let item=myarray.filter(myfunction);
-        function myfunction(value,index,array)
-        {
-          return value.id == id;
-        }
-        this.watchlistitems.watchlistarray.push(item);
-        this.watchlistdata=this.watchlistitems.watchlistarray;*/
-        for(let i=0;i<20;i++)
-        {
-          if(this.datapopular.results[i].id == id )
-          {
-            this.watchlistitems.watchlistarray.push(this.datapopular.results[i]);
-          }
-        }
+        
+            this.watchlistitems.watchlistarray.push(data);
+          
     }
 
     loadcommentpage(data:any)
@@ -72,9 +63,7 @@ export class HomepageComponent implements OnInit {
        
     }
 
-    sastra(){
-      console.log("this is lakshmi");
-    }
+   
     signup(){
       console.log("sastra");
       this.router.navigate(['sign-up'])
