@@ -1,4 +1,4 @@
-<div class=" topmovies">
+<div class=" topmovies container-fluid">
   <a routerLink=""><button style="margin-left: 90%; background-color: yellow;">home page</button></a>
   <div class="alert heading">
     <p class="text-center h1 yellowtext">TOP MOVIES</p>
@@ -7,10 +7,10 @@
     <p>{{item.original_title}}</p>
   </div> -->
 
-  <div class="toppopular container">
+  <div class="toppopular container-fluid">
     <p class="text-left h2 yellowtext">Most Popular Movies</p>
     <div class="row mt-3">
-      <div class="col-sm-12 col-md-3 mt-3" *ngFor="let item of moviePopular">
+      <div class=" col-sm-12 col-lg-3 col-md-6  mt-3" *ngFor="let item of moviePopular">
         <div class="card"
           style="width: 18rem; background-color: #696969;box-sizing: border-box;height: 380px;position:relative">
           <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" class="card-img-top" style="height: 200px;"
@@ -53,13 +53,13 @@
 
 
   </div>
-  <div class="toprated container">
+  <div class="toprated container-fluid">
     <p class="text-left h2 yellowtext">Top Rated Movies </p>
     <div class="row mt-3">
-      <div class="col-sm-12 col-md-3 mt-3" *ngFor="let item of movieTopRated">
+      <div class="col-sm-12 col-md-3  mt-3" *ngFor="let item of movieTopRated">
         <div class="card"
           style="width: 18rem; background-color: #696969;box-sizing: border-box;height: 380px;position:relative">
-          <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" class="card-img-top" style="height: 200px;"
+          <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" class="card-img-top" style="height: 200px; width: auto;box-sizing: border-box;"
             alt="...">
           <div class="card-body">
             <div class="like&cmt">
