@@ -103,4 +103,27 @@ grabcomment(){
 }
 
 
+grabAllUser()
+{
+    return this.http.get('https://team4-506c8.firebaseio.com/testuser.json').pipe(
+         
+       map(data=>
+        {
+            const arr=[] ;
+            const usernamearrray=Object.keys(data)
+            for(let name of usernamearrray){
+                arr.push(name.slice(0, name.indexOf('&'))) 
+                
+            }
+            return arr
+        }
+        
+       
+       
+       )
+        
+        
+    )
+}
+
 }

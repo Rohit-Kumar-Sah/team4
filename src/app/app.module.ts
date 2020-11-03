@@ -22,6 +22,7 @@ import { MyWallComponent } from './my-wall/my-wall.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
 import { QuizComponent } from './quiz/quiz.component';
+import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
 
 
 
@@ -38,7 +39,8 @@ import { QuizComponent } from './quiz/quiz.component';
     MoviedetailsComponent,
     HomepageComponent,
     NewreleaseslodhiComponent,
-    QuizComponent
+    QuizComponent,
+    WatchlistpageComponent
     
   ],
   imports: [

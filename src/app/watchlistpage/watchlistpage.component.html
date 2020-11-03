@@ -1,0 +1,44 @@
+<div style="background-color: black; min-height: 1000px;">
+ 
+ 
+
+ <h1
+    style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">
+    MY WATCH LIST
+    <span *ngIf="watchlistdata.length" style="color:red;position: relative;">
+      <i class="fas fa-shopping-bag"></i>
+      <span
+        style="position: absolute;left:7px;top:25px;color: purple;border-radius:50%;background-color: white;width: 20px;height: 20px;font-size: 20px;padding-left:6px;padding-bottom: 23px;">{{watchlistdata.length}}</span>
+    </span>
+</h1>
+  
+ 
+  
+  <div class="watch list" *ngIf="watchlistdata?.length>0; else elseblock"
+    style="display:flex; flex-wrap: wrap; max-width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
+
+    <div class="wistlistitem" style="width:250px; text-align: center; background-image: url(https://img.freepik.com/free-photo/dark-blue-texture-cement-wall-background_28629-1627.jpg?size=626&ext=jpg&ga=GA1.2.38978375.1604361600); margin:10px"
+      *ngFor="let data of watchlistdata">
+      <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="250px" height="300px;">
+      <div class="details text-left" style=" color:black">
+        <h6 style="color: white;">RATING: <ngb-rating [rate]="data.vote_average" style="color:yellow"></ngb-rating>
+        </h6>
+        <h6 style="min-height: 50px;color: white;">NAME : {{data.original_title}}</h6>
+        <div class="text-center">
+         <a href="https://youtu.be/KK8FHdFluOQ"><button><i class="fab fa-youtube text-danger" ></i></button></a>
+         <button  (click)="deletefromwatchlist(data)" style="margin-left:10%;"><i class="fas fa-trash-alt"></i></button>
+         <button (click)="pintotopofwatchlist(data)" style="margin-left:10%;color: hotpink;"><i class="fas fa-thumbtack"></i></button>
+        </div> <br>
+      </div>
+    </div>
+
+  </div><br><br>
+  <ng-template #elseblock>
+  <div ><h3 style="padding-left: 20%; color: white;">Nothing in Your Watchlist</h3></div>
+</ng-template>
+
+
+</div>
+
+
+

@@ -10,6 +10,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { Commentpage872957Component } from './commentpage872957/commentpage872957.component';
 import { CarrerspageComponent } from './carrerspage/carrerspage.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
+import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
 
 
 
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path : 'sign-in' , component : SignInComponent},
   {path : 'mywall' , component : MyWallComponent},
   {path : 'comments' , component : CommentsComponent},
-  {path:'newreleases',component:NewreleaseslodhiComponent}
+  {path:'newreleases',component:NewreleaseslodhiComponent},
+  {path:'watchlist',component:WatchlistpageComponent}
 
 ];
 
