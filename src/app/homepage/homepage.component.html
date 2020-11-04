@@ -1,56 +1,66 @@
 <div id="mypage"></div>
-<div  style="background-color: black;" >
-<!--top header-->
-<div class="container-fluid bg-primary text-light" >
+
+
+
+<div class="container-fluid  text-dark " style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);" >
   <div class="row" >
-    <div class="col-sm-6 ">
+    <div class="col-sm-12 " style="margin-left: 35%;">
       <h1 class="align-middle">MOVIE KING 
          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
       </h1>
     </div>
-    <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="!loggedin" >
-      <span class="mr-5" routerLink="/sign-in">Login </span><span class="mr-5" (click)="signup()" >SignUp</span>
-     
-    </div>
-    <div class="col-sm-6 text-right mt-4 formbtns" *ngIf="loggedin" >
-      <b><i>{{user}}</i></b>
-      <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png" width="70px" height="50px" 
-                            class="ml-2"     alt="...">
-     
-    </div>
+    
   </div>
 </div>
-<!-- end of header component-->
-
-  <!--categories section-->
-  <div class="container-fluid text-light text-center categories py-3" style="background-color: rgb(55, 55, 139);">
-    <div class="row">
-
-      <div class="col-sm-3">
-        <h6>Home</h6>
-        <h6 routerLink="/mywall">My wall</h6>
-      </div>
-
-      <div class="col-sm-3">
-        <h6 routerLink="/topmovies">Top movies</h6>
-        <h6>Top Reviewers</h6>
-      </div>
-
-     <div class="col-sm-3">
-        <h6>Top reviews</h6>
-        <h6 (click)="newreleases()">new releases</h6>
-     </div>
-
-     <div class="col-sm-3">
-      <h6  (click)="carrers()" style="color:black;">Carrers</h6>  
-      <h6 routerLink='/watchlist'>Watch list</h6>
-     </div>
-    </div>
-  </div>
-  <!--End of categories section-->
 
 
-  <!-- advertisement section-->
+  
+  <nav class="navbar navbar-expand-sm  navbar-light" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);">
+    
+  
+    <!-- Links -->
+    <ul class="navbar-nav ml-sm-5 text-center w-sm-100 topheader1" >
+      <li class="nav-item mr-sm-2 text-light rounded-circle">
+        <a class="nav-link bg-info text-light rounded  " routerLink="/mywall">MY WALL</a>
+      </li>
+      <li class="nav-item mr-sm-2 ">
+        <a class="nav-link  text-light rounded"  routerLink="/topmovies" style="background-color: darkmagenta;">TOP MOVIES</a>
+      </li>
+      <li class="nav-item mr-sm-2   rounded" style="background-color:chocolate;">
+        <a class="nav-link text-light "  routerLink="/newreleases">NEW RELEASES</a>
+      </li>
+      <li class="nav-item mr-sm-2 bg-danger text-light rounded" >
+        <a class="nav-link text-light" routerLink="/carrers">CARRERS</a>
+      </li>
+      <li class="nav-item mr-sm-2 bg-secondary text-light rounded" >
+        <a class="nav-link text-light" routerLink="/watchlist">WATCHLIST</a>
+      </li>
+      <form class="form-inline mr-sm-5 ml-sm-5 " action="/action_page.php"  >
+        <input class="form-control mr-sm-2" type="text" placeholder="Search for any movie">
+        <button class="btn btn-success " type="submit">Search</button>
+      </form>
+
+      <li class="nav-item ml-sm-5  rounded" style="background-color:steelblue;">
+        <a class="nav-link text-light" routerLink="/sign-in" *ngIf="!loggedin">Login </a>
+      </li>  
+
+      <li class="nav-item ml-sm-4 rounded" style="background-color:coral;">
+        <a class="nav-link text-light" routerLink="/sign-up" *ngIf="!loggedin">signup </a>
+      </li>  
+
+      <li *ngIf="loggedin">
+        <b><i>{{user}}</i></b>
+        <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png" width="70px" height="40px" 
+                            class="ml-2"     alt="..." style="border-radius: 50%;border: 1px solid red; object-fit: fill;">
+      </li>    
+
+    </ul>
+    
+  </nav>
+  <br>
+
+  <div  style="background-color: black;" >
+
   <div id="carouselExampleIndicators" class="carousel slide text-center " data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active " data-interval="2000">
@@ -60,7 +70,7 @@
       </div>
       <div class="carousel-item" data-interval="5000">
         <img src=" https://mir-s3-cdn-cf.behance.net/projects/404/4d0bed88579211.Y3JvcCw5NjcsNzU3LDIxNSww.png"
-          width="900px" height="300px" alt="...">
+          width="900px" height="300px" alt="..." style="object-fit: cover;">
       </div>
       <div class="carousel-item " data-interval="5000">
         <img
@@ -364,4 +374,10 @@
   a {
     text-decoration: none;
   }
+
+  .topheader1 :hover{
+   box-shadow: 3px 3px 5px magenta;
+   transform: translate(-2px,-3px);
+   transition-delay: 0.2s;
+  }  
 </style>
