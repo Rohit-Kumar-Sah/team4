@@ -20,6 +20,7 @@ export class HomepageComponent implements OnInit {
   watchlistdata:any;
   forfun:any=[];
   liked:any=false;
+  searchmovie:string;
   public somedata:any;
 
   loggedin = false;
@@ -58,7 +59,7 @@ export class HomepageComponent implements OnInit {
 
   loadcommentpage(data: any) {
     console.log(data);
-    this.router.navigate(['/commentpage', data])
+    this.router.navigate(['/commentpage', data]);
 
   }
 
@@ -80,6 +81,28 @@ export class HomepageComponent implements OnInit {
   newreleases() {
     this.router.navigate(['newreleases'])
   }
+  searchpage(){
+    console.log("we are searching for entered movie");
+    console.log(this.searchmovie);
+    let flag=false;
+    let id;
+    let name=this.searchmovie.toLowerCase();
+    let array=this.somedata.results.map(function(value,index,array){
+         let title= value.original_title
+      if(name == title.toLowerCase()){
+        flag=true;
+        id=value.id;
+        console.log(id);
+      }
 
+    })
+    if(flag){
+      this.router.navigate(['/commentpage',id]);
+    }  
+    else{
+      alert("movie doesnt exists in our record");
+    }
+    console.log("hello");
+  }
     
 }

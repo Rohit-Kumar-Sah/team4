@@ -35,9 +35,9 @@
       <li class="nav-item mr-sm-2 bg-secondary text-light rounded" >
         <a class="nav-link text-light" routerLink="/watchlist">WATCHLIST</a>
       </li>
-      <form class="form-inline mr-sm-5 ml-sm-5 " action="/action_page.php"  >
-        <input class="form-control mr-sm-2" type="text" placeholder="Search for any movie">
-        <button class="btn btn-success " type="submit">Search</button>
+      <form class="form-inline mr-sm-5 ml-sm-5 searchform " action="/action_page.php" #searchform="ngForm" >
+        <input class="form-control " type="search" placeholder="Search for any movie" name="moviename" ngModel [(ngModel)]="searchmovie">
+        <button class="btn text-light" type="submit"  (click)="searchpage()" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpaOHHA6w_9atYh5bMeENznlEt48ZSJUz_QA&usqp=CAU)">Search</button>
       </form>
 
       <li class="nav-item ml-sm-5  rounded" style="background-color:steelblue;">
@@ -377,7 +377,8 @@
 
   .topheader1 :hover{
    box-shadow: 3px 3px 5px magenta;
-   transform: translate(-2px,-3px);
+   transform: translate(-0px,-3px);
    transition-delay: 0.2s;
   }  
+  
 </style>
