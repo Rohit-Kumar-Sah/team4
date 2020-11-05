@@ -1,45 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark mb-3">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="30" height="30" alt=""><a class="navbar-brand text-light ml-3" >Movie King</a>
+  <button class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0" type="submit" routerLink="/">Home</button>
+      
 
-<div style="background-color: black; min-height: 900px;">
-<marquee style="width:80%;margin-left:10%;color: chartreuse;">welcome to comment page!!</marquee>
-<a routerLink="" ><button style="margin-left: 80%;">home page</button></a>
-<div style="display:flex;  margin-left:10%; width:100%; background-color: black; color:silver">
-  <div style="width:40%; ">
-   <img src="https://image.tmdb.org/t/p/w500{{commentdata.poster_path}}" width="100%" height="100%"><!--if image toolong use 400px-->
-  </div>
-  <div style="width:40%;padding:4px 20px 2px ;">
-    <h1 style="text-align: center;">{{commentdata.original_title}}</h1>
-    <h6><span style="color: green;font-style:oblique;" class="pr-2">RATING:</span>  <ngb-rating [rate]="commentdata.vote_average" style="color:red;"></ngb-rating></h6>
-    <h6><span style="color: green;font-style:oblique;" class="pr-2">RELEASE DATE:</span> {{commentdata.release_date}}</h6>
-    <h6><span style="color: green;font-style:oblique;" class="pr-2">OVERVIEW:</span>{{commentdata.overview}}</h6>
-    <div><br>
-    <div style="display:flex;color:red;justify-content: space-evenly;" class="commentpagebuttons">
-        <div style="color:white;" (click)="commentdata.video=!commentdata.video" [style.color]="commentdata.video?'red':'white'" class="like"> <i class="fas fa-heart"></i></div>
-        <div><button (click)="addtowatchlist(commentdata)" class="buttonsincomment">WATCH LIST</button></div>
-        <div><a href="https://www.ssyoutube.com/watch?v=KK8FHdFluOQ&feature=youtu.be"><button class="buttonsincomment">DOWNLOAD</button></a></div>
-     </div><br>
-     <div>
-      <h4 class="text-center review text-info" (click)="review()">POST REVIEW</h4>
-      <span [style.visibility]="review1?'visible':'hidden'" style="background-color: blue;"><textarea placeholder="we love to hear review!!" rows="4" cols="60" ></textarea></span>
+   
+</nav>
+<div class="container" style="background-color: rgba(115, 118, 121, 0.248);">
+
+  <div class="row align-items-center " >
+    <div class="col-md-6">
+      <img class="p-5" src="https://image.tmdb.org/t/p/w400{{commentdata.poster_path}}" width="100%" height="100%">
     </div>
+    <div class="col-md-6">
+      <h1 style="text-align: center;">{{commentdata.original_title}}</h1>
+      <h6><span style="color: green;font-style:oblique;" class="pr-2">RATING:</span>
+        <ngb-rating [rate]="commentdata.vote_average" style="color:red;"></ngb-rating>
+      </h6>
+      <h6><span style="color: green;font-style:oblique;" class="pr-2">RELEASE DATE:</span> {{commentdata.release_date}}
+      </h6>
+      <h6><span style="color: green;font-style:oblique;" class="pr-2">OVERVIEW:</span>{{commentdata.overview}}</h6>
+      <div><br>
+        <div style="display:flex;color:red;justify-content: space-evenly;" class="commentpagebuttons">
+          <div style="color:white;" (click)="commentdata.video=!commentdata.video"
+            [style.color]="commentdata.video?'red':'white'" class="like"> <i class="fas fa-heart"></i></div>
+          <div><button (click)="addtowatchlist(commentdata)" class="buttonsincomment">WATCH LIST</button></div>
+          <div><a href="https://www.ssyoutube.com/watch?v=KK8FHdFluOQ&feature=youtu.be"><button
+                class="buttonsincomment">DOWNLOAD</button></a></div>
+        </div><br>
+        <div>
+          <h4 class="text-center review text-info" (click)="review()">POST REVIEW</h4>
+          <span [style.visibility]="review1?'visible':'hidden'" >
+            <textarea
+              placeholder="we love to hear review!!" rows="4" cols="60" #hi></textarea><br>
+              <label for="">How many stars would give: </label><input type="text" name="" #star><br>
+            <button class="btn btn-primary" (click)="postIt(hi,star)">Post</button>
+            </span>
+        </div>
+      </div>
     </div>
-    
   </div>
+
+
+
+  <p class="display-3"><strong> All Comments :</strong></p>
+  <div class="row ">
+
+    <div class="col-sm-6" *ngFor="let commentsInfo of CommentsArray ">
+
+      <div class="card text-white bg-success mb-3">
+        <div class="card-header">{{commentsInfo.author.slice(0,commentsInfo.author.indexOf('&')) }} </div>
+        <div class="card-body">
+          <h5 class="card-title">{{commentsInfo.review}}</h5>
+          <p class="card-text">{{commentsInfo.stars}}⭐</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
 </div>
-</div>
+
 <style>
-.review:hover{
-cursor: pointer;
-}
-.like:hover{
-  cursor: pointer;
-  transform: scale(1.2,1.2);
-}
-.buttonsincomment{
-  box-shadow: 2px 2px 12px white;
-}
-.buttonsincomment:hover{
-   background-color: burlywood;
-   transform: translate(2px,4px);
-}
+  .review:hover {
+    cursor: pointer;
+  }
 
+  .like:hover {
+    cursor: pointer;
+    transform: scale(1.2, 1.2);
+  }
+
+  .buttonsincomment {
+    box-shadow: 2px 2px 12px white;
+  }
+
+  .buttonsincomment:hover {
+    background-color: burlywood;
+    transform: translate(2px, 4px);
+  }
 </style>

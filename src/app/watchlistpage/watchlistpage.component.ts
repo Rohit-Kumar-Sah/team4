@@ -11,7 +11,29 @@ export class WatchlistpageComponent implements OnInit {
   constructor(private watchlistitems:WatchlistdataService) { }
 
   ngOnInit(): void {
-    this.watchlistdata=this.watchlistitems.watchlistarray;
+    let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
+    this.watchlistitems.watchlistarray=uniqueChars;
+    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+    
+  }
+
+  deletefromwatchlist(data:any){
+   let index=this.watchlistitems.watchlistarray.indexOf(data);
+    if (index > -1) {
+      this.watchlistitems.watchlistarray.splice(index, 1);
+    }
+  }
+
+  pintotopofwatchlist(data:any){
+    let index=this.watchlistitems.watchlistarray.indexOf(data);
+    if (index > -1) {
+      this.watchlistitems.watchlistarray.splice(index, 1);
+    }
+    this.watchlistitems.watchlistarray.unshift(data);
+  
+    let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
+    this.watchlistitems.watchlistarray=uniqueChars;
+    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
   }
 
 }

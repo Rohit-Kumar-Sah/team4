@@ -21,10 +21,10 @@ export class MyWallComponent implements OnInit {
   allmovienames = ["sholay", "lion king", "sholayien"]
   movies //stores the saved movies
 allusername
- 
+watchlistdata:any;
 
-  constructor(private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
-
+  constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
+  
   review = this.fb.group({
     movieName: this.fb.control(''),
     movieReview: this.fb.control(''),
@@ -49,13 +49,11 @@ allusername
     this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1')
     .subscribe(data=> {this.moviesnames=data})
 
-    // forkJoin([
-    // this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1')
-    // .pipe(tap(res=>{console.log(res); return "joj" })),
-    // this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=2')
-    // .pipe(tap(res=>console.log(res)))
-  // ])
-  //   .subscribe(data=> {this.moviesnames=data; console.log("final",data)})
+
+
+    let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
+    this.watchlistitems.watchlistarray=uniqueChars;
+    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
 
   }
 
@@ -92,5 +90,25 @@ this.userinfo.commentdata(this.userinfo.username,this.userinfo.user, key)
   {
     console.log(usr.value)
   }
+
+
+  deletefromwatchlist(data:any){
+    let index=this.watchlistitems.watchlistarray.indexOf(data);
+     if (index > -1) {
+       this.watchlistitems.watchlistarray.splice(index, 1);
+     }
+   }
+ 
+   pintotopofwatchlist(data:any){
+     let index=this.watchlistitems.watchlistarray.indexOf(data);
+     if (index > -1) {
+       this.watchlistitems.watchlistarray.splice(index, 1);
+     }
+     this.watchlistitems.watchlistarray.unshift(data);
+   
+     let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
+     this.watchlistitems.watchlistarray=uniqueChars;
+     this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+   }
 
 }
