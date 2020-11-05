@@ -1,39 +1,71 @@
-<!-- top navbar which shows-->
-<div style="display:flex">
-    <h2 style="width: 50%;">New Releases</h2>
-    <a routerLink="" style="margin-left: 40%;"><button >home page</button></a>
+
+<div  style="background-color: black;" >
+<!--top header-->
+<div class="container-fluid bg-primary text-light" >
+  <div class="row" >
+    <div class="col-sm-6 ">
+      <h1 class="align-middle" ><a routerLink="" style="color: white;">MOVIE KING</a> 
+         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
+      </h1>
+    </div>
+    
+    
+     
+    </div>
+  </div>
 </div>
 
-<div class="d-flex justify-content-between">
+
+
+
+<!-- top navbar which shows-->
+<div class="nav" style="display:flex">
+    <h2 style="width: 50%; text-align: center; color: Yellow;">New Releases</h2>
+    
+</div>
+
+<!-- main content -->
+<div class="container-fluid">
+<div class="container" style="margin-left: 20%;">
+<div class="d-flex ">
   <div class="card" style="width: 12rem;" *ngFor="let data of newmovies">
     <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
-    <div class="card-body bg-secondary w-100 ">
+    <div class="card-body  w-100 ">
       <h5 class="card-title text-center" style="min-height: 30px;overflow: hidden;" >
         <b >{{data.original_title}}</b>
       </h5>
-      <div class="likecomment bg-secondary" style="width: 100%;display: flex;">
+      <p class="card-text ratingclass"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+      </svg>&nbsp;&nbsp;&nbsp;{{data.vote_average}}</p>
+      <div class="likecomment " style="width: 100%;display: flex;">
         <div  (click)="data.video=!data.video" [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
         <div (click)="loadcommentpage(data.id)"   style="margin-left:65%;color:rgb(220, 43, 226);"><i class="far fa-comment"></i></div>
       </div>
-      <div class="btn btn-primary " (click)="mywatchlist(data)" style="margin: auto;">Add to Watchlist</div>
+      
+      <div class="btn btn-primary " (click)="mywatchlist(data)" >Add to Watchlist</div>
     </div>
   </div>  
 </div>
 <br><br>
 
-<div class="d-flex justify-content-between">
+<div class="d-flex ">
   <div class="card" style="width: 12rem;" *ngFor="let data of newmovies2">
     <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
-    <div class="card-body bg-secondary" style="position: relative;">
+    <div class="card-body " style="position: relative;">
       <h5 class="card-title text-center " style="min-height: 30px;overflow: hidden;" >
         <b >{{data.original_title}}</b>
       </h5>
-      <div class="likecomment bg-secondary" style="width: 100%;display: flex;">
+      <p class="card-text ratingclass"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+      </svg>&nbsp;&nbsp;&nbsp;{{data.vote_average}}</p>
+      <div class="likecomment " style="width: 100%;display: flex;">
         <div  (click)="data.video=!data.video" [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
         <div (click)="loadcommentpage(data.id)"   style="margin-left:65%;color:rgb(220, 43, 226);"><i class="far fa-comment"></i></div>
       </div>
-      <div class="btn btn-primary " (click)="mywatchlist(data)" style="margin: auto;">Add to Watchlist</div>
+      <div class="btn btn-primary " (click)="mywatchlist(data)" >Add to Watchlist</div>
     </div>
   </div>
 </div>
 
+</div>
+</div>

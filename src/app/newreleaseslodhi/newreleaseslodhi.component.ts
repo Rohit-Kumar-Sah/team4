@@ -21,8 +21,8 @@ export class NewreleaseslodhiComponent implements OnInit {
     
     this._movieapi.getDataPopular().subscribe(data =>{
       this.moviedata=data;
-     this.newmovies = this.moviedata.results.slice(10,15);
-      this.newmovies2 = this.moviedata.results.slice(15,20);
+     this.newmovies = this.moviedata.results.slice(10,14);
+      this.newmovies2 = this.moviedata.results.slice(15,19);
    })
 
   
