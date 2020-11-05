@@ -62,7 +62,7 @@ export class Commentpage872957Component implements OnInit, OnChanges {
 
     postIt(comment,star){
     
-      // console.log(this.commentdata.original_title, comment.value, star.value,this.post.user)
+      // as soon as comments is posted , a fetch is called for adding the newly made comment available in comments section
       this.post.addreview(this.commentdata.original_title, comment.value, star.value,this.post.user).subscribe(
         response=>
         this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data )
