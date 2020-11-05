@@ -22,6 +22,7 @@ export class MyWallComponent implements OnInit {
   movies //stores the saved movies
 allusername
 watchlistdata:any;
+  fullusername: any[];
 
   constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
   
@@ -37,7 +38,7 @@ watchlistdata:any;
 
   ngOnInit(): void {
 
-    this.userinfo.grabAllUser().subscribe(data=>{this.allusername=data; console.log(data)})
+    this.userinfo.grabAllUser().subscribe(data=>{this.allusername=data[0]; this.fullusername=data[1]; console.log(data[0],data[1])})
 
 
     this.movies=this.watchlist.watchlistarray
@@ -77,18 +78,26 @@ watchlistdata:any;
   
   }
 
-  comment(key){
+  comment(key,username){
     // take username amd key to shoe comment and all other comments
 this.router.navigate(['/comments'])
 
 // save the comment info and user info 
-this.userinfo.commentdata(this.userinfo.username,this.userinfo.user, key)
+this.userinfo.commentdata(username,this.userinfo.user, key)
 
   }
 
-  grabAllUser(usr)
+  grabOtherUser(user)
   {
-    console.log(usr.value)
+    if(this.fullusername[this.allusername.indexOf(user.value)]){
+      this.userinfo.theotheruser = user.value  
+    this.userinfo.theotherusername= this.fullusername[this.allusername.indexOf(user.value)]
+    this.router.navigate([`/otheruser/${user.value}`])
+
+    }
+    else
+    console.log("invalid username entered")
+  
   }
 
 
