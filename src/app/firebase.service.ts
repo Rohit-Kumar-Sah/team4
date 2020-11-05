@@ -3,7 +3,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { map } from "rxjs/operators";
+import { filter, map } from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +12,7 @@ export class FireBaseService {
     
    user
    username
+    commentsArray: any;
     constructor(private http: HttpClient) {
     }
 
@@ -54,13 +55,13 @@ export class FireBaseService {
 
 
     //add a review to db
-    addreview(movieName, review , stars)
+    addreview(movieName, review , stars,user=this.user)
     {
-        console.log("working user?",this.user);
+        console.log(movieName, review , stars,user)
         //include the review in user db
-        this.http.post('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities.json',{movie: movieName, author : this.user, review : review, stars : stars}).subscribe();
+        this.http.post('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities.json',{movie: movieName, author : user, review : review, stars : stars}).subscribe();
         //include the review in film db
-        this.http.post('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'.json',{movie: movieName, author : this.user, review : review, stars : stars}).subscribe();
+       return this.http.post('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'.json',{movie: movieName, author :user, review : review, stars : stars})
     }
 
 
@@ -74,6 +75,21 @@ export class FireBaseService {
         )
 
     }
+
+    getAllCommentsOf(movieName)
+    {
+        console.log("moviename = ",movieName)
+    return this.http.get('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'.json')
+    .pipe(
+        map(data=>{
+           return Object.values(data)
+
+        })
+        )
+    }
+
+
+
 
 // ************************************************************ doesnt belongs here in this service, but in movies wala service 
     //get all name and return an array
