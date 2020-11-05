@@ -24,6 +24,8 @@ import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.c
 import { QuizComponent } from './quiz/quiz.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
 import { LoadComponent } from './load/load.component';
+import { OtheruserComponent } from './otheruser/otheruser.component';
+import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 
 
 
@@ -45,6 +47,10 @@ import { LoadComponent } from './load/load.component';
     LoadComponent,
 
     QuizComponent,
+
+    OtheruserComponent,
+
+    OtherusercommentsComponent,
     
 
     

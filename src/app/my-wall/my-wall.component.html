@@ -3,14 +3,14 @@
     <button class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0" type="submit" routerLink="/">Home</button>
         
 
-    <input list="users" class="form-control  mr-sm-2" style="max-width: 340px;" placeholder="Search User" aria-label="Search" #usr>
+    <input list="users" class="form-control  mr-sm-2" style="max-width: 340px;" placeholder="Search User" aria-label="Search" #user>
     <datalist  id="users">
         <ng-container  *ngFor=" let item of allusername">
-            <option value={{item}}></option>
+            <option value={{item}} ></option>
         </ng-container>
     </datalist>
 
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="grabAllUser(usr)">Search</button>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="grabOtherUser(user)">Search</button>
      
 </nav>
 
@@ -146,7 +146,7 @@
                                     <div> {{item.value.stars}} ⭐</div>
                                     <div class="ml-auto">
                                         <button class="btn btn-primary mr-3">like</button>
-                                        <button class="btn btn-primary" (click)="comment(item.key)">comment</button>
+                                        <button class="btn btn-primary" (click)="comment(item.key,username)">comment</button>
                                     </div>
                                 </div>
                             </div>
