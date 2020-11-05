@@ -1,1 +1,15 @@
-<p>quiz works!</p>
+<!-- 
+<div *ngFor="let item of quiz.results">
+    {{item.question}}
+</div> -->
+<div class="container">
+<div class="card"  *ngFor="let item of quiz.results">
+    <div class="card-body">
+      <h5 class="card-title">Question</h5>
+      
+      <p class="card-text">{{item.question}}</p>
+      <a href="#" class="card-link">{{item.correct_answer}}</a>
+      <a href="#" class="card-link" *ngFor="let items of item.incorrect_answers ">{{items}}</a>
+    </div>
+  </div>
+  </div>
