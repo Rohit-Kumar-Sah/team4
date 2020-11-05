@@ -42,6 +42,7 @@ import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component'
     
   ],
   imports: [
+  
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
