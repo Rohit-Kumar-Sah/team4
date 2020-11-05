@@ -3,6 +3,7 @@ import { WatchlistdataService } from '../watchlistdata.service';
 import { Router } from '@angular/router';
 import { FireBaseService } from '../firebase.service';
 import { MovieapiService } from '../movieapi.service';
+import{interval} from 'rxjs'
 
 @Component({
   selector: 'app-homepage',
@@ -10,7 +11,7 @@ import { MovieapiService } from '../movieapi.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
+  timerstatus:any=true;
   data1:any=[];
   url : any ="https://rapidapi.p.rapidapi.com/film/";
   url1 : any;
@@ -22,6 +23,22 @@ export class HomepageComponent implements OnInit {
   liked:any=false;
   searchmovie:string;
   public somedata:any;
+  public numbers = interval(1000);
+  public print=this.numbers.subscribe(val=>{
+    ++this.sec;
+    if(this.sec == 60){
+      this.sec=0;
+      ++this.min;
+    }
+    if(this.min == 60){
+      this.min=0;
+      ++this.hrs
+    }
+    
+  })
+  public sec:number=0;
+  public min:number=0;
+  public hrs:number=0;
 
   loggedin = false;
   user = ""
@@ -103,6 +120,10 @@ export class HomepageComponent implements OnInit {
       alert("movie doesnt exists in our record");
     }
     console.log("hello");
+  }
+
+  timerhide(){
+    this.timerstatus=!this.timerstatus;
   }
     
 }
