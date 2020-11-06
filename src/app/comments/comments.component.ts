@@ -26,7 +26,8 @@ export class CommentsComponent implements OnInit {
         mycomment : ['',Validators.required]
       }
     )
-   this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.post.user+'/activities/'+this.post.commentId+'/comments.json').subscribe(data=> {this.allcomments=data ; console.log(data)})
+   this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.post.user+'/activities/'+this.post.commentId+'/comments.json')
+   .subscribe(data=> {this.allcomments=data ; console.log(data)})
 
 
   
