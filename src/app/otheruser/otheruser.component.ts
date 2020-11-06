@@ -41,7 +41,7 @@ export class OtheruserComponent implements OnInit {
   // ----
   comment(key,visiteduser){
     // save the comment info and user info 
-    this.userinfo.commentdata(visiteduser,this.userinfo.user, key)
+    this.userinfo.commentdata(this.visiteduser,this.visitedusername,key)
     // take username amd key to shoe comment and all other comments
 this.router.navigate(['/otherusercomments'])
 

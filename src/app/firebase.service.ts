@@ -120,6 +120,8 @@ commentdata(originalAuthor,commentMadeBy,commentId)
     console.log(originalAuthor,commentMadeBy,commentId)
 }
 
+
+
 grabcomment(){
 
     return this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.commentMadeBy+'/activities/'+this.commentId+'.json')

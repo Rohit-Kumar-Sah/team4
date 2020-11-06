@@ -1,1 +1,39 @@
-<p>otherusercomments works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="30" height="30" alt=""><a class="navbar-brand text-light ml-3" >Movie King</a>
+    <button class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0" type="submit" routerLink="/">Home</button>
+        
+  
+     
+  </nav>
+  <div class="jumbotron">
+      <h1 class="display-4"  *ngIf="!responsesGenerated">{{loading}}</h1>
+      <ng-container *ngIf="responsesGenerated">
+      <p> <i> <u>Author of this post is </u></i> : {{author}}</p>
+  
+      <h1 class="display-4">{{thepost.movie}}</h1>
+      <p class="lead">{{thepost.review}}</p>
+      <p class="lead">{{thepost.stars}}⭐</p>
+      <hr class="my-4">
+      <form [formGroup]="submitComment" (ngSubmit)="postIt()">
+      <p>Enter Comment</p>
+      <input type="text" id="inputName" class="form-control" placeholder="Name" required="" autofocus="" formControlName="mycomment">
+      <p class="lead mt-2">
+        <button class="btn btn-primary btn-lg"  role="button" >Post Comment</button>
+      </p>
+      </form>
+  </ng-container>
+  </div>
+  
+  <div>
+      read all comments <button (click)="showComment()">🔄</button>
+      
+      <div class="card w-75 container bg-info mt-1" *ngFor="let item of allcomments | keyvalue">
+          <div class="card-body"   >
+            <h5 class="card-title">{{item.value.commentedBy.slice(0, item.value.commentedBy.indexOf('&'))}}</h5>
+            <p class="card-text">{{item.value.comment}}</p>
+            <p class="card-text">a minute ago</p>
+            <hr>
+          </div>
+        </div>
+  </div>
+  
