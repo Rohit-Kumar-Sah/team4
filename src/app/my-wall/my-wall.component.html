@@ -169,7 +169,28 @@
           </button>
         </div>
         <div class="modal-body ">
-          <ng-container class="container-fluid" *ngFor="let movie of movies">
+            
+  <div class="watch list" *ngIf="watchlistdata?.length>0;"
+    style="display:flex; flex-wrap: wrap; max-width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
+
+    <div class="wistlistitem" style="width:250px; text-align: center; background-image: url(https://img.freepik.com/free-photo/dark-blue-texture-cement-wall-background_28629-1627.jpg?size=626&ext=jpg&ga=GA1.2.38978375.1604361600); margin:10px"
+      *ngFor="let data of watchlistdata">
+      <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="250px" height="300px;">
+      <div class="details text-left" style=" color:black">
+        <h6 style="color: white;">RATING: <ngb-rating [rate]="data.vote_average" style="color:yellow"></ngb-rating>
+        </h6>
+        <h6 style="min-height: 50px;color: white;">NAME : {{data.original_title}}</h6>
+        <div class="text-center">
+         <a href="https://youtu.be/KK8FHdFluOQ"><button><i class="fab fa-youtube text-danger" ></i></button></a>
+         <button  (click)="deletefromwatchlist(data)" style="margin-left:10%;"><i class="fas fa-trash-alt"></i></button>
+         <button (click)="pintotopofwatchlist(data)" style="margin-left:10%;color: hotpink;"><i class="fas fa-thumbtack"></i></button>
+        </div> <br>
+      </div>
+    </div>
+
+  </div><br><br>
+ 
+          <!-- <ng-container class="container-fluid" *ngFor="let movie of movies">
               <div class="d-flex mb-2 ml-2">
               <div>
             <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" width="250px" height="300px;">
@@ -178,10 +199,19 @@
               <h6 class="mt-2">RATING: <ngb-rating [rate]="movie.vote_average"></ngb-rating>
               </h6>
               <h6 style="min-height: 30px;" class="mt-2">NAME : {{movie.original_title}}</h6>
+              <div class="text-center">
+
+                <a href="https://youtu.be/KK8FHdFluOQ"><button><i class="fab fa-youtube text-danger" ></i></button></a>
+
+                
+
+                <button  (click)="deletefromwatchlist(movie)" style="margin-left:10%;"><i class="fas fa-trash-alt"></i></button>
+                <button (click)="pintotopofwatchlist(movie)" style="margin-left:10%;color: hotpink;"><i class="fas fa-thumbtack"></i></button>
+               </div> 
               <a href="https://youtu.be/KK8FHdFluOQ" target="_blank"><button class="mt-2 w-75">watch now</button></a>
             </div></div>
       
-          </ng-container>
+          </ng-container> -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

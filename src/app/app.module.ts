@@ -21,8 +21,9 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { MyWallComponent } from './my-wall/my-wall.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
+import { QuizComponent } from './quiz/quiz.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
-import { LoadComponent } from './load/load.component';
+
 
 
 
@@ -40,7 +41,8 @@ import { LoadComponent } from './load/load.component';
     HomepageComponent,
     NewreleaseslodhiComponent,
     WatchlistpageComponent,
-    LoadComponent
+    QuizComponent,
+  
     
   ],
   imports: [
