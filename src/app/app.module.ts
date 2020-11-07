@@ -23,7 +23,8 @@ import { CommentsComponent } from './comments/comments.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
-
+import { OtheruserComponent } from './otheruser/otheruser.component';
+import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 
 
 
@@ -42,8 +43,8 @@ import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component'
     NewreleaseslodhiComponent,
     WatchlistpageComponent,
     QuizComponent,
-  
-    
+    OtheruserComponent,
+    OtherusercommentsComponent, 
   ],
   imports: [
   
