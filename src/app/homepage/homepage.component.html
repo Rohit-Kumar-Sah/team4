@@ -22,8 +22,12 @@
           </tbody>
 
         </table>
-        <span class="text-danger" style="position: absolute;top:-5px;right:2%;" (click)="timerhide()"><i class="fas fa-window-close"></i></span>
-        <span [style.visibility]="!timerstatus?'visible':'hidden'" style="position: absolute;top: 0%; background-color: mediumseagreen;border:1px solid red;background-image: url(data:image/jpeg;base64,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);width: 20px;height: 20px;" (click)="timerhide()"></span>
+        <span class="text-danger cancelbtn" style="position: absolute;top:-5px;right:2%;" (click)="timerhide()">
+          <i class="fas fa-window-close"></i>
+        </span>
+        <span [style.visibility]="!timerstatus?'visible':'hidden'" style="position: absolute;top: 0%;color:rgb(255, 0, 128);right:39%;font-size:30px;" (click)="timerhide()" class="cancelbtn">
+          <i class="fas fa-user-clock"></i>
+        </span>
       </span>
     </div>
     
@@ -47,7 +51,7 @@
         <a class="nav-link text-light "  routerLink="/newreleases">NEW RELEASES</a>
       </li>
       <li class="nav-item mr-sm-2 bg-danger text-light rounded" >
-        <a class="nav-link text-light" routerLink="/carrers">CARRERS</a>
+        <a class="nav-link text-light" routerLink="/carrers">CAREERS</a>
       </li>
       <li class="nav-item mr-sm-2 bg-secondary text-light rounded" >
         <a class="nav-link text-light" routerLink="/watchlist">WATCHLIST</a>
@@ -252,46 +256,11 @@
     </div>
 
   </div><br>
-<<<<<<< HEAD
-
-  <!--my watch list-->
-  <h1
-    style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">
-    MY WATCH LIST
-    <span *ngIf="forfun.length" style="color:red;position: relative;">
-      <i class="fas fa-shopping-bag"></i>
-      <span
-        style="position: absolute;left:7px;top:25px;color: purple;border-radius:50%;background-color: white;width: 20px;height: 20px;font-size: 20px;padding-left:6px;padding-bottom: 23px;">{{forfun.length}}</span>
-    </span>
-  </h1>
-  
 
   
-  <div class="watch list" *ngIf="forfun?.length>0; else elseblock"
-    style="display:flex; flex-wrap: wrap; width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
-    <div class="wistlistitem" style="width:250px; text-align: center; background-color:blue; margin:10px"
-      *ngFor="let data of forfun">
-      <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="250px" height="300px;">
-      <div class="details text-left" style=" color:black">
-        <h6>RATING: <ngb-rating [rate]="data.vote_average"></ngb-rating>
-        </h6>
-        <h6 style="min-height: 30px;">NAME : {{data.original_title}}</h6>
-        <a href="https://youtu.be/KK8FHdFluOQ"><button style="width:200px;margin-left:10%;">watch now</button></a>
-      </div>
-
-    </div>
-  </div><br><br>
-  <ng-template #elseblock>
-  <div ><h3 style="padding-left: 20%; color: white;">Nothing in Your Watchlist</h3></div>
-</ng-template>
 
 
 
-
-
-=======
-  
->>>>>>> b7652b66770657282b97bce8adadf5b0abae9b9d
   <!--footer-->
   <div class="row" style="width:75%; margin: auto;">
     <div class="col-sm-6" style="color:silver">
@@ -436,5 +405,8 @@
    transform: translate(-0gitpx,-3px);
    transition-delay: 0.2s;
   }  
+  .cancelbtn :hover{
+    cursor: pointer;
+  }
   
 </style>
