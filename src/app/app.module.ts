@@ -23,7 +23,6 @@ import { CommentsComponent } from './comments/comments.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
-import { LoadComponent } from './load/load.component';
 import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 
@@ -42,18 +41,10 @@ import { OtherusercommentsComponent } from './otherusercomments/otherusercomment
     MoviedetailsComponent,
     HomepageComponent,
     NewreleaseslodhiComponent,
-
     WatchlistpageComponent,
-    LoadComponent,
-
     QuizComponent,
-
     OtheruserComponent,
-
-    OtherusercommentsComponent,
-    
-
-    
+    OtherusercommentsComponent, 
   ],
   imports: [
   

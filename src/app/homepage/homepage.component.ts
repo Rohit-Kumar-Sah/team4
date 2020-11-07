@@ -123,7 +123,11 @@ export class HomepageComponent implements OnInit {
   }
 
   timerhide(){
+    if(this.timerstatus){
+      alert("you can get timer back by clicking on T button");
+    }
     this.timerstatus=!this.timerstatus;
+    
   }
     
 }

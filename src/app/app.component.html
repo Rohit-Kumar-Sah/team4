@@ -1,9 +1,10 @@
 
-<app-load></app-load>
-<router-outlet></router-outlet>
 
+<div class="loader" *ngIf="showOverlay"></div>
+
+
+<router-outlet *ngIf="!showOverlay"></router-outlet>
  
-
 
 
 
