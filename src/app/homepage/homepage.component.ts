@@ -3,7 +3,7 @@ import { WatchlistdataService } from '../watchlistdata.service';
 import { Router } from '@angular/router';
 import { FireBaseService } from '../firebase.service';
 import { MovieapiService } from '../movieapi.service';
-import{interval} from 'rxjs'
+import{interval} from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -12,33 +12,27 @@ import{interval} from 'rxjs'
 })
 export class HomepageComponent implements OnInit {
   timerstatus:any=true;
-  data1:any=[];
-  url : any ="https://rapidapi.p.rapidapi.com/film/";
-  url1 : any;
   dataset1:any=[];
   dataset2:any;
   datapopular:any="sastraa";
   watchlistdata:any;
   forfun:any=[];
-  liked:any=false;
   searchmovie:string;
   public somedata:any;
-  public numbers = interval(1000);
-  public print=this.numbers.subscribe(val=>{
-    ++this.sec;
-    if(this.sec == 60){
-      this.sec=0;
-      ++this.min;
-    }
-    if(this.min == 60){
-      this.min=0;
-      ++this.hrs
-    }
-    
-  })
+
   public sec:number=0;
   public min:number=0;
   public hrs:number=0;
+
+ public numbers = interval(1000);
+  public print=this.numbers.subscribe(val=>{
+   
+    this.sec=this.watchlistitems.sec;
+    this.min=this.watchlistitems.min;    //call service every one second to get the data of time;
+    this.hrs=this.watchlistitems.hrs;
+  })
+
+  
 
   loggedin = false;
   user = ""
@@ -46,8 +40,12 @@ export class HomepageComponent implements OnInit {
     this._movieapi.getDataPopular().subscribe(data =>{
        this.somedata=data;
       this.dataset1 = this.somedata.results.slice(0,6);
-       this.dataset2 = this.somedata.results.slice(6,12);
+       this.dataset2 = this.somedata.results.slice(6,12); //calls movieapi sevice to get movie data
+       setTimeout(()=>{
+        this.watchlistitems.routing=false;
+        },1500); 
     })
+    
   }
   
 
@@ -60,52 +58,26 @@ export class HomepageComponent implements OnInit {
     else {
       this.loggedin = false
     }
+  }//end of ngoninit
 
-     
-
+  pushdataintowatchlist(data:any){//upon clicking add to list list button corresponding movie data gets exported to services.
+  
+    this.watchlistitems.watchlistarray.push(data);
   }
-  
-    pushdataintowatchlist(data:any)//upon clicking add to list list button corresponding movie data gets exported to services.
-    {
-        
-            this.watchlistitems.watchlistarray.push(data);
-          
-    }
     
-  
-
-  loadcommentpage(data: any) {
+  loadcommentpage(data: any) {//loads comment page of particular movie
     console.log(data);
     this.router.navigate(['/commentpage', data]);
-
   }
 
-  sastra() {
-    console.log("this is lakshmi");
-  }
-
-  signup() {
-    console.log("sastra");
-    this.router.navigate(['sign-up'])
-  }
-  carrers() {
-    console.log("clicked on carrers page");
-    this.router.navigate(['carrers'])
-  }
-  login() {
-    this.router.navigate(['sign-in'])
-  }
-  newreleases() {
-    this.router.navigate(['newreleases'])
-  }
-  searchpage(){
+  searchpage(){//user enters movie name the page directs to comment pageof corresponding movie
     console.log("we are searching for entered movie");
     console.log(this.searchmovie);
     let flag=false;
     let id;
     let name=this.searchmovie.toLowerCase();
     let array=this.somedata.results.map(function(value,index,array){
-         let title= value.original_title
+      let title= value.original_title
       if(name == title.toLowerCase()){
         flag=true;
         id=value.id;
@@ -114,20 +86,23 @@ export class HomepageComponent implements OnInit {
 
     })
     if(flag){
+      this.watchlistitems.routing=true;
       this.router.navigate(['/commentpage',id]);
     }  
     else{
       alert("movie doesnt exists in our record");
     }
-    console.log("hello");
   }
 
-  timerhide(){
+
+  timerhide(){//user clicks on croos buttton on timer to hide timer
     if(this.timerstatus){
       alert("you can get timer back by clicking on T button");
     }
     this.timerstatus=!this.timerstatus;
     
   }
-    
+    reloadpage(){
+      this.watchlistitems.routing=true;
+    }
 }

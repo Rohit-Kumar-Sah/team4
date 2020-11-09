@@ -58,7 +58,10 @@ watchlistdata:any;
 
 
 
-    
+    setTimeout(()=>{
+      this.watchlistitems.routing=false;
+      },1500); 
+
 
   }
 

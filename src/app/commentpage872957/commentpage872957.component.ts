@@ -15,6 +15,10 @@ export class Commentpage872957Component implements OnInit, OnChanges {
 
   constructor(private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService,private _movieapi:MovieapiService,private post : FireBaseService) {
     this._movieapi.getDataPopular().subscribe(data =>{
+      setTimeout(()=>{
+        this.watchlistservice.routing=false;
+        },2000); 
+
       this.moviedata=data;
       this.moviedata1 = this.moviedata.results;
       this.commentid = parseInt(this.route.snapshot.params['id']);
@@ -40,8 +44,11 @@ export class Commentpage872957Component implements OnInit, OnChanges {
   review1 : any=false;
   public moviedata:any=[];
   public moviedata1:any=[];
+  rate:any=1;
 
   ngOnInit(): void {
+
+    
 
  }
 
