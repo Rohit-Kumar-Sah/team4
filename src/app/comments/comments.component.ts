@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
+import { Location } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FireBaseService } from '../firebase.service';
 
 @Component({
@@ -18,7 +21,7 @@ export class CommentsComponent implements OnInit {
   allcomments
   //  = {fdfd:{comment: "wowwa", commentedBy :"raa"}}
 
-  constructor(private post : FireBaseService , private http : HttpClient, private fb : FormBuilder) { }
+  constructor(private post : FireBaseService , private http : HttpClient, private fb : FormBuilder,private location : Location ) { }
   
   ngOnInit(): void {
     this.submitComment = this.fb.group(
@@ -33,6 +36,10 @@ export class CommentsComponent implements OnInit {
   
     this.post.grabcomment().subscribe( data=> {this.thepost=data; this.responsesGenerated=true ; console.log(data)} )
     this.author = this.post.username
+  }
+
+  back(){
+this.location.back()
   }
 
 postIt(){
