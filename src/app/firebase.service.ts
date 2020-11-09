@@ -27,7 +27,9 @@ export class FireBaseService {
 
         let username = name + '&' + email;   // the db stores it as to uniquely identify every user
         //add user to DB
-        this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe();
+        this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe(data=> alert("Account created. Sign-in to continue"));
+
+        // this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe();
     }
 
 
@@ -61,7 +63,7 @@ export class FireBaseService {
     {
         console.log(movieName, review , stars,user)
         //include the review in user db
-        this.http.post('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities.json',{movie: movieName, author : user, review : review, stars : stars}).subscribe();
+        this.http.post('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities.json',{movie: movieName, author : user, review : review, stars : stars,totalLikes : 0 , likes:[stars]}).subscribe();
         //include the review in film db
        return this.http.post('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'.json',{movie: movieName, author :user, review : review, stars : stars})
     }
