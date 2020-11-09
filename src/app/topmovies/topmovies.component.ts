@@ -29,7 +29,12 @@ export class TopmoviesComponent implements OnInit {
       });
       this.movieTopRated=this.rated.slice(0,12);
 
-      
+      setTimeout(()=>{
+        this.watchlist.routing=false;
+       
+        },1000);
+
+
     });
   }
  

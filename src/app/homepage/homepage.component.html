@@ -1,7 +1,5 @@
-<div id="mypage"></div>
 
-
-
+  <div id="mypage"></div>
 <div class="container-fluid  text-dark " style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);" >
   <div class="row" >
     <div class="col-sm-12 " style="margin-left: 35%;position: relative;">
@@ -42,13 +40,13 @@
     <!-- Links -->
     <ul class="navbar-nav ml-sm-5 text-center w-sm-100 topheader1" >
       <li class="nav-item mr-sm-2 text-light rounded-circle">
-        <a class="nav-link bg-info text-light rounded  " routerLink="/mywall">MY WALL</a>
+        <a class="nav-link bg-info text-light rounded  " routerLink="/mywall" (click)="reloadpage()">MY WALL</a>
       </li>
       <li class="nav-item mr-sm-2 ">
-        <a class="nav-link  text-light rounded"  routerLink="/topmovies" style="background-color: darkmagenta;">TOP MOVIES</a>
+        <a class="nav-link  text-light rounded"  routerLink="/topmovies" style="background-color: darkmagenta;" (click)="reloadpage()">TOP MOVIES</a>
       </li>
       <li class="nav-item mr-sm-2   rounded" style="background-color:chocolate;">
-        <a class="nav-link text-light "  routerLink="/newreleases">NEW RELEASES</a>
+        <a class="nav-link text-light "  routerLink="/newreleases" (click)="reloadpage()">NEW RELEASES</a>
       </li>
       <li class="nav-item mr-sm-2 bg-danger text-light rounded" >
         <a class="nav-link text-light" routerLink="/carrers">CAREERS</a>
@@ -117,7 +115,7 @@
 
         <div class="carousel-item active ">
           <div class="row  " style="background-color: black; color: silver;">
-            <div class="col-sm-2" *ngFor="let data of dataset1">
+            <div class="col-sm-2 suggestiondata" *ngFor="let data of dataset1">
               <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px"
                 class="text-center" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
@@ -146,7 +144,7 @@
           <div class="row  " style="background-color: black; color: silver;">
             <div class="col-sm-2" *ngFor="let data of dataset2">
               <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px"
-                class="text-center" alt="...">
+                class="text-center imagesuggestion" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
                 <div class="likecomment" style="width: 100%;display: flex;">
                   <div style="margin-left:5px ;" (click)="data.video=!data.video"
@@ -289,6 +287,11 @@
 
 
 <style>
+  #topdiv{
+    width:100%;
+    border: 2px solid red;
+    margin-right: -250px;
+  }
   .main h3 {
     padding-left: 14px;
     margin-left: 5px;
@@ -407,6 +410,8 @@
   }  
   .cancelbtn :hover{
     cursor: pointer;
+    
   }
+  
   
 </style>
