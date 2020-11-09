@@ -57,18 +57,21 @@ watchlistdata:any;
     this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
 
 
+
     setTimeout(()=>{
       this.watchlistitems.routing=false;
       },1500); 
 
+
   }
 
+  
   
   submitReview() {
 
     // console.log("the credit of user", this.userinfo.user)
 
-    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value)
+    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=> this.refresh())
 
 
 
@@ -81,6 +84,18 @@ watchlistdata:any;
 
 
   
+  }
+ 
+alllikes
+  like(key,username){
+    let obje;
+    this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json')
+    .subscribe(data=>{ obje= data;  obje.likes.push("99") ; console.log(obje) ; this.alllikes = obje.likes.length  ; obje.totalLikes+=1;
+ 
+    this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json',obje).subscribe(data=>{obje= data;  console.log("latest obje",obje);  this.refresh()})
+   
+  })
+    
   }
 
   comment(key,username){

@@ -42,7 +42,7 @@ export class OtherusercommentsComponent implements OnInit {
   postIt() {
     console.log("hero")
     console.log(this.submitComment.controls.mycomment.value)
-    this.http.post('https://team4-506c8.firebaseio.com/testuser/' + this.post.theotherusername + '/activities/' + this.post.commentId + '/comments.json', { comment: this.submitComment.controls.mycomment.value, commentedBy: this.post.user }).subscribe()
+    this.http.post('https://team4-506c8.firebaseio.com/testuser/' + this.post.theotherusername + '/activities/' + this.post.commentId + '/comments.json', { comment: this.submitComment.controls.mycomment.value, commentedBy: this.post.user }).subscribe(data=>this.showComment())
 
   }
 
