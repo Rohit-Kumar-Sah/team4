@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FireBaseService } from '../firebase.service';
+import { Location } from '@angular/common'; 
 
 @Component({
   selector: 'app-otherusercomments',
@@ -18,7 +19,7 @@ export class OtherusercommentsComponent implements OnInit {
   submitComment
   allcomments
 
-  constructor(private post: FireBaseService, private http: HttpClient, private fb: FormBuilder) { }
+  constructor(private post: FireBaseService, private http: HttpClient, private fb: FormBuilder, private location : Location) { }
 
   ngOnInit(): void {
     this.submitComment = this.fb.group(
@@ -35,6 +36,9 @@ export class OtherusercommentsComponent implements OnInit {
 
   }
 
+  back(){
+ this.location.back()
+  }
   postIt() {
     console.log("hero")
     console.log(this.submitComment.controls.mycomment.value)
