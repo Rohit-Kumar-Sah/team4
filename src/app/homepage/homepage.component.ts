@@ -96,9 +96,7 @@ export class HomepageComponent implements OnInit {
 
 
   timerhide(){//user clicks on croos buttton on timer to hide timer
-    if(this.timerstatus){
-      alert("you can get timer back by clicking on T button");
-    }
+    
     this.timerstatus=!this.timerstatus;
     
   }

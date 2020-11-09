@@ -26,6 +26,7 @@ import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component'
 import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 import { WishesComponent } from './wishes/wishes.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -46,7 +47,8 @@ import { WishesComponent } from './wishes/wishes.component';
     QuizComponent,
     OtheruserComponent,
     OtherusercommentsComponent,
-    WishesComponent, 
+    WishesComponent,
+    FeedbackComponent, 
   ],
   imports: [
   
