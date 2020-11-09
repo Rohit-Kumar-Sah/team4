@@ -56,6 +56,11 @@ watchlistdata:any;
     this.watchlistitems.watchlistarray=uniqueChars;
     this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
 
+
+    setTimeout(()=>{
+      this.watchlistitems.routing=false;
+      },1500); 
+
   }
 
   

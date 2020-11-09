@@ -23,6 +23,11 @@ export class NewreleaseslodhiComponent implements OnInit {
       this.moviedata=data;
      this.newmovies = this.moviedata.results.slice(10,14);
       this.newmovies2 = this.moviedata.results.slice(15,19);
+      setTimeout(()=>{
+      this.watchlistitems.routing=false;
+      console.log('new releases done');
+      },1000);
+      
    })
 
   

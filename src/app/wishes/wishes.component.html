@@ -1,0 +1,91 @@
+<div class="wrapper">
+    <div class="box-area">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="box5"></div>
+        <div class="box6"></div>
+    </div>
+</div>
+<style>
+    .wrapper{
+        width:200px;
+        height:200px;
+        margin:15% auto;
+        
+    }
+    .box-area{
+        animation:animate 10s ease-in-out infinite;
+        transform-style: preserve-3d;
+        transform-origin: 100px 100px 0;
+    }
+    .box-area div{
+        position: absolute;
+        width:200px;
+        height:200px;
+        line-height: 200px;
+    }
+    .box-area .box1{
+        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU);
+        -webkit-bacground-size:cover;
+        background-size: cover;
+        background-position: center center;
+        transform: translateZ(120px);
+    }
+    .box-area .box2{
+        background-image: url(https://www.zigzagadvertising.co.uk/wp-content/uploads/2018/07/My-Wall-Logo-Mockup.jpg);
+        -webkit-bacground-size:cover;
+        background-size: cover;
+        background-position: center center;
+        transform: rotateY(90deg)translateZ(120px);
+    }
+    .box-area .box3{
+        background-image: url(https://www.funchap.net/wp-content/uploads/2017/11/Best-nature-background.jpg);
+        -webkit-bacground-size:cover;
+        background-size: cover;
+        background-position: center center;
+        transform: rotateY(90deg) rotateX(90deg) translateZ(120px);
+    }
+    .box-area .box4{
+        background-image: url(https://www.funchap.net/wp-content/uploads/2017/11/Best-nature-background.jpg);
+        -webkit-bacground-size:cover;
+        background-size: cover;
+        background-position: center center;
+        transform: rotateY(180deg) rotateZ(90deg) translateZ(120px);
+    
+    }
+    .box-area .box5{
+        background-image: url(https://www.funchap.net/wp-content/uploads/2017/11/Best-nature-background.jpg);
+        -webkit-bacground-size:cover;
+        background-size: cover;
+        background-position: center center;
+        transform: rotateY(-90deg) rotateZ(90deg) translateZ(120px);
+    
+    }
+    .box-area .box6{
+        background-image: url(https://www.funchap.net/wp-content/uploads/2017/11/Best-nature-background.jpg);
+        -webkit-bacground-size:cover;
+        background-size: cover;
+        background-position: center center;
+        transform: rotateX(-90deg)  translateZ(120px);
+    
+    }
+    @keyframes animate{
+        from,to{
+            transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+        16%{ 
+            transform:rotateX(180deg);
+        }
+        33%{ 
+            transform:rotateY(-90deg) rotateZ(90deg);
+        }
+        48%{
+            transform: rotateX(90deg) rotateY(45deg);
+        }
+        64%{
+            transform: rotateY(90deg) rotateZ(30deg);
+        }
+    }
+</style>

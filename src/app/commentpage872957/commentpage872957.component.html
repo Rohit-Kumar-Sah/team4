@@ -14,7 +14,7 @@
     <div class="col-md-6">
       <h1 style="text-align: center;">{{commentdata.original_title}}</h1>
       <h6><span style="color: green;font-style:oblique;" class="pr-2">RATING:</span>
-        <ngb-rating [rate]="commentdata.vote_average" style="color:red;"></ngb-rating>
+        <ngb-rating [rate]="commentdata.vote_average"  style="color:red;" [readonly]="true"></ngb-rating>
       </h6>
       <h6><span style="color: green;font-style:oblique;" class="pr-2">RELEASE DATE:</span> {{commentdata.release_date}}
       </h6>
@@ -34,6 +34,7 @@
               placeholder="we love to hear your review!!" rows="4" cols="60" #hi></textarea><br>
               <label for="">How many stars would give: </label><input type="text" name="" #star><br>
             <button class="btn btn-primary" (click)="postIt(hi,star)">Post</button>
+            
             </span>
         </div>
       </div>
