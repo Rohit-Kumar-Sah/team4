@@ -1,3 +1,5 @@
+import { QuizComponent } from './quiz/quiz.component';
+import { ResultComponent } from './quiz/result/result.component';
 import { TopmoviesComponent } from './topmovies/topmovies.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NgModule } from '@angular/core';
@@ -27,7 +29,9 @@ const routes: Routes = [
   {path : 'mywall' , component : MyWallComponent},
   {path : 'comments' , component : CommentsComponent},
   {path:'newreleases',component:NewreleaseslodhiComponent},
-  {path:'watchlist',component:WatchlistpageComponent}
+  {path:'watchlist',component:WatchlistpageComponent},
+  {path:'result',component:ResultComponent},
+  {path:'quiz',component:QuizComponent}
 
 ];
 

@@ -23,6 +23,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
+import { ResultComponent } from './quiz/result/result.component';
 
 
 
@@ -40,7 +41,8 @@ import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component'
     HomepageComponent,
     NewreleaseslodhiComponent,
     QuizComponent,
-    WatchlistpageComponent
+    WatchlistpageComponent,
+    ResultComponent
     
   ],
   imports: [
