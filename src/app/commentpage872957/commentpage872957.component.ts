@@ -15,34 +15,47 @@ export class Commentpage872957Component implements OnInit, OnChanges {
 
   constructor(private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService,private _movieapi:MovieapiService,private post : FireBaseService) {
     this._movieapi.getDataPopular().subscribe(data =>{
+
+      setTimeout(()=>{
+        this.watchlistservice.routing=false;
+        },2000); 
+
       this.moviedata=data;
       this.moviedata1 = this.moviedata.results;
       this.commentid = parseInt(this.route.snapshot.params['id']);
       
-      for(let movie of this.moviedata1)
-        {
+      for(let movie of this.moviedata1){
           if(movie.id == this.commentid)
           {
             this.commentdata=movie;
             this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data );
           }
-        }
-        
+       }
+       let d=this.commentdata;
+       let m=false;
+       this.watchlistservice.likedmovies.map(function(value,index,arr){
+         if(d.id == value.id){m = true;}
+      })
+        this.likedmovies=m;
     });
 
   // 
 
   }
 
-  commentdata:any="sastra";
+  public commentdata:any="sastra";
   commentid:any;
   datacomment : any;
   review1 : any=false;
   public moviedata:any=[];
   public moviedata1:any=[];
+  rate:any=1;
+  likedmovies:any;
 
   ngOnInit(): void {
-
+      
+      
+      
  }
 
  ngOnChanges(){
@@ -70,5 +83,11 @@ export class Commentpage872957Component implements OnInit, OnChanges {
       // 
 
     }
+
+    likedmovie(data,liked){
+      this.watchlistservice.likedfunction(data,liked);
+      this.likedmovies=!this.likedmovies;
+    }
+
 
 }

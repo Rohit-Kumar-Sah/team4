@@ -1,13 +1,32 @@
-<div id="mypage"></div>
 
-
-
+  <div id="mypage"></div>
 <div class="container-fluid  text-dark " style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);" >
   <div class="row" >
-    <div class="col-sm-12 " style="margin-left: 35%;">
+    <div class="col-sm-12 " style="margin-left: 35%;position: relative;">
       <h1 class="align-middle">MOVIE KING 
          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
       </h1>
+      <span style="margin-right: 70%;position: absolute;color: rgba(180, 22, 17, 0.884);top: 0%;left:50%;"[style.visibility]="timerstatus?'visible':'hidden'">
+        <table style="background-color: rgb(61, 206, 216);box-shadow: 5px 5px 3px grey;" class="rounded">
+          <thead class="text-light text-bold text-center border " style="color: silver;">
+           <td><h3 class="m-0 ">{{hrs}}:</h3></td><td><h3 class="m-0 ">{{min}}:</h3></td><td><h3 class="m-0 pr-3" style="min-width: 20px;">{{sec}}</h3></td>
+          </thead>
+          <tbody>
+            <tr style="font-size: 10px;">
+              <td>hours</td>
+              <td>mins</td>
+              <td>seconds</td>
+            </tr>
+          </tbody>
+
+        </table>
+        <span class="text-danger cancelbtn" style="position: absolute;top:-5px;right:2%;" (click)="timerhide()">
+          <i class="fas fa-window-close"></i>
+        </span>
+        <span [style.visibility]="!timerstatus?'visible':'hidden'" style="position: absolute;top: 0%;color:rgb(255, 0, 128);right:39%;font-size:30px;" (click)="timerhide()" class="cancelbtn">
+          <i class="fas fa-user-clock"></i>
+        </span>
+      </span>
     </div>
     
   </div>
@@ -21,16 +40,16 @@
     <!-- Links -->
     <ul class="navbar-nav ml-sm-5 text-center w-sm-100 topheader1" >
       <li class="nav-item mr-sm-2 text-light rounded-circle">
-        <a class="nav-link bg-info text-light rounded  " routerLink="/mywall">MY WALL</a>
+        <a class="nav-link bg-info text-light rounded  " routerLink="/mywall" (click)="reloadpage()">MY WALL</a>
       </li>
       <li class="nav-item mr-sm-2 ">
-        <a class="nav-link  text-light rounded"  routerLink="/topmovies" style="background-color: darkmagenta;">TOP MOVIES</a>
+        <a class="nav-link  text-light rounded"  routerLink="/topmovies" style="background-color: darkmagenta;" (click)="reloadpage()">TOP MOVIES</a>
       </li>
       <li class="nav-item mr-sm-2   rounded" style="background-color:chocolate;">
-        <a class="nav-link text-light "  routerLink="/newreleases">NEW RELEASES</a>
+        <a class="nav-link text-light "  routerLink="/newreleases" (click)="reloadpage()">NEW RELEASES</a>
       </li>
       <li class="nav-item mr-sm-2 bg-danger text-light rounded" >
-        <a class="nav-link text-light" routerLink="/carrers">CARRERS</a>
+        <a class="nav-link text-light" routerLink="/carrers">CAREERS</a>
       </li>
       <li class="nav-item mr-sm-2 bg-secondary text-light rounded" >
         <a class="nav-link text-light" routerLink="/watchlist">WATCHLIST</a>
@@ -96,13 +115,13 @@
 
         <div class="carousel-item active ">
           <div class="row  " style="background-color: black; color: silver;">
-            <div class="col-sm-2" *ngFor="let data of dataset1">
+            <div class="col-sm-2 suggestiondata" *ngFor="let data of dataset1">
               <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px"
                 class="text-center" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
                 <div class="likecomment" style="width: 100%;display: flex;">
                   <div style="margin-left:5px ;" (click)="data.video=!data.video"
-                    [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i>
+                    [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i>
                   </div>
                   <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
                       class="far fa-comment"></i>
@@ -125,11 +144,11 @@
           <div class="row  " style="background-color: black; color: silver;">
             <div class="col-sm-2" *ngFor="let data of dataset2">
               <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px"
-                class="text-center" alt="...">
+                class="text-center imagesuggestion" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
                 <div class="likecomment" style="width: 100%;display: flex;">
                   <div style="margin-left:5px ;" (click)="data.video=!data.video"
-                    [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
+                    [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i></div>
                   <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
                       class="far fa-comment"></i></div>
                 </div>
@@ -235,7 +254,11 @@
     </div>
 
   </div><br>
+
   
+
+
+
   <!--footer-->
   <div class="row" style="width:75%; margin: auto;">
     <div class="col-sm-6" style="color:silver">
@@ -257,13 +280,25 @@
   <a href="#mypage"><button class="btn" style="color: silver;border: 1px solid yellow;">MOVE TO TOP</button></a>
 
 </div>
-
+<!--<div>
+  critic question part
+  {{question}}
+  <input type="number" name="answer" [(ngModel)]="uservalue" ngModel>
+  <button (click)="critic('next')">submit</button>
+  <button (click)="critic('check')">check</button>
+  {{feedback}}
+</div>-->
 
 
 
 
 
 <style>
+  #topdiv{
+    width:100%;
+    border: 2px solid red;
+    margin-right: -250px;
+  }
   .main h3 {
     padding-left: 14px;
     margin-left: 5px;
@@ -377,8 +412,13 @@
 
   .topheader1 :hover{
    box-shadow: 3px 3px 5px magenta;
-   transform: translate(-0px,-3px);
+   transform: translate(-0gitpx,-3px);
    transition-delay: 0.2s;
   }  
+  .cancelbtn :hover{
+    cursor: pointer;
+    
+  }
+  
   
 </style>

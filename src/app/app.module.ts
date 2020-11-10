@@ -21,7 +21,12 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { MyWallComponent } from './my-wall/my-wall.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
+import { QuizComponent } from './quiz/quiz.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
+import { OtheruserComponent } from './otheruser/otheruser.component';
+import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
+import { WishesComponent } from './wishes/wishes.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -38,8 +43,12 @@ import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component'
     MoviedetailsComponent,
     HomepageComponent,
     NewreleaseslodhiComponent,
-    WatchlistpageComponent
-    
+    WatchlistpageComponent,
+    QuizComponent,
+    OtheruserComponent,
+    OtherusercommentsComponent,
+    WishesComponent,
+    FeedbackComponent, 
   ],
   imports: [
   

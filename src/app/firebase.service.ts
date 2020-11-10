@@ -13,6 +13,8 @@ export class FireBaseService {
    user
    username
     commentsArray: any;
+  theotheruser: any;
+  theotherusername: any;
     constructor(private http: HttpClient) {
     }
 
@@ -25,7 +27,9 @@ export class FireBaseService {
 
         let username = name + '&' + email;   // the db stores it as to uniquely identify every user
         //add user to DB
-        this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe();
+        this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe(data=> alert("Account created. Sign-in to continue"));
+
+        // this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe();
     }
 
 
@@ -59,7 +63,7 @@ export class FireBaseService {
     {
         console.log(movieName, review , stars,user)
         //include the review in user db
-        this.http.post('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities.json',{movie: movieName, author : user, review : review, stars : stars}).subscribe();
+        this.http.post('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities.json',{movie: movieName, author : user, review : review, stars : stars,totalLikes : 0 , likes:[stars]}).subscribe();
         //include the review in film db
        return this.http.post('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'.json',{movie: movieName, author :user, review : review, stars : stars})
     }
@@ -74,6 +78,12 @@ export class FireBaseService {
             // map(data=> console.log(data))
         )
 
+    }
+    visiteduserreviews(username){
+         // retrieve reviews from user's db
+       return this.http.get('https://team4-506c8.firebaseio.com/testuser/'+username+'/activities.json').pipe(
+        // map(data=> console.log(data))
+    )
     }
 
     getAllCommentsOf(movieName)
@@ -112,6 +122,8 @@ commentdata(originalAuthor,commentMadeBy,commentId)
     console.log(originalAuthor,commentMadeBy,commentId)
 }
 
+
+
 grabcomment(){
 
     return this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.commentMadeBy+'/activities/'+this.commentId+'.json')
@@ -131,7 +143,7 @@ grabAllUser()
                 arr.push(name.slice(0, name.indexOf('&'))) 
                 
             }
-            return arr
+            return [arr, usernamearrray]
         }
         
        
