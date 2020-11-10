@@ -13,6 +13,7 @@ import { WatchlistdataService } from '../watchlistdata.service';
   styleUrls: ['./my-wall.component.css']
 })
 export class MyWallComponent implements OnInit {
+ 
   moviesnames
   Name: string
   activities

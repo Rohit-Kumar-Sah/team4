@@ -13,6 +13,8 @@ import { invalid } from '@angular/compiler/src/render3/view/util';
 export class SignInComponent implements OnInit {
   newDetails: { name: string, password: string };
 
+
+
   constructor(private userinfo: FireBaseService, private fb: FormBuilder, private router : Router) {
 
   }
