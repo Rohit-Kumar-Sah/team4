@@ -50,4 +50,9 @@ export class TopmoviesComponent implements OnInit {
   loadcommentpage(id){
     this.router.navigate(['/commentpage',id]);
   }
+  likedmovie(data,liked){
+      
+    this.watchlist.likedfunction(data,liked);
+  }
+
 }

@@ -25,7 +25,7 @@ export class NewreleaseslodhiComponent implements OnInit {
       this.newmovies2 = this.moviedata.results.slice(15,19);
       setTimeout(()=>{
       this.watchlistitems.routing=false;
-      console.log('new releases done');
+     
       },1000);
       
    })
@@ -42,6 +42,11 @@ export class NewreleaseslodhiComponent implements OnInit {
       console.log(data);
       this.router.navigate(['/commentpage',data])
        
+    }
+
+    likedmovie(data,liked){
+      
+      this.watchlistitems.likedfunction(data,liked);
     }
 
 }

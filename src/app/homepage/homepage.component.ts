@@ -5,6 +5,7 @@ import { FireBaseService } from '../firebase.service';
 import { MovieapiService } from '../movieapi.service';
 import{interval} from 'rxjs';
 
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -18,6 +19,7 @@ export class HomepageComponent implements OnInit {
   watchlistdata:any;
   forfun:any=[];
   searchmovie:string;
+  likedmoviearray:any="hii";
   public somedata:any;
 
   public sec:number=0;
@@ -44,8 +46,17 @@ export class HomepageComponent implements OnInit {
        setTimeout(()=>{
         this.watchlistitems.routing=false;
         },1500); 
+        //jumbels questions for quizz
+        function shuffle(array) {
+          array.sort(() => Math.random() - 0.5);
+        }
+        
+         ;
+        shuffle(this.somedata.results);//called twice for better shuffling
+        shuffle(this.somedata.results);
+       
+        this.question=this.somedata.results[0].title;
     })
-    
   }
   
 
@@ -58,6 +69,8 @@ export class HomepageComponent implements OnInit {
     else {
       this.loggedin = false
     }
+
+    this.likedmoviearray=this.watchlistitems.likedmovies;
   }//end of ngoninit
 
   pushdataintowatchlist(data:any){//upon clicking add to list list button corresponding movie data gets exported to services.
@@ -102,5 +115,31 @@ export class HomepageComponent implements OnInit {
   }
     reloadpage(){
       this.watchlistitems.routing=true;
+    }
+
+    likedmovie(data,liked){
+      
+      this.watchlistitems.likedfunction(data,liked);
+    }
+    i:any=0;
+    question:any;
+    uservalue:any;
+    feedback:any;
+    critic(type){
+      if(type == 'next'){
+         if(this.i<20){
+          this.question = this.somedata.results[this.i].title;
+          this.uservalue=0;
+          this.i++;
+         }
+      }  
+      if(type == 'check'){
+        console.log(this.somedata.results[this.i].vote_average*10 - this.uservalue);
+        let s=this.somedata.results[this.i].vote_average*10 - this.uservalue
+        if (s>0){
+          this.feedback="you are too high";
+        }
+      }
+  
     }
 }

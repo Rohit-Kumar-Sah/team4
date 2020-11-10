@@ -16,7 +16,7 @@
           <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" class="card-img-top" style="height: 200px;" alt="...">
           <div class="card-body">
             <div class="like&cmt">
-              <span  (click)="item.video=!item.video" [style.color]="item.video?'red':'white'"><i class="fas fa-heart" style="margin-left:5px ;"></i></span>
+              <span  (click)="item.video=!item.video" [style.color]="item.video?'red':'white'" (click)="likedmovie(item,item.video)"><i class="fas fa-heart" style="margin-left:5px ;"></i></span>
               <span (click)="loadcommentpage(item.id)"><i class="far fa-comment"style="margin-left:65%;color:pink;"> </i></span>
 
             </div>
@@ -52,7 +52,7 @@
                   <img src="https://image.tmdb.org/t/p/w500{{item.poster_path}}" class="card-img-top" style="height: 200px;" alt="...">
                   <div class="card-body">
                     <div class="like&cmt">
-                      <span  (click)="item.video=!item.video" [style.color]="item.video?'red':'white'"><i class="fas fa-heart" style="margin-left:5px ;"></i></span>
+                      <span  (click)="item.video=!item.video" [style.color]="item.video?'red':'white'" (click)="likedmovie(item,item.video)"><i class="fas fa-heart" style="margin-left:5px ;"></i></span>
                       <span (click)="loadcommentpage(item.id)"><i class="far fa-comment"style="margin-left:65%;color:pink;"> </i></span>
         
                     </div>

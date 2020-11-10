@@ -33,7 +33,7 @@ export class WatchlistpageComponent implements OnInit {
   
     let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
     this.watchlistitems.watchlistarray=uniqueChars;
-    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+    this.watchlistdata=this.watchlistitems.likedmovies;//code to remove duplicates from watchlistdata
   }
 
 }

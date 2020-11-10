@@ -25,24 +25,9 @@ export class AppComponent {
   overlay:boolean=true;
   sast=this.sastra1.subscribe(val=>{
     this.showOverlay=this.watchlist.routing ;
-    console.log("hii");
-    console.log(this.watchlist.routing);
   })
   constructor(private router: Router,private watchlist:WatchlistdataService) {
-  
-
-    this.router.events.subscribe((event: RouterEvent) => { 
-      if (event instanceof NavigationStart) {
-       this.showOverlay = true;  
-      }
-     
-     
-      if (event instanceof NavigationEnd) {
-        
-      }
-
-    })
-    
+ 
   }
     
 

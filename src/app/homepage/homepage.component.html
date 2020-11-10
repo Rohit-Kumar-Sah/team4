@@ -121,7 +121,7 @@
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
                 <div class="likecomment" style="width: 100%;display: flex;">
                   <div style="margin-left:5px ;" (click)="data.video=!data.video"
-                    [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i>
+                    [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i>
                   </div>
                   <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
                       class="far fa-comment"></i>
@@ -148,7 +148,7 @@
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
                 <div class="likecomment" style="width: 100%;display: flex;">
                   <div style="margin-left:5px ;" (click)="data.video=!data.video"
-                    [style.color]="data.video?'red':'white'" class="lovebtn"> <i class="fas fa-heart"></i></div>
+                    [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i></div>
                   <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
                       class="far fa-comment"></i></div>
                 </div>
@@ -280,7 +280,14 @@
   <a href="#mypage"><button class="btn" style="color: silver;border: 1px solid yellow;">MOVE TO TOP</button></a>
 
 </div>
-
+<!--<div>
+  critic question part
+  {{question}}
+  <input type="number" name="answer" [(ngModel)]="uservalue" ngModel>
+  <button (click)="critic('next')">submit</button>
+  <button (click)="critic('check')">check</button>
+  {{feedback}}
+</div>-->
 
 
 
