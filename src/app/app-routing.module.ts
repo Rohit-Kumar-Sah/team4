@@ -13,6 +13,8 @@ import { Commentpage872957Component } from './commentpage872957/commentpage87295
 import { CarrerspageComponent } from './carrerspage/carrerspage.component';
 import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
+import { OtheruserComponent } from './otheruser/otheruser.component';
+import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 
 
 
@@ -30,8 +32,13 @@ const routes: Routes = [
   {path : 'comments' , component : CommentsComponent},
   {path:'newreleases',component:NewreleaseslodhiComponent},
   {path:'watchlist',component:WatchlistpageComponent},
+
   {path:'result',component:ResultComponent},
   {path:'quiz',component:QuizComponent}
+  {path:'otheruser/:user',component : OtheruserComponent},
+  {path:'otherusercomments',component : OtherusercommentsComponent}
+
+
 
 ];
 

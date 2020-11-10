@@ -29,7 +29,12 @@ export class TopmoviesComponent implements OnInit {
       });
       this.movieTopRated=this.rated.slice(0,12);
 
-      
+      setTimeout(()=>{
+        this.watchlist.routing=false;
+       
+        },1000);
+
+
     });
   }
  
@@ -45,4 +50,9 @@ export class TopmoviesComponent implements OnInit {
   loadcommentpage(id){
     this.router.navigate(['/commentpage',id]);
   }
+  likedmovie(data,liked){
+      
+    this.watchlist.likedfunction(data,liked);
+  }
+
 }

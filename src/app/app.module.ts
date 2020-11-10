@@ -24,6 +24,11 @@ import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.c
 import { QuizComponent } from './quiz/quiz.component';
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
 import { ResultComponent } from './quiz/result/result.component';
+import { OtheruserComponent } from './otheruser/otheruser.component';
+import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
+import { WishesComponent } from './wishes/wishes.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+
 
 
 
@@ -40,12 +45,21 @@ import { ResultComponent } from './quiz/result/result.component';
     MoviedetailsComponent,
     HomepageComponent,
     NewreleaseslodhiComponent,
+    WatchlistpageComponent,
     QuizComponent,
+
     WatchlistpageComponent,
     ResultComponent
     
+
+    OtheruserComponent,
+    OtherusercommentsComponent,
+    WishesComponent,
+    FeedbackComponent, 
+
   ],
   imports: [
+  
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

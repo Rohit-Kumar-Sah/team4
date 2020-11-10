@@ -13,6 +13,7 @@ import { WatchlistdataService } from '../watchlistdata.service';
   styleUrls: ['./my-wall.component.css']
 })
 export class MyWallComponent implements OnInit {
+ 
   moviesnames
   Name: string
   activities
@@ -21,10 +22,11 @@ export class MyWallComponent implements OnInit {
   allmovienames = ["sholay", "lion king", "sholayien"]
   movies //stores the saved movies
 allusername
- 
+watchlistdata:any;
+  fullusername: any[];
 
-  constructor(private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
-
+  constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
+  
   review = this.fb.group({
     movieName: this.fb.control(''),
     movieReview: this.fb.control(''),
@@ -37,7 +39,7 @@ allusername
 
   ngOnInit(): void {
 
-    this.userinfo.grabAllUser().subscribe(data=>{this.allusername=data; console.log(data)})
+    this.userinfo.grabAllUser().subscribe(data=>{this.allusername=data[0]; this.fullusername=data[1]; console.log(data[0],data[1])})
 
 
     this.movies=this.watchlist.watchlistarray
@@ -49,22 +51,28 @@ allusername
     this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1')
     .subscribe(data=> {this.moviesnames=data})
 
-    // forkJoin([
-    // this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1')
-    // .pipe(tap(res=>{console.log(res); return "joj" })),
-    // this.http.get('https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=2')
-    // .pipe(tap(res=>console.log(res)))
-  // ])
-  //   .subscribe(data=> {this.moviesnames=data; console.log("final",data)})
+
+
+    let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
+    this.watchlistitems.watchlistarray=uniqueChars;
+    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+
+
+
+    setTimeout(()=>{
+      this.watchlistitems.routing=false;
+      },1500); 
+
 
   }
 
+  
   
   submitReview() {
 
     // console.log("the credit of user", this.userinfo.user)
 
-    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value)
+    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=> this.refresh())
 
 
 
@@ -78,19 +86,59 @@ allusername
 
   
   }
+ 
+alllikes
+  like(key,username){
+    let obje;
+    this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json')
+    .subscribe(data=>{ obje= data;  obje.likes.push("99") ; console.log(obje) ; this.alllikes = obje.likes.length  ; obje.totalLikes+=1;
+ 
+    this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json',obje).subscribe(data=>{obje= data;  console.log("latest obje",obje);  this.refresh()})
+   
+  })
+    
+  }
 
-  comment(key){
+  comment(key,username){
     // take username amd key to shoe comment and all other comments
 this.router.navigate(['/comments'])
 
 // save the comment info and user info 
-this.userinfo.commentdata(this.userinfo.username,this.userinfo.user, key)
+this.userinfo.commentdata(username,this.userinfo.user, key)
 
   }
 
-  grabAllUser(usr)
+  grabOtherUser(user)
   {
-    console.log(usr.value)
+    if(this.fullusername[this.allusername.indexOf(user.value)]){
+      this.userinfo.theotheruser = user.value  
+    this.userinfo.theotherusername= this.fullusername[this.allusername.indexOf(user.value)]
+    this.router.navigate([`/otheruser/${user.value}`])
+
+    }
+    else
+    console.log("invalid username entered")
+  
   }
+
+
+  deletefromwatchlist(data:any){
+    let index=this.watchlistitems.watchlistarray.indexOf(data);
+     if (index > -1) {
+       this.watchlistitems.watchlistarray.splice(index, 1);
+     }
+   }
+ 
+   pintotopofwatchlist(data:any){
+     let index=this.watchlistitems.watchlistarray.indexOf(data);
+     if (index > -1) {
+       this.watchlistitems.watchlistarray.splice(index, 1);
+     }
+     this.watchlistitems.watchlistarray.unshift(data);
+   
+     let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
+     this.watchlistitems.watchlistarray=uniqueChars;
+     this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+   }
 
 }

@@ -3,6 +3,8 @@ import { WatchlistdataService } from '../watchlistdata.service';
 import { Router } from '@angular/router';
 import { FireBaseService } from '../firebase.service';
 import { MovieapiService } from '../movieapi.service';
+import{interval} from 'rxjs';
+
 
 @Component({
   selector: 'app-homepage',
@@ -10,17 +12,29 @@ import { MovieapiService } from '../movieapi.service';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
-  data1:any=[];
-  url : any ="https://rapidapi.p.rapidapi.com/film/";
-  url1 : any;
+  timerstatus:any=true;
   dataset1:any=[];
   dataset2:any;
   datapopular:any="sastraa";
   watchlistdata:any;
   forfun:any=[];
-  liked:any=false;
+  searchmovie:string;
+  likedmoviearray:any="hii";
   public somedata:any;
+
+  public sec:number=0;
+  public min:number=0;
+  public hrs:number=0;
+
+ public numbers = interval(1000);
+  public print=this.numbers.subscribe(val=>{
+   
+    this.sec=this.watchlistitems.sec;
+    this.min=this.watchlistitems.min;    //call service every one second to get the data of time;
+    this.hrs=this.watchlistitems.hrs;
+  })
+
+  
 
   loggedin = false;
   user = ""
@@ -28,7 +42,20 @@ export class HomepageComponent implements OnInit {
     this._movieapi.getDataPopular().subscribe(data =>{
        this.somedata=data;
       this.dataset1 = this.somedata.results.slice(0,6);
-       this.dataset2 = this.somedata.results.slice(6,12);
+       this.dataset2 = this.somedata.results.slice(6,12); //calls movieapi sevice to get movie data
+       setTimeout(()=>{
+        this.watchlistitems.routing=false;
+        },1500); 
+        //jumbels questions for quizz
+        function shuffle(array) {
+          array.sort(() => Math.random() - 0.5);
+        }
+        
+         ;
+        shuffle(this.somedata.results);//called twice for better shuffling
+        shuffle(this.somedata.results);
+       
+        this.question=this.somedata.results[0].title;
     })
   }
   
@@ -43,43 +70,76 @@ export class HomepageComponent implements OnInit {
       this.loggedin = false
     }
 
-     
+    this.likedmoviearray=this.watchlistitems.likedmovies;
+  }//end of ngoninit
 
+  pushdataintowatchlist(data:any){//upon clicking add to list list button corresponding movie data gets exported to services.
+  
+    this.watchlistitems.watchlistarray.push(data);
   }
-  
-    pushdataintowatchlist(data:any)//upon clicking add to list list button corresponding movie data gets exported to services.
-    {
-        
-            this.watchlistitems.watchlistarray.push(data);
-          
-    }
     
-  
-
-  loadcommentpage(data: any) {
+  loadcommentpage(data: any) {//loads comment page of particular movie
     console.log(data);
-    this.router.navigate(['/commentpage', data])
-
+    this.router.navigate(['/commentpage', data]);
   }
 
-  sastra() {
-    console.log("this is lakshmi");
+  searchpage(){//user enters movie name the page directs to comment pageof corresponding movie
+    console.log("we are searching for entered movie");
+    console.log(this.searchmovie);
+    let flag=false;
+    let id;
+    let name=this.searchmovie.toLowerCase();
+    let array=this.somedata.results.map(function(value,index,array){
+      let title= value.original_title
+      if(name == title.toLowerCase()){
+        flag=true;
+        id=value.id;
+        console.log(id);
+      }
+
+    })
+    if(flag){
+      this.watchlistitems.routing=true;
+      this.router.navigate(['/commentpage',id]);
+    }  
+    else{
+      alert("movie doesnt exists in our record");
+    }
   }
 
-  signup() {
-    console.log("sastra");
-    this.router.navigate(['sign-up'])
-  }
-  carrers() {
-    console.log("clicked on carrers page");
-    this.router.navigate(['carrers'])
-  }
-  login() {
-    this.router.navigate(['sign-in'])
-  }
-  newreleases() {
-    this.router.navigate(['newreleases'])
-  }
 
+  timerhide(){//user clicks on croos buttton on timer to hide timer
     
+    this.timerstatus=!this.timerstatus;
+    
+  }
+    reloadpage(){
+      this.watchlistitems.routing=true;
+    }
+
+    likedmovie(data,liked){
+      
+      this.watchlistitems.likedfunction(data,liked);
+    }
+    i:any=0;
+    question:any;
+    uservalue:any;
+    feedback:any;
+    critic(type){
+      if(type == 'next'){
+         if(this.i<20){
+          this.question = this.somedata.results[this.i].title;
+          this.uservalue=0;
+          this.i++;
+         }
+      }  
+      if(type == 'check'){
+        console.log(this.somedata.results[this.i].vote_average*10 - this.uservalue);
+        let s=this.somedata.results[this.i].vote_average*10 - this.uservalue
+        if (s>0){
+          this.feedback="you are too high";
+        }
+      }
+  
+    }
 }
