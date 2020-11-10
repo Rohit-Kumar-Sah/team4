@@ -3,13 +3,19 @@
     {{item.question}}
 </div> -->
 <div class="container">
-<div class="card"  *ngFor="let item of quiz.results">
+<div class="card"  *ngFor="let item of quiz">
     <div class="card-body">
-      <h5 class="card-title">Question</h5>
+      <span class="card-title h5 px-3 py-2 " style="background-color: rgb(58, 58, 70);color:rgb(246, 252, 241);box-sizing: border-box;">Question</span>
       
-      <p class="card-text">{{item.question}}</p>
-      <a href="#" class="card-link">{{item.correct_answer}}</a>
-      <a href="#" class="card-link" *ngFor="let items of item.incorrect_answers ">{{items}}</a>
+      <p class="card-text p mt-2 h5">{{item.question}}</p>
+       <ul class="list-group" *ngFor="let items of item.optionsArray; let i =index ">
+        <li class="list-group-item list-group-item-action list-group-item-secondary" (click)="Answer(item.Q_id,items)">{{items}}</li>
+       
+      </ul> 
+      
     </div>
   </div>
-  </div>
+  <button class="btn btn-primary px-5 py-2  "(click)="check()" style="margin-left: 70%;margin-top: 30px;;margin-bottom: 50px;" ><h6>Submit</h6></button>
+  </div> 
+  <!-- <pre>{{quiz|json}}</pre>  -->
+  
