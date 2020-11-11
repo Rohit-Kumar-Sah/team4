@@ -24,6 +24,8 @@ export class MyWallComponent implements OnInit {
 allusername
 watchlistdata:any;
   fullusername: any[];
+  alllikes
+  likedlistdata: any;
 
   constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
   
@@ -56,6 +58,7 @@ watchlistdata:any;
     let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
     this.watchlistitems.watchlistarray=uniqueChars;
     this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+    this.likedlistdata=this.watchlistitems.likedmovies;//code to remove duplicates from watchlistdata
 
 
 
@@ -66,6 +69,11 @@ watchlistdata:any;
 
   }
 
+  
+  likedmovie(data,liked){
+      
+    this.watchlistitems.likedfunction(data,liked);
+  }
   
   
   submitReview() {
@@ -87,17 +95,29 @@ watchlistdata:any;
   
   }
  
-alllikes
-  like(key,username){
-    let obje;
-    this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json')
-    .subscribe(data=>{ obje= data;  obje.likes.push("99") ; console.log(obje) ; this.alllikes = obje.likes.length  ; obje.totalLikes+=1;
+
+like(key,username){
+  let obje;
+  this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json')
+  .subscribe(data=>{ obje= data;  obje.likes.push(this.userinfo.user) ; console.log(obje) ; obje.totalLikes+=1; this.alllikes = obje.likes.length  ; 
+
+  this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json',obje).subscribe(data=>{obje= data;  console.log("latest obje",obje);  this.refresh()})
  
-    this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json',obje).subscribe(data=>{obje= data;  console.log("latest obje",obje);  this.refresh()})
-   
-  })
-    
+})
   }
+
+
+dislike(key,username){
+  let obje;
+  this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json')
+  .subscribe(data=>{ obje= data;  obje.likes.splice(obje.likes.indexOf(this.userinfo.user),1) ; console.log(obje) ; 
+      obje.totalLikes-=1;  this.alllikes = obje.likes.length;
+
+  this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json',obje)
+  .subscribe(data=>{obje= data;  console.log("latest obje",obje);  this.refresh()})
+ 
+})
+}
 
   comment(key,username){
     // take username amd key to shoe comment and all other comments
