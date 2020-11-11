@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import{ActivatedRoute} from'@angular/router';
+import{ActivatedRoute, Router} from'@angular/router';
 import { WatchlistdataService } from '../watchlistdata.service';
 import { MovieapiService } from '../movieapi.service';
 import { FireBaseService } from '../firebase.service';
@@ -13,7 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class Commentpage872957Component implements OnInit, OnChanges {
   CommentsArray;
 
-  constructor(private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService,private _movieapi:MovieapiService,private post : FireBaseService) {
+  constructor(private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService
+    ,private _movieapi:MovieapiService,private post : FireBaseService , private userinfo : FireBaseService, private router : Router)   {
     this._movieapi.getDataPopular().subscribe(data =>{
 
       setTimeout(()=>{
@@ -89,5 +90,21 @@ export class Commentpage872957Component implements OnInit, OnChanges {
       this.likedmovies=!this.likedmovies;
     }
 
+    grabOtherUser(username,user)
+    {
+      if(user != this.userinfo.username){
+      this.userinfo.theotheruser = user  
+      this.userinfo.theotherusername= username
+      this.router.navigate([`/otheruser/${user}`])
+  
+      }
+      else
+      {
+        this.router.navigate([`/mywall`])
+      }
+    
+    
+    }
+  
 
 }
