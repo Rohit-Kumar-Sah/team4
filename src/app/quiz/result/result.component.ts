@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ScoreService } from './../score.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -10,7 +11,7 @@ export class ResultComponent implements OnInit {
 
  
   UrScore:number
-  constructor(private myscore :ScoreService) { }
+  constructor(private myscore :ScoreService,private route:Router) { }
   
 
   ngOnInit(): void {
@@ -19,5 +20,6 @@ export class ResultComponent implements OnInit {
       this.UrScore=data
       )
   }
+  
 
 }
