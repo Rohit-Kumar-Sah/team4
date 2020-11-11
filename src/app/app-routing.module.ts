@@ -34,7 +34,7 @@ const routes: Routes = [
   {path:'watchlist',component:WatchlistpageComponent},
 
   {path:'result',component:ResultComponent},
-  {path:'quiz',component:QuizComponent}
+  {path:'quiz',component:QuizComponent},
   {path:'otheruser/:user',component : OtheruserComponent},
   {path:'otherusercomments',component : OtherusercommentsComponent}
 
