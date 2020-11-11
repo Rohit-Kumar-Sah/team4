@@ -21,34 +21,32 @@ export class HomepageComponent implements OnInit {
   searchmovie:string;
   likedmoviearray:any="hii";
   public somedata:any;
+  loggedin = false;
+  user = ""
 
   public sec:number=0;
-  public min:number=0;
+  public min:number=0; //timer variables
   public hrs:number=0;
 
  public numbers = interval(1000);
   public print=this.numbers.subscribe(val=>{
-   
     this.sec=this.watchlistitems.sec;
-    this.min=this.watchlistitems.min;    //call service every one second to get the data of time;
+    this.min=this.watchlistitems.min;    //calling time service every one second to get the data of time;
     this.hrs=this.watchlistitems.hrs;
   })
 
-  
-
-  loggedin = false;
-  user = ""
   constructor(private watchlistitems:WatchlistdataService,private router:Router , private userinfo : FireBaseService ,private _movieapi:MovieapiService) { 
     this._movieapi.getDataPopular().subscribe(data =>{
        this.somedata=data;
       this.dataset1 = this.somedata.results.slice(0,6);
        this.dataset2 = this.somedata.results.slice(6,12); //calls movieapi sevice to get movie data
+
        setTimeout(()=>{
-        this.watchlistitems.routing=false;
+        this.watchlistitems.routing=false; //shutdowns reloading page 
         },1500); 
-        //jumbels questions for quizz
+
         function shuffle(array) {
-          array.sort(() => Math.random() - 0.5);
+          array.sort(() => Math.random() - 0.5);  //shuffling array for questions of movie critics
         }
         
          ;
@@ -56,8 +54,11 @@ export class HomepageComponent implements OnInit {
         shuffle(this.somedata.results);
        
         this.question=this.somedata.results[0].title;
+
+        
+
     })
-  }
+  }//end of constructor
   
 
   ngOnInit(): void {
@@ -73,18 +74,19 @@ export class HomepageComponent implements OnInit {
     this.likedmoviearray=this.watchlistitems.likedmovies;
   }//end of ngoninit
 
-  pushdataintowatchlist(data:any){//upon clicking add to list list button corresponding movie data gets exported to services.
+
+  pushdataintowatchlist(data:any){
   
-    this.watchlistitems.watchlistarray.push(data);
+    this.watchlistitems.watchlistarray.push(data); //upon clicking add to watch list button corresponding movie data gets exported to services.
   }
     
-  loadcommentpage(data: any) {//loads comment page of particular movie
+  loadcommentpage(data: any) {
     console.log(data);
-    this.router.navigate(['/commentpage', data]);
+    this.router.navigate(['/commentpage', data]);  //loads comment page of particular movie
   }
 
-  searchpage(){//user enters movie name the page directs to comment pageof corresponding movie
-    console.log("we are searching for entered movie");
+  searchpage(){
+    console.log("we are searching for entered movie"); //user enters movie name the page directs to comment pageof corresponding movie
     console.log(this.searchmovie);
     let flag=false;
     let id;
@@ -94,37 +96,39 @@ export class HomepageComponent implements OnInit {
       if(name == title.toLowerCase()){
         flag=true;
         id=value.id;
-        console.log(id);
+        console.log(id);      //conversion of entered movie name in searcbar into lowercase
       }
 
     })
     if(flag){
       this.watchlistitems.routing=true;
-      this.router.navigate(['/commentpage',id]);
+      this.router.navigate(['/commentpage',id]); //if movie exists in records it gets redirected to corresponding commentpage
     }  
     else{
-      alert("movie doesnt exists in our record");
+      alert("movie doesnt exists in our record"); 
     }
   }
 
 
-  timerhide(){//user clicks on croos buttton on timer to hide timer
+  timerhide(){
     
-    this.timerstatus=!this.timerstatus;
+    this.timerstatus=!this.timerstatus; //user clicks on croos buttton on timer to hide timer
     
   }
-    reloadpage(){
-      this.watchlistitems.routing=true;
-    }
+
+   reloadpage(){
+      this.watchlistitems.routing=true; //bringing reload page into action as user is ready to route to next component
+   }
 
     likedmovie(data,liked){
-      
-      this.watchlistitems.likedfunction(data,liked);
+      this.watchlistitems.likedfunction(data,liked); //upon liking particular movie movie details gets pushed into corresponding service
     }
+
     i:any=0;
     question:any;
     uservalue:any;
     feedback:any;
+
     critic(type){
       if(type == 'next'){
          if(this.i<20){
@@ -142,4 +146,10 @@ export class HomepageComponent implements OnInit {
       }
   
     }
-}
+
+    quizz(){
+      this.router.navigate(['/quiz']); //upon clicking on quizz button it takes to quizzcomponent
+      this.reloadpage();
+    }
+
+}//end of component class

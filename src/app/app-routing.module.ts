@@ -15,6 +15,8 @@ import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.c
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
 import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
+import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
+
 
 const routes: Routes = [
   {path:'',component: HomepageComponent},
@@ -32,12 +34,17 @@ const routes: Routes = [
   {path:'quiz',component:QuizComponent},
   {path:'otheruser/:user',component : OtheruserComponent},
   {path:'otherusercomments',component : OtherusercommentsComponent},
+  {path:'likedmovies',component:LikedmoviesComponent},
 ];
+
+
 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
 
 export class AppRoutingModule { }
