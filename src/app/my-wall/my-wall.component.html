@@ -144,7 +144,9 @@
                                 <div class=" card-footer w-100 d-flex">
                                     <div> {{item.value.stars}} ⭐</div>
                                     <div class="ml-auto">
-                                        <button class="btn btn-primary mr-3" (click)="like(item.key,username) " >{{item.value.totalLikes}} like</button>
+                                        <button class="btn btn-primary mr-3" *ngIf="!(item.value.likes).includes(Name)" (click)="like(item.key,username)" >{{item.value.totalLikes}} like </button>
+                                        
+                                        <button class="btn btn-primary mr-3" *ngIf="(item.value.likes).includes(Name)" (click)="dislike(item.key,username)">{{item.value.totalLikes}} Dislike</button>
                                         <button class="btn btn-primary" (click)="comment(item.key,username)">comment</button>
                                     </div>
                                 </div>

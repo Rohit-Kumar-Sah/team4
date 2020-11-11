@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FireBaseService } from '../firebase.service';
@@ -15,8 +16,10 @@ export class OtheruserComponent implements OnInit {
   allusername: any[];
   fullusername: any[];
   activities: Object;
+  Name = this.userinfo.user
   
-  constructor(private userinfo : FireBaseService, private router : Router ) { }
+  
+  constructor(private userinfo : FireBaseService, private router : Router, private http : HttpClient ) { }
 
   ngOnInit(): void {
     this.userinfo.grabAllUser().subscribe(data=>{this.allusername=data[0]; this.fullusername=data[1]; console.log(data[0],data[1])})
@@ -48,5 +51,34 @@ this.router.navigate(['/otherusercomments'])
 
   }
 
+  refresh(){
+    this.userinfo.visiteduserreviews(this.visitedusername).subscribe(data => this.activities = data) // loads all review 
+
+  }
+
+  alllikes
+like(key){
+  let obje;
+  this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.visitedusername+'/activities/'+key+'.json')
+  .subscribe(data=>{ obje= data;  obje.likes.push(this.userinfo.user) ; console.log(obje) ; obje.totalLikes+=1; this.alllikes = obje.likes.length  ; 
+
+  this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.visitedusername+'/activities/'+key+'.json',obje)
+  .subscribe(data=>{obje= data;  console.log("latest obje",obje); this.refresh() })
+ 
+})
+  }
+
+
+dislike(key){
+  let obje;
+  this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.visitedusername+'/activities/'+key+'.json')
+  .subscribe(data=>{ obje= data;  obje.likes.splice(obje.likes.indexOf(this.userinfo.user),1) ; console.log(obje) ; 
+      obje.totalLikes-=1;  this.alllikes = obje.likes.length;
+
+  this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.visitedusername+'/activities/'+key+'.json',obje)
+  .subscribe(data=>{obje= data;  console.log("latest obje",obje);  this.refresh()})
+ 
+})
+}
 
 }
