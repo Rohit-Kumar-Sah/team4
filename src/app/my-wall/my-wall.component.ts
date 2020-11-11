@@ -25,6 +25,7 @@ allusername
 watchlistdata:any;
   fullusername: any[];
   alllikes
+  likedlistdata: any;
 
   constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
   
@@ -57,6 +58,7 @@ watchlistdata:any;
     let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
     this.watchlistitems.watchlistarray=uniqueChars;
     this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+    this.likedlistdata=this.watchlistitems.likedmovies;//code to remove duplicates from watchlistdata
 
 
 
@@ -67,6 +69,11 @@ watchlistdata:any;
 
   }
 
+  
+  likedmovie(data,liked){
+      
+    this.watchlistitems.likedfunction(data,liked);
+  }
   
   
   submitReview() {

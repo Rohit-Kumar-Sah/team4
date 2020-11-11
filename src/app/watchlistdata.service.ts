@@ -50,7 +50,7 @@ export class WatchlistdataService {
       else if(this.likedmovies.length >a){this.likedmovies.slice(a,a+1)}
       console.log(this.likedmovies);
     }
-    console.log("array length",this.likedmovies.length);
+    console.log("array ",this.likedmovies);
   }
 
   
