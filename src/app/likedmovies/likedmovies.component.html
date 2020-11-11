@@ -1,0 +1,81 @@
+<div style="background-color:white; min-height: 1000px;">
+ 
+ 
+
+    <h1
+       style="color:rgba(238, 0, 255, 0.637) ;vertical-align: middle;text-align: center ;">
+       LIKED MOVIES LIST
+       <span *ngIf="watchlistdata.length" style="color:red;position: relative;">
+        <i class="fas fa-heart"></i>
+         <span
+           style="position: absolute;left:9px;top:15px;color: purple;border-radius:50%;background-color: white;width: 20px;height: 20px;font-size: 20px;padding-left:6px;padding-bottom: 23px;">{{watchlistdata.length}}</span>
+       </span>
+   </h1>
+     
+    
+     
+  <div class="watch list d-flex flex-wrap justify-content-center" *ngIf="watchlistdata?.length>0; else elseblock"style="
+    max-width:1000px; margin: auto; background-color: white; ">
+   
+       <div class="wishtlistitem" style="width:250px; text-align: center; background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTe7TQ4qjviXwG2Esez3ET-xucGLxyz3Ze4cQ&usqp=CAU); margin:10px;position: relative;"
+           *ngFor="let data of watchlistdata">
+
+         <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="250px" height="250px;" class="image">
+         
+         <div class="details text-left" style=" color:black ;">
+           <h6 style="color: white;">RATING: <ngb-rating [rate]="data.vote_average" style="color:rgb(102, 255, 0)"></ngb-rating>
+           </h6>
+           <h6 style="min-height: 50px;color: white;">NAME : {{data.original_title}}</h6>  
+         </div>
+
+         <div class="text-center buttons bg-dark" style="position: absolute;">
+            <a href="https://youtu.be/KK8FHdFluOQ" target="_blank"><button><i class="fab fa-youtube text-danger" ></i></button></a><br><br>
+            <button  (click)="deletefromwatchlist(data)" style="margin-left:10%;"><i class="fas fa-trash-alt"></i></button><br><br>
+            <button (click)="pintotopofwatchlist(data)" style="margin-left:10%;color: hotpink;"><i class="fas fa-thumbtack"></i></button>
+         </div>
+          
+       </div>
+   
+    </div>
+
+  <ng-template #elseblock>
+    <div >
+      <h3 style=" color: white;" class="name">liked movies list is empty</h3>
+    </div>
+  </ng-template>
+   
+   
+  
+</div>
+
+   <style>
+     @keyframes example {
+       0% {color: red;font-size: 50px;transform: rotateY(0deg);}
+       25%{font-size: 70px;}
+       50%{font-size: 90px;}
+       75%{font-size: 70px;}
+       100%{font-size: 50px;color: green; transform: rotateY(360deg);}
+     }
+
+    /* The element to apply the animation to */
+    .name {
+        margin-top:100px;
+        text-align: center;
+        animation-name: example;
+        
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-delay:2s ;
+    }
+    .buttons{
+      top:5% ;
+      left: 85%;
+      visibility: hidden;
+    }
+    .wishtlistitem:hover .buttons{
+        visibility: visible;
+    }
+   </style>
+   
+   
+   

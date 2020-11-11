@@ -28,6 +28,7 @@ import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 import { WishesComponent } from './wishes/wishes.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
 
 
 
@@ -53,7 +54,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
     OtheruserComponent,
     OtherusercommentsComponent,
     WishesComponent,
-    FeedbackComponent, 
+    FeedbackComponent,
+    LikedmoviesComponent, 
 
   ],
   imports: [

@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { ScoreService } from './score.service';
 import { QuizapiService } from './../quizapi.service';
 import { Component, OnInit,  } from '@angular/core';
+import { WatchlistdataService } from '../watchlistdata.service';
 
 
 
@@ -12,7 +13,7 @@ import { Component, OnInit,  } from '@angular/core';
 })
 export class QuizComponent implements OnInit {
 
-  constructor(private quizdata: QuizapiService, private scoreservice:ScoreService, private route:Router) { }
+  constructor(private quizdata: QuizapiService, private scoreservice:ScoreService, private route:Router,private watchlistitems:WatchlistdataService) { }
   public quiz: any;
   public questions: any;
   public options = [];
@@ -24,6 +25,7 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {
     this.quizdata.getquiz().subscribe((data: any) => {
+      
       // console.log(data);
       this.quiz = data.results;
      //console.log(this.quiz);
@@ -32,11 +34,12 @@ export class QuizComponent implements OnInit {
         item.optionsArray.push(item.correct_answer)
         //item.optionsArray.sort();
         item['Q_id'] = this.id++;
+
+        this.watchlistitems.routing=false;//shuts down reload page;
+        
         return item;
       });
-      //console.log(this.quiz);
-
-      // console.log(typeof(this.quiz));
+      
 
 
 

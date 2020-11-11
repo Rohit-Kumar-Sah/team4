@@ -4,8 +4,8 @@ import { TopmoviesComponent } from './topmovies/topmovies.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
- import { CommentsComponent } from './comments/comments.component';
- import { MyWallComponent } from './my-wall/my-wall.component';
+import { CommentsComponent } from './comments/comments.component';
+import { MyWallComponent } from './my-wall/my-wall.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -15,35 +15,36 @@ import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.c
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
 import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
-
+import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
 
 
 const routes: Routes = [
   {path:'',component: HomepageComponent},
-
-  {path : 'sign-up' , component : SignUpComponent},
+  {path :'sign-up' , component : SignUpComponent},
   {path:'topmovies/:id',component:MoviedetailsComponent},
   {path:'topmovies',component:TopmoviesComponent},
-
   {path:'commentpage/:id',component:Commentpage872957Component},
   {path:'carrers',component:CarrerspageComponent},
-  {path : 'sign-in' , component : SignInComponent},
-  {path : 'mywall' , component : MyWallComponent},
-  {path : 'comments' , component : CommentsComponent},
+  {path:'sign-in' , component : SignInComponent},
+  {path:'mywall' , component : MyWallComponent},
+  {path:'comments' , component : CommentsComponent},
   {path:'newreleases',component:NewreleaseslodhiComponent},
   {path:'watchlist',component:WatchlistpageComponent},
-
   {path:'result',component:ResultComponent},
   {path:'quiz',component:QuizComponent},
   {path:'otheruser/:user',component : OtheruserComponent},
-  {path:'otherusercomments',component : OtherusercommentsComponent}
-
-
-
+  {path:'otherusercomments',component : OtherusercommentsComponent},
+  {path:'likedmovies',component:LikedmoviesComponent},
 ];
+
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
+
 export class AppRoutingModule { }

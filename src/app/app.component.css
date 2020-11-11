@@ -13,6 +13,7 @@
     top: 35%;
     font-size: 50PX;
     left: 50%;
+    text-align: center;
   }
   
   @-webkit-keyframes spin {
