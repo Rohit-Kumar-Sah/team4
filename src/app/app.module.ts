@@ -49,9 +49,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
     QuizComponent,
 
     WatchlistpageComponent,
-    ResultComponent
-    
-
+    ResultComponent,
     OtheruserComponent,
     OtherusercommentsComponent,
     WishesComponent,
