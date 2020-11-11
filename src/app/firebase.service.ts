@@ -10,8 +10,8 @@ import { filter, map } from "rxjs/operators";
 })
 export class FireBaseService {
     
-   user
-   username
+   user  //name&mail
+   username //name
     commentsArray: any;
   theotheruser: any;
   theotherusername: any;
