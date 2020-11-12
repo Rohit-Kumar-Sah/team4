@@ -63,6 +63,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     if (this.userinfo.user) {
       this.loggedin = true
       this.user = this.userinfo.username
@@ -72,6 +73,8 @@ export class HomepageComponent implements OnInit {
     }
 
     this.likedmoviearray=this.watchlistitems.likedmovies;
+
+    this.watchlistitems.loadliked()
   }//end of ngoninit
 
 
