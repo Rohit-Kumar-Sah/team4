@@ -17,6 +17,7 @@ export class WatchlistdataService {
    sec:number=0;
    min:number=0;
    hrs:number=0;
+   a:number;
    routing:boolean=true;
       print=this.numbers.subscribe(val=>{
     ++this.sec;
@@ -31,9 +32,10 @@ export class WatchlistdataService {
     
   })
   likedfunction(data,state){
+
     let flag:any=false;
     if(state){
-      this.likedmovies.map(function(value,index,arr){
+      this.likedmovies.map((value,index,arr)=>{
         if(value.id == data.id){flag=true;}
       })
       if(flag == false){
@@ -43,14 +45,18 @@ export class WatchlistdataService {
 
     else if(state == false){
     
-      let a=this.likedmovies.findIndex(function(value){
+      this.a=this.likedmovies.findIndex((value)=>{
         return value.id == data.id;
       })
-      if(this.likedmovies.length == a+1){this.likedmovies.pop()}
-      else if(this.likedmovies.length >a){this.likedmovies.slice(a,a+1)}
-      console.log(this.likedmovies);
+
+      if(this.likedmovies.length == this.a+1){this.likedmovies.pop();} 
+
+      else if(this.likedmovies.length >this.a){this.likedmovies.splice(this.a,1)}
+     
+       
+      
     }
-    console.log("array ",this.likedmovies);
+    
   }
 
   

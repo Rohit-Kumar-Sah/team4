@@ -55,23 +55,45 @@ export class HomepageComponent implements OnInit {
        
         this.question=this.somedata.results[0].title;
 
-        
+        this.preservelike();
 
     })
   }//end of constructor
   
+  preservelike(){
+    //if(this.dataset1.length >0 && this.watchlistitems.likedmovies.length > 0){
+
+      this.dataset1.map((value)=>{
+         this.watchlistitems.likedmovies.map((values)=>{
+            if(value.id == values.id){
+              this.dataset1[(this.dataset1.indexOf(value))].video = true;//if liked movie in liked service and pulled movie matches it gets liked
+              
+            }
+        })
+      })
+
+      this.dataset2.map((value)=>{
+        this.watchlistitems.likedmovies.map((values)=>{
+           if(value.id == values.id){
+             this.dataset2[(this.dataset2.indexOf(value))].video = true;//if liked movie in liked service and pulled movie matches it gets liked
+             
+           }
+       })
+     })
+
+  }
 
   ngOnInit(): void {
-
     if (this.userinfo.user) {
       this.loggedin = true
       this.user = this.userinfo.username
     }
+
     else {
       this.loggedin = false
     }
 
-    this.likedmoviearray=this.watchlistitems.likedmovies;
+    this.likedmoviearray=this.watchlistitems.likedmovies; 
   }//end of ngoninit
 
 
@@ -151,5 +173,7 @@ export class HomepageComponent implements OnInit {
       this.router.navigate(['/quiz']); //upon clicking on quizz button it takes to quizzcomponent
       this.reloadpage();
     }
+
+    
 
 }//end of component class

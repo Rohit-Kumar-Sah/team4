@@ -34,7 +34,7 @@ export class TopmoviesComponent implements OnInit {
        
         },1000);
 
-
+        this.preservelike()
     });
   }
  
@@ -54,5 +54,28 @@ export class TopmoviesComponent implements OnInit {
       
     this.watchlist.likedfunction(data,liked);
   }
+
+  preservelike(){ 
+    //if(this.dataset1.length >0 && this.watchlistitems.likedmovies.length > 0){
+
+      this.moviePopular.map((value)=>{
+         this.watchlist.likedmovies.map((values)=>{
+            if(value.id == values.id){
+              this.moviePopular[(this.moviePopular.indexOf(value))].video = true;//if liked movie in liked service and pulled movie matches it gets liked
+              
+            }
+        })
+      })
+
+      this.movieTopRated.map((value)=>{
+        this.movieTopRated.likedmovies.map((values)=>{
+           if(value.id == values.id){
+             this.movieTopRated[(this.movieTopRated.indexOf(value))].video = true;//if liked movie in liked service and pulled movie matches it gets liked
+             
+           }
+       })
+     })
+
+  }  
 
 }

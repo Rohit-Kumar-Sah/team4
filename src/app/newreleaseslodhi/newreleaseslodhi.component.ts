@@ -21,11 +21,12 @@ export class NewreleaseslodhiComponent implements OnInit {
     
     this._movieapi.getDataPopular().subscribe(data =>{
       this.moviedata=data;
-     this.newmovies = this.moviedata.results.slice(10,14);
+     this.newmovies = this.moviedata.results.slice(1,5);
       this.newmovies2 = this.moviedata.results.slice(15,19);
       setTimeout(()=>{
       this.watchlistitems.routing=false;
-     
+
+      this.preservelike();
       },1000);
       
    })
@@ -48,5 +49,28 @@ export class NewreleaseslodhiComponent implements OnInit {
       
       this.watchlistitems.likedfunction(data,liked);
     }
+     
+    preservelike(){ 
+      //if(this.dataset1.length >0 && this.watchlistitems.likedmovies.length > 0){
+  
+        this.newmovies.map((value)=>{
+           this.watchlistitems.likedmovies.map((values)=>{
+              if(value.id == values.id){
+                this.newmovies[(this.newmovies.indexOf(value))].video = true;//if liked movie in liked service and pulled movie matches it gets liked
+                
+              }
+          })
+        })
+  
+        this.newmovies2.map((value)=>{
+          this.watchlistitems.likedmovies.map((values)=>{
+             if(value.id == values.id){
+               this.newmovies2[(this.newmovies2.indexOf(value))].video = true;//if liked movie in liked service and pulled movie matches it gets liked
+               
+             }
+         })
+       })
+  
+    }  
 
 }
