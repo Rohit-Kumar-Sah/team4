@@ -7,9 +7,15 @@
     <div class="card-body">
       <span class="card-title h5 px-3 py-2 " style="background-color: rgb(58, 58, 70);color:rgb(246, 252, 241);box-sizing: border-box;">Question {{j+1}} </span>
       
-      <p class="card-text p mt-2 h5">{{item.question}}</p>
-       <ul class="list-group" *ngFor="let items of item.optionsArray; let i =index ">
-       <li class="list-group-item list-group-item-action list-group-item-secondary" (click)="Answer(item.Q_id,items)">{{(i+1)}})&nbsp;{{items}}</li>
+      <p class="card-text p mt-2 h5" [innerHTML]="item.question"></p>
+       <ul class="list-group" >
+       <li     class="list-group-item list-group-item-action list-group-item-secondary" *ngFor="let items of item.optionsArray; let i =index">
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-secondary ">
+            <input type="radio" name="options" id="option1" autocomplete="off" (click)="Answer(item.Q_id,items)" >{{items}} 
+          </label>
+          </div>
+       </li>
       </ul> 
       
     </div>
