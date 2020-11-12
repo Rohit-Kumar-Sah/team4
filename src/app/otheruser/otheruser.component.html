@@ -93,7 +93,7 @@
        
 
        
-        <hr>
+       <hr>
        
         <!-- print all posts made by the user  -->
         
@@ -113,7 +113,9 @@
                                 <div class=" card-footer w-100 d-flex">
                                     <div> {{item.value.stars}} ⭐</div>
                                     <div class="ml-auto">
-                                        <button class="btn btn-primary mr-3">{{item.value.totalLikes}} like</button>
+                                        <button class="btn btn-primary mr-3" *ngIf="!(item.value.likes).includes(Name)" (click)="like(item.key)" >{{item.value.totalLikes}} like  </button>
+                                        
+                                        <button class="btn btn-primary mr-3" *ngIf="(item.value.likes).includes(Name)" (click)="dislike(item.key)">{{item.value.totalLikes}} Dislike</button>
                                         <button class="btn btn-primary" (click)="comment(item.key,visiteduser)">comment</button>
                                     </div>
                                 </div>

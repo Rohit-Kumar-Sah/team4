@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { invalid } from '@angular/compiler/src/render3/view/util';
+import { WatchlistdataService } from '../watchlistdata.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +16,7 @@ export class SignInComponent implements OnInit {
 
 
 
-  constructor(private userinfo: FireBaseService, private fb: FormBuilder, private router : Router) {
+  constructor(private userinfo: FireBaseService, private fb: FormBuilder, private router : Router,private watchlist:WatchlistdataService) {
 
   }
 
@@ -36,7 +37,9 @@ invalid=false
     this.userinfo.signinUser(formdata.controls.name.value, formdata.controls.password.value).subscribe(data =>{
        this.success= data; 
        if(this.success)
-      { this.router.navigate(['/']) }
+      {   this.watchlist.loadliked();
+        this.router.navigate(['/'])
+       }
       else{
         this.invalid=true
       }
