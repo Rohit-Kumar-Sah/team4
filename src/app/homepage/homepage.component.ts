@@ -83,7 +83,11 @@ export class HomepageComponent implements OnInit {
 
   }
 
+<<<<<<< HEAD
   ngOnInit(): void {
+=======
+
+>>>>>>> 8cd2255fc7e8a8d15c6bb980ad3fe06a4997da07
     if (this.userinfo.user) {
       this.loggedin = true
       this.user = this.userinfo.username
@@ -93,7 +97,13 @@ export class HomepageComponent implements OnInit {
       this.loggedin = false
     }
 
+<<<<<<< HEAD
     this.likedmoviearray=this.watchlistitems.likedmovies; 
+=======
+    this.likedmoviearray=this.watchlistitems.likedmovies;
+
+    this.watchlistitems.loadliked()
+>>>>>>> 8cd2255fc7e8a8d15c6bb980ad3fe06a4997da07
   }//end of ngoninit
 
 

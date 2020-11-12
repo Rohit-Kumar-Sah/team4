@@ -10,8 +10,8 @@ import { filter, map } from "rxjs/operators";
 })
 export class FireBaseService {
     
-   user
-   username
+   user  //name&mail
+   username //name
     commentsArray: any;
   theotheruser: any;
   theotherusername: any;
@@ -27,7 +27,11 @@ export class FireBaseService {
 
         let username = name + '&' + email;   // the db stores it as to uniquely identify every user
         //add user to DB
-        this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe(data=> alert("Account created. Sign-in to continue"));
+        this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password })
+        .subscribe(data=> {alert("Account created. Sign-in to continue")
+        this.http.put('https://team4-506c8.firebaseio.com/testuser/'+ username +'/info.json',{bio:"my bio is here"}).subscribe()
+    }
+        );
 
         // this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password }).subscribe();
     }
