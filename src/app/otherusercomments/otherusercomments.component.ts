@@ -16,6 +16,7 @@ export class OtherusercommentsComponent implements OnInit {
   responsesGenerated = false
   thepost
   author = this.post.theotheruser
+  visitor = this.post.user
   submitComment
   allcomments
 
@@ -51,5 +52,9 @@ export class OtherusercommentsComponent implements OnInit {
 
   }
 
+  deletecomment(key){
+    this.http.delete('https://team4-506c8.firebaseio.com/testuser/' + this.post.theotherusername + '/activities/' + this.post.commentId + '/comments/'+key+'.json').subscribe(data => {  this.showComment() })
+
+  }
 
 }

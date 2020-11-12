@@ -117,7 +117,17 @@ watchlistdata:any;
 
   
   }
- 
+  res
+  //deletecomment
+ delete (key, username,review,movie){
+  this.http.delete('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json').subscribe(data=>
+  { this.userinfo.myreviews().subscribe(data => this.activities = data)})
+
+  //delete from all comment
+  this.http.delete('https://team4-506c8.firebaseio.com/allreviews/'+movie+'/'+this.userinfo.user+'/.json').subscribe(data=>
+  { })
+  
+ }
 
 like(key,username){
   let obje;

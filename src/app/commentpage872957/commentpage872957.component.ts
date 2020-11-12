@@ -29,7 +29,14 @@ export class Commentpage872957Component implements OnInit, OnChanges {
           if(movie.id == this.commentid)
           {
             this.commentdata=movie;
-            this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data );
+            // this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=> {this.CommentsArray = data
+            //   console.log("allcomments",data)} );
+
+            this.http.get('https://team4-506c8.firebaseio.com/allreviews/'+this.commentdata.original_title+'.json')
+            .subscribe(data=>{this.CommentsArray = data; console.log("allcomments",data ," name ",Object.keys(data)) ;
+            console.log('https://team4-506c8.firebaseio.com/allreviews/'+this.commentdata.original_title+'.json')
+          })
+
           }
        }
        let d=this.commentdata;
@@ -43,7 +50,7 @@ export class Commentpage872957Component implements OnInit, OnChanges {
   // 
 
   }
-
+me = this.post.user;
   public commentdata:any="sastra";
   commentid:any;
   datacomment : any;
@@ -63,6 +70,24 @@ export class Commentpage872957Component implements OnInit, OnChanges {
 
  }
   
+ delete (key){
+  this.http.delete('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json').subscribe(data=>
+  {
+  })
+
+  //delete from all comment
+  this.http.delete('https://team4-506c8.firebaseio.com/allreviews/'+key+'/'+this.userinfo.user+'/.json').subscribe(data=>
+  {
+
+    this.http.get('https://team4-506c8.firebaseio.com/allreviews/'+this.commentdata.original_title+'.json')
+  .subscribe(data=>{this.CommentsArray = data; 
+})
+
+   })
+  
+ }
+
+
   review()
     {
       console.log("clicked on review");
