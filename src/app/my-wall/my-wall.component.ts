@@ -26,6 +26,7 @@ watchlistdata:any;
   fullusername: any[];
   alllikes
   likedlistdata: any;
+  mybio 
 
   constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
   
@@ -40,6 +41,8 @@ watchlistdata:any;
   )
 
   ngOnInit(): void {
+
+    this.loadBio()
 
     this.userinfo.grabAllUser().subscribe(data=>{this.allusername=data[0]; this.fullusername=data[1]; console.log(data[0],data[1])})
 
@@ -67,12 +70,32 @@ watchlistdata:any;
       },1500); 
 
 
+      // this.saveLikedMovies()
+  
+  
+      
+
+  }
+
+
+
+  saveLikedMovies()
+  {
+
+    this.http.put('https://team4-506c8.firebaseio.com/testuser/'+ this.userinfo.user +'/liked.json', this.likedlistdata ).subscribe()
+
   }
 
   
   likedmovie(data,liked){
       
     this.watchlistitems.likedfunction(data,liked);
+    this.likedlistdata=this.watchlistitems.likedmovies;//code to remove duplicates from watchlistdata
+
+   
+
+
+
   }
   
   
@@ -159,6 +182,23 @@ this.userinfo.commentdata(username,this.userinfo.user, key)
      let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
      this.watchlistitems.watchlistarray=uniqueChars;
      this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+   }
+
+
+   editBio(bio){
+
+
+  this.http.put('https://team4-506c8.firebaseio.com/testuser/'+ this.userinfo.user +'/info.json',{bio:bio.value}).subscribe(data=>this.loadBio())
+  }
+
+   loadBio()
+   {
+  this.http.get('https://team4-506c8.firebaseio.com/testuser/'+ this.userinfo.user +'/info.json').subscribe(data=>{
+ console.log("info ", data['bio'])    
+  this.mybio = data['bio']
+
+} )
+
    }
 
 }
