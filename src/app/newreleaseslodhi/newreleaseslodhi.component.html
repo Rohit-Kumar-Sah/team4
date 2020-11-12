@@ -20,16 +20,16 @@
 
 <!-- top navbar which shows-->
 <div class="nav" style="display:flex">
-    <h2 style="width: 50%; text-align: center; color: Yellow;">New Releases</h2>
+    <h2 >New Releases</h2>
     
 </div>
 
 <!-- main content -->
 <div class="container-fluid">
-<div class="container" style="margin-left: 20%;">
+<div class="container" >
 <div class="d-flex ">
   <div class="card" style="width: 12rem;" *ngFor="let data of newmovies">
-    <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
+    <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="200px" class="text-center" alt="...">
     <div class="card-body  w-100 ">
       <h5 class="card-title text-center" style="min-height: 30px;overflow: hidden;" >
         <b >{{data.original_title}}</b>
@@ -50,7 +50,7 @@
 
 <div class="d-flex ">
   <div class="card" style="width: 12rem;" *ngFor="let data of newmovies2">
-    <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="150px" class="text-center" alt="...">
+    <img src="https://image.tmdb.org/t/p/original{{data.poster_path}}" width="100%" height="200px" class="text-center" alt="...">
     <div class="card-body " style="position: relative;">
       <h5 class="card-title text-center " style="min-height: 30px;overflow: hidden;" >
         <b >{{data.original_title}}</b>

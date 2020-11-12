@@ -28,7 +28,11 @@ import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 import { WishesComponent } from './wishes/wishes.component';
 import { FeedbackComponent } from './feedback/feedback.component';
+
+import { MoviecriticComponent } from './moviecritic/moviecritic.component';
+
 import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
+
 
 
 
@@ -55,7 +59,11 @@ import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
     OtherusercommentsComponent,
     WishesComponent,
     FeedbackComponent,
+
+    MoviecriticComponent, 
+
     LikedmoviesComponent, 
+
 
   ],
   imports: [
