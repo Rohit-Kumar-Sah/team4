@@ -88,6 +88,8 @@ export class Commentpage872957Component implements OnInit, OnChanges {
     likedmovie(data,liked){
       this.watchlistservice.likedfunction(data,liked);
       this.likedmovies=!this.likedmovies;
+      console.log(liked);
+      console.log(this.watchlistservice.likedmovies);
     }
 
     grabOtherUser(username,user)
