@@ -47,15 +47,21 @@
   <p class="display-3"><strong> All Comments :</strong></p>
   <div class="row ">
 
-    <div class="col-sm-6" *ngFor="let commentsInfo of CommentsArray ">
+    <div class="col-sm-6" *ngFor="let commentsInfo of CommentsArray | keyvalue ">
 
       <div class="card text-white bg-success mb-3">
-        <div class="card-header"> <a (click)="grabOtherUser(commentsInfo.author,commentsInfo.author.slice(0,commentsInfo.author.indexOf('&')) )">  {{commentsInfo.author.slice(0,commentsInfo.author.indexOf('&')) }}  </a>  </div>
+        <div class="card-header">
+        
+           <a (click)="grabOtherUser(commentsInfo.key,commentsInfo.key.slice(0,commentsInfo.key.indexOf('&')) )"> 
+              {{commentsInfo.key.slice(0,commentsInfo.key.indexOf('&')) }}  </a>  </div>
         <div class="card-body">
-          <h5 class="card-title">{{commentsInfo.review}}</h5>
-          <p class="card-text">{{commentsInfo.stars}}⭐</p>
+          <h5 class="card-title">{{commentsInfo.value.review}}</h5>
+          <p class="card-text">{{commentsInfo.value.stars}}⭐</p>
+          <hr>
+          <button *ngIf="commentsInfo.key==me?true:false"  (click)="delete(commentdata.original_title)">delete</button>
         </div>
-
+        
+        
       </div>
     </div>
 

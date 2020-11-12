@@ -32,8 +32,11 @@
             <h5 class="card-title">{{item.value.commentedBy.slice(0, item.value.commentedBy.indexOf('&'))}}</h5>
             <p class="card-text">{{item.value.comment}}</p>
             <p class="card-text">a minute ago</p>
+            <!-- <p>{{visitor}} ?= {{item.value.commentedBy}}</p> -->
             <hr>
+            <button *ngIf="visitor==item.value.commentedBy?true:false" (click)="deletecomment(item.key)">delete</button>
           </div>
+
         </div>
   </div>
   
