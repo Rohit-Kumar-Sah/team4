@@ -14,7 +14,7 @@ import { WatchlistdataService } from '../watchlistdata.service';
 export class QuizComponent implements OnInit {
 
   constructor(private quizdata: QuizapiService, private scoreservice: ScoreService, private route: Router, private watchlistitems: WatchlistdataService) { }
-  public quiz: any;
+  public quiz: any[];
   public questions: any;
   public options = [];
   id: number = 0;
@@ -22,6 +22,8 @@ export class QuizComponent implements OnInit {
   public quizanswer: any[] = [];
   score = 0;
   selectedOption:any;
+  public quizset:any=[];
+  Quizlength:number;
  
 
 
@@ -30,18 +32,24 @@ export class QuizComponent implements OnInit {
 
      
       this.quiz = data.results;
+      this.Quizlength=this.quiz.length;
      
       this.quiz = this.quiz.map(item => {
         item['optionsArray'] = [...item.incorrect_answers]
         item.optionsArray.push(item.correct_answer)
         item.optionsArray.sort();
         item['Q_id'] = this.id++;
+        item['Q_rndm_gnrt']=Math.floor(Math.random()*(this.Quizlength+1));
         
 
         this.watchlistitems.routing = false;//shuts down reload page;
 
         return item;
       });
+      this.quiz.sort((a,b)=>{
+        return a.Q_rndm_gnrt - b.Q_rndm_gnrt;
+      })
+      this.quizset=this.quiz.slice(0,10);
 
 
 
