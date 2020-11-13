@@ -4,6 +4,7 @@ import { WatchlistdataService } from '../watchlistdata.service';
 import { MovieapiService } from '../movieapi.service';
 import { FireBaseService } from '../firebase.service';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-commentpage872957',
@@ -13,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class Commentpage872957Component implements OnInit, OnChanges {
   CommentsArray;
 
-  constructor(private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService
+  constructor( private fb : FormBuilder   ,private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService
     ,private _movieapi:MovieapiService,private post : FireBaseService , private userinfo : FireBaseService, private router : Router)   {
     this._movieapi.getDataPopular().subscribe(data =>{
 
@@ -60,6 +61,13 @@ me = this.post.user;
   rate:any=1;
   likedmovies:any;
 
+
+ comment_review = this.fb.group({
+    myreview : this.fb.control("",Validators.required),
+    stars : this.fb.control("",[Validators.required,Validators.pattern('^([0-9]|10)$')])
+})
+
+
   ngOnInit(): void {
       
       
@@ -99,16 +107,27 @@ me = this.post.user;
          this.watchlistservice.watchlistarray.push(data);
     }
 
-    postIt(comment,star){
+    postIt(){
     
       // as soon as comments is posted , a fetch is called for adding the newly made comment available in comments section
-      this.post.addreview(this.commentdata.original_title, comment.value, star.value,this.post.user).subscribe(
+      this.post.addreview(this.commentdata.original_title, this.comment_review.controls.myreview.value, this.comment_review.controls.stars.value,this.post.user).subscribe(
         response=>
         this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data )
       )
       // 
 
     }
+
+    // postIt(comment,star){
+    
+    //   // as soon as comments is posted , a fetch is called for adding the newly made comment available in comments section
+    //   this.post.addreview(this.commentdata.original_title, comment.value, star.value,this.post.user).subscribe(
+    //     response=>
+    //     this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data )
+    //   )
+    //   // 
+
+    // }
 
     likedmovie(data,liked){
       this.watchlistservice.likedfunction(data,liked);
