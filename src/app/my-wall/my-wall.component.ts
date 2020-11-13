@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -31,14 +31,16 @@ watchlistdata:any;
   constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
   
   review = this.fb.group({
-    movieName: this.fb.control(''),
-    movieReview: this.fb.control(''),
-    stars: this.fb.control('')
+    movieName: this.fb.control('', Validators.required),
+    movieReview: this.fb.control('' , Validators.required),
+    stars: this.fb.control('',[Validators.required,Validators.pattern('^([0-9]|10)$')])
     // http://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1
     // https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1
 
   }
   )
+
+  
 
   ngOnInit(): void {
 
