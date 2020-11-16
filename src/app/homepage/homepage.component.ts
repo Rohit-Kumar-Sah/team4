@@ -56,7 +56,8 @@ export class HomepageComponent implements OnInit {
         this.question=this.somedata.results[0].title;
         
         setTimeout(() => {
-          this.preservelike();
+          this.preservelike(); //2s time delay is provided as data from backend related to liked movies is taking some time to load
+          this.preservewatchlist();
         },2000);
         
 
@@ -86,6 +87,29 @@ export class HomepageComponent implements OnInit {
 
   } 
 
+  preservewatchlist(){
+     //if(this.dataset1.length >0 && this.watchlistitems.likedmovies.length > 0){
+
+      this.dataset1.map((value)=>{
+        this.watchlistitems.watchlistarray.map((values)=>{
+           if(value.id == values.id){
+             this.dataset1[(this.dataset1.indexOf(value))].adult = true;//if liked movie in liked service and pulled movie matches it gets liked
+             
+           }
+       })
+     })
+
+     this.dataset2.map((value)=>{
+       this.watchlistitems.watchlistarray.map((values)=>{
+          if(value.id == values.id){
+            this.dataset2[(this.dataset2.indexOf(value))].adult = true;//if liked movie in liked service and pulled movie matches it gets liked
+            
+          }
+      })
+    })
+  }
+  
+
   ngOnInit(): void {
     if (this.userinfo.user) {
       this.loggedin = true
@@ -100,9 +124,10 @@ export class HomepageComponent implements OnInit {
   }//end of ngoninit
 
 
-  pushdataintowatchlist(data:any){
-  
-    this.watchlistitems.watchlistarray.push(data); //upon clicking add to watch list button corresponding movie data gets exported to services.
+  pushdataintowatchlist(data:any,state:any){
+    console.log(state);
+    this.watchlistitems.watchlistcontrol(data,state);
+    //this.watchlistitems.watchlistarray.push(data); //upon clicking add to watch list button corresponding movie data gets exported to services.
   }
     
   loadcommentpage(data: any) {
