@@ -1,7 +1,3 @@
 .list-group-item{
     cursor: pointer;
 }
- li :hover{
-    background-color: chartreuse;
-    
-}

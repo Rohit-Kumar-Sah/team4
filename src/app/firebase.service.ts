@@ -67,9 +67,9 @@ export class FireBaseService {
     {
         console.log(movieName, review , stars,user)
         //include the review in user db
-        this.http.post('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities.json',{movie: movieName, author : user, review : review, stars : stars,totalLikes : 0 , likes:[stars]}).subscribe();
+        this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.user+'/activities/'+  movieName +'/.json',{movie: movieName, author : user, review : review, stars : stars,totalLikes : 0 , likes:[stars]}).subscribe();
         //include the review in film db
-       return this.http.post('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'.json',{movie: movieName, author :user, review : review, stars : stars})
+       return this.http.put('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'/'+user+'/.json',{movie: movieName, review : review, stars : stars})
     }
 
 
@@ -94,12 +94,12 @@ export class FireBaseService {
     {
         console.log("moviename = ",movieName)
     return this.http.get('https://team4-506c8.firebaseio.com/allreviews/'+movieName+'.json')
-    .pipe(
-        map(data=>{
-           return Object.values(data)
+    // .pipe(
+    //     map(data=>{
+    //        return Object.values(data)
 
-        })
-        )
+    //     })
+    //     )
     }
 
 

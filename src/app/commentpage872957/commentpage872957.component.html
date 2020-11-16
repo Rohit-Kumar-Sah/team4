@@ -31,11 +31,37 @@
         <div>
           <h4 class="text-center review text-info" (click)="review()">POST REVIEW</h4>
           <span [style.visibility]="review1?'visible':'hidden'" >
-            <textarea
-              placeholder="we love to hear your review!!" rows="4" cols="60" #hi></textarea><br>
-              <label for="">How many stars would give: </label><input type="text" name="" #star><br>
-            <button class="btn btn-primary" (click)="postIt(hi,star)">Post</button>
             
+            <form [formGroup]="comment_review" (ngSubmit)="postIt()">
+
+
+              <div class="form-group">
+                <label for="exampleInputPassword1">Write your Review</label>
+                <textarea type="text" class="form-control" 
+                    formControlName="myreview"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword1">How many star do you give?</label>
+
+                <input type="text" class="form-control"  formControlName="stars" placeholder="0 to 10">
+            </div>
+
+
+            <button type="submit" class="btn btn-primary" [ngClass]="comment_review.valid?'':'disabled' " >Submit</button>
+        </form>
+
+           
+
+
+
+
+
+            <!-- <textarea
+              placeholder="we love to hear your review!!" rows="4" cols="60" #hi></textarea><br>
+              <label for="">How many stars would give: </label><input type="text" name="" #star ><br>
+            <button class="btn btn-primary" (click)="postIt(hi,star)">Post</button>
+             -->
             </span>
         </div>
       </div>
@@ -44,18 +70,24 @@
 
 
 
-  <p class="display-3"><strong> All Comments :</strong></p>
+  <p class="display-3"><strong> All Comments </strong></p>
   <div class="row ">
 
-    <div class="col-sm-6" *ngFor="let commentsInfo of CommentsArray ">
+    <div class="col-sm-6" *ngFor="let commentsInfo of CommentsArray | keyvalue ">
 
       <div class="card text-white bg-success mb-3">
-        <div class="card-header"> <a (click)="grabOtherUser(commentsInfo.author,commentsInfo.author.slice(0,commentsInfo.author.indexOf('&')) )">  {{commentsInfo.author.slice(0,commentsInfo.author.indexOf('&')) }}  </a>  </div>
+        <div class="card-header">
+        
+           <a (click)="grabOtherUser(commentsInfo.key,commentsInfo.key.slice(0,commentsInfo.key.indexOf('&')) )"> 
+              {{commentsInfo.key.slice(0,commentsInfo.key.indexOf('&')) }}  </a>  </div>
         <div class="card-body">
-          <h5 class="card-title">{{commentsInfo.review}}</h5>
-          <p class="card-text">{{commentsInfo.stars}}⭐</p>
+          <h5 class="card-title">{{commentsInfo.value.review}}</h5>
+          <p class="card-text">{{commentsInfo.value.stars}}⭐</p>
+          <hr>
+          <button *ngIf="commentsInfo.key==me?true:false"  (click)="delete(commentdata.original_title)">delete</button>
         </div>
-
+        
+        
       </div>
     </div>
 

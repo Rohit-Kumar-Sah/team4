@@ -4,6 +4,7 @@ import { WatchlistdataService } from '../watchlistdata.service';
 import { MovieapiService } from '../movieapi.service';
 import { FireBaseService } from '../firebase.service';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-commentpage872957',
@@ -13,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class Commentpage872957Component implements OnInit, OnChanges {
   CommentsArray;
 
-  constructor(private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService
+  constructor( private fb : FormBuilder   ,private http : HttpClient , private route:ActivatedRoute,private watchlistservice:WatchlistdataService
     ,private _movieapi:MovieapiService,private post : FireBaseService , private userinfo : FireBaseService, private router : Router)   {
     this._movieapi.getDataPopular().subscribe(data =>{
 
@@ -29,7 +30,14 @@ export class Commentpage872957Component implements OnInit, OnChanges {
           if(movie.id == this.commentid)
           {
             this.commentdata=movie;
-            this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data );
+            // this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=> {this.CommentsArray = data
+            //   console.log("allcomments",data)} );
+
+            this.http.get('https://team4-506c8.firebaseio.com/allreviews/'+this.commentdata.original_title+'.json')
+            .subscribe(data=>{this.CommentsArray = data; console.log("allcomments",data ," name ",Object.keys(data)) ;
+            console.log('https://team4-506c8.firebaseio.com/allreviews/'+this.commentdata.original_title+'.json')
+          })
+
           }
        }
        let d=this.commentdata;
@@ -43,7 +51,7 @@ export class Commentpage872957Component implements OnInit, OnChanges {
   // 
 
   }
-
+me = this.post.user;
   public commentdata:any="sastra";
   commentid:any;
   datacomment : any;
@@ -52,6 +60,13 @@ export class Commentpage872957Component implements OnInit, OnChanges {
   public moviedata1:any=[];
   rate:any=1;
   likedmovies:any;
+
+
+ comment_review = this.fb.group({
+    myreview : this.fb.control("",Validators.required),
+    stars : this.fb.control("",[Validators.required,Validators.pattern('^([0-9]|10)$')])
+})
+
 
   ngOnInit(): void {
       
@@ -63,6 +78,24 @@ export class Commentpage872957Component implements OnInit, OnChanges {
 
  }
   
+ delete (key){
+  this.http.delete('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json').subscribe(data=>
+  {
+  })
+
+  //delete from all comment
+  this.http.delete('https://team4-506c8.firebaseio.com/allreviews/'+key+'/'+this.userinfo.user+'/.json').subscribe(data=>
+  {
+
+    this.http.get('https://team4-506c8.firebaseio.com/allreviews/'+this.commentdata.original_title+'.json')
+  .subscribe(data=>{this.CommentsArray = data; 
+})
+
+   })
+  
+ }
+
+
   review()
     {
       console.log("clicked on review");
@@ -74,16 +107,27 @@ export class Commentpage872957Component implements OnInit, OnChanges {
          this.watchlistservice.watchlistarray.push(data);
     }
 
-    postIt(comment,star){
+    postIt(){
     
       // as soon as comments is posted , a fetch is called for adding the newly made comment available in comments section
-      this.post.addreview(this.commentdata.original_title, comment.value, star.value,this.post.user).subscribe(
+      this.post.addreview(this.commentdata.original_title, this.comment_review.controls.myreview.value, this.comment_review.controls.stars.value,this.post.user).subscribe(
         response=>
         this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data )
       )
       // 
 
     }
+
+    // postIt(comment,star){
+    
+    //   // as soon as comments is posted , a fetch is called for adding the newly made comment available in comments section
+    //   this.post.addreview(this.commentdata.original_title, comment.value, star.value,this.post.user).subscribe(
+    //     response=>
+    //     this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data )
+    //   )
+    //   // 
+
+    // }
 
     likedmovie(data,liked){
       this.watchlistservice.likedfunction(data,liked);
