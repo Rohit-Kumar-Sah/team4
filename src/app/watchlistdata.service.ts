@@ -15,7 +15,7 @@ export class WatchlistdataService {
   
   
   constructor(private userinfo: FireBaseService, private http: HttpClient) {
-    this.loadliked();
+   
   }//constructor end
   
   public numbers = interval(1000);
@@ -88,6 +88,57 @@ export class WatchlistdataService {
 
       
   }//end of liked function
+
+  loadwatchlist() {
+    this.http.get('https://team4-506c8.firebaseio.com/testuser/' + this.userinfo.user + '/watchlist.json').subscribe(result => {
+      this.watchlistarray = result || [];
+      console.log("array earlier ", this.watchlistarray, " of ", this.userinfo.user);  //calling database and fetching liked movie data on "app start"
+    })
+  }
+
+  watchlistcontrol(data,state){ //watchlist data items control function
+
+    this.http.get('https://team4-506c8.firebaseio.com/testuser/' + this.userinfo.user + '/watchlist.json').subscribe(result => {
+       this.watchlistarray = result || [];
+      console.log("array earlier ", this.likedmovies); // before working on liked movies we pulldata from data base
+   });
+
+    let flag: any = false;
+
+     if (state) {
+       this.watchlistarray.map(function (value, index, arr) {
+        if (value.id == data.id) { flag = true; }               
+       });                                                    
+       if (flag == false) {                              
+        this.watchlistarray.push(data);           
+       }
+     }
+
+
+    else if (state == false) {                              
+
+      let a = this.watchlistarray.findIndex(function (value) {
+           return value.id == data.id;                          
+      })
+ 
+      if (this.watchlistarray.length == a + 1) { 
+         this.watchlistarray.pop() 
+      }
+      else if (this.watchlistarray.length > a) { 
+         this.watchlistarray.splice(a,1) 
+      }
+        
+    }
+
+    this.http.put('https://team4-506c8.firebaseio.com/testuser/' + this.userinfo.user + '/watchlist.json', this.watchlistarray).subscribe(res => {
+        this.watchlistarray = res; console.log("array later ", res);
+                                                                     //after making changesthe data of liked movies is pushed to database
+    })
+
+
+  
+
+  }//end of watchlistcontrol function
     
 }
 
@@ -101,103 +152,4 @@ export class WatchlistdataService {
 
 
 
-/*import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { interval } from 'rxjs';
-import { FireBaseService } from './firebase.service';
 
-
-//service which stores data about watchlist items
-
-@Injectable({
-  providedIn: 'root'
-})
-export class WatchlistdataService {
-
-  constructor(private userinfo: FireBaseService, private http: HttpClient) {
-
-
-  }
-  likedmovies: any = [];
-  watchlistarray: any = [];
-  suggestiondata: any = "hello world";
-  public numbers = interval(1000);
-   sec:number=0;
-   min:number=0;
-   hrs:number=0;
-   a:number;
-   routing:boolean=true;
-      print=this.numbers.subscribe(val=>{
-    ++this.sec;
-    if (this.sec == 60) {
-      this.sec = 0;
-      ++this.min;
-    }
-    if (this.min == 60) {
-      this.min = 0;
-      ++this.hrs
-    }
-
-  })
-
-  loadliked() {
-    this.http.get('https://team4-506c8.firebaseio.com/testuser/' + this.userinfo.user + '/liked.json').subscribe(result => {
-      this.likedmovies = result || [];
-      console.log("array earlier ", this.likedmovies, " of ", this.userinfo.user);
-    })
-  }
-
-
-  likedfunction(data, state) {
-
-    this.http.get('https://team4-506c8.firebaseio.com/testuser/' + this.userinfo.user + '/liked.json').subscribe(result => {
-
-      this.likedmovies = result || [];
-      console.log("array earlier ", this.likedmovies);
-
-
-
-
-
-      let flag: any = false;
-      if (state) {
-        this.likedmovies.map(function (value, index, arr) {
-          if (value.id == data.id) { flag = true; }
-        })
-        if (flag == false) {
-          this.likedmovies.push(data);
-        }
-      }
-
-    else if(state == false){
-    
-      this.a=this.likedmovies.findIndex((value)=>{
-        return value.id == data.id;
-      })
-
-      if(this.likedmovies.length == this.a+1){this.likedmovies.pop();} 
-
-      else if(this.likedmovies.length >this.a){this.likedmovies.splice(this.a,1)}
-     
-       
-      
-    }
-
-    this.http.put('https://team4-506c8.firebaseio.com/testuser/' + this.userinfo.user + '/liked.json', this.likedmovies).subscribe(res => {
-        this.likedmovies = res; console.log("array later ", res);
-
-      })
-
-    })
-  }
-      
-
-        
-       
-        
-        
-
-      
-    
-  
-}*/

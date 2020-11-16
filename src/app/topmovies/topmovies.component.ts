@@ -31,10 +31,11 @@ export class TopmoviesComponent implements OnInit {
 
       setTimeout(()=>{
         this.watchlist.routing=false;
-       
+        this.preservelike();
+        this.preservewatchlist();
         },1000);
 
-        this.preservelike()
+        
     });
   }
  
@@ -43,13 +44,10 @@ export class TopmoviesComponent implements OnInit {
     
   }
 
-  mywatchlist(item){
-    console.log(item);
-    this.watchlist. watchlistarray.push(item)
-  }
   loadcommentpage(id){
     this.router.navigate(['/commentpage',id]);
   }
+
   likedmovie(data,liked){
       
     this.watchlist.likedfunction(data,liked);
@@ -68,14 +66,40 @@ export class TopmoviesComponent implements OnInit {
       })
 
       this.movieTopRated.map((value)=>{
-        this.movieTopRated.likedmovies.map((values)=>{
+        this.watchlist.likedmovies.map((values)=>{
            if(value.id == values.id){
              this.movieTopRated[(this.movieTopRated.indexOf(value))].video = true;//if liked movie in liked service and pulled movie matches it gets liked
              
            }
        })
      })
-
   }  
+
+  preservewatchlist(){
+    this.moviePopular.map((value)=>{
+      this.watchlist.watchlistarray.map((values)=>{
+         if(value.id == values.id){
+           this.moviePopular[(this.moviePopular.indexOf(value))].adult = true;//if liked movie in liked service and pulled movie matches it gets liked
+           
+         }
+     })
+   })
+
+   this.movieTopRated.map((value)=>{
+     this.watchlist.watchlistarray.map((values)=>{
+        if(value.id == values.id){
+          this.movieTopRated[(this.movieTopRated.indexOf(value))].adult = true;//if liked movie in liked service and pulled movie matches it gets liked
+          
+        }
+    })
+  })
+    
+
+  }
+
+
+  pushdataintowatchlist(item,state){
+    this.watchlist.watchlistcontrol(item,state);
+  }
 
 }
