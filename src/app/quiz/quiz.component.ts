@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ScoreService } from './score.service';
 import { QuizapiService } from './../quizapi.service';
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, ɵConsole, } from '@angular/core';
 import { WatchlistdataService } from '../watchlistdata.service';
 
 
@@ -24,7 +24,10 @@ export class QuizComponent implements OnInit {
   selectedOption:any;
   public quizset:any=[];
   Quizlength:number;
- 
+  marking:any=[
+                [false,true,false,false],[false,true,false,false],[false,true,false,false],[false,true,false,false],[false,true,false,false],
+                [false,true,false,false],[false,true,false,false],[false,true,false,false],[false,true,false,false],[false,true,false,false]
+              ]
 
 
   ngOnInit(): void {
@@ -51,12 +54,15 @@ export class QuizComponent implements OnInit {
       })
       this.quizset=this.quiz.slice(0,10);
 
+      for(let i=0;i<10;i++){
+        this.quizset[i].difficulty=[false,false,false,false];
+      }
 
 
 
     });
 
-
+   
 
 
 
@@ -107,11 +113,17 @@ export class QuizComponent implements OnInit {
     //console.log(this.score);
     this.scoreservice.updateScore(this.score);
     this.route.navigate(['/result']);
+  }
 
-
-
-
-  
+  option(no,values){
+    let j=0;
+    this.quizset.map((value)=>{
+      if(this.quizset[j].Q_id == no){
+        this.quizset[j].difficulty=[false,false,false,false];
+        this.quizset[j].difficulty[values]=true;
+      }
+      j++;
+    })
   }
   
 }
