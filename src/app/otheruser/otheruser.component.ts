@@ -17,11 +17,14 @@ export class OtheruserComponent implements OnInit {
   fullusername: any[];
   activities: Object;
   Name = this.userinfo.user
+  totalmoviereviewed: number;
   
   
   constructor(private userinfo : FireBaseService, private router : Router, private http : HttpClient ) { }
 
   ngOnInit(): void {
+    this.userinfo.totalreview( this.visitedusername ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
+
     this.userinfo.grabAllUser().subscribe(data=>{this.allusername=data[0]; this.fullusername=data[1]; console.log(data[0],data[1])})
 
     this.userinfo.visiteduserreviews(this.visitedusername).subscribe(data => this.activities = data) // loads all review 

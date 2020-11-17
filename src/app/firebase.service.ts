@@ -2,6 +2,7 @@
 //will have code for working with DB (firebase)
 
 import { HttpClient } from '@angular/common/http';
+import { ReturnStatement } from '@angular/compiler';
 import { Injectable } from "@angular/core";
 import { filter, map } from "rxjs/operators";
 
@@ -61,6 +62,9 @@ export class FireBaseService {
                 }),
 )}
 
+totalreview(person){
+   return this.http.get('https://team4-506c8.firebaseio.com/testuser/'+person+'/activities/.json')
+}
 
     //add a review to db
     addreview(movieName, review , stars,user=this.user)
