@@ -27,6 +27,7 @@ watchlistdata:any;
   alllikes
   likedlistdata: any;
   mybio 
+  totalmoviereviewed
 
   constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
   
@@ -43,6 +44,8 @@ watchlistdata:any;
   
 
   ngOnInit(): void {
+
+    this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
 
     this.loadBio()
 
@@ -105,7 +108,10 @@ watchlistdata:any;
 
     // console.log("the credit of user", this.userinfo.user)
 
-    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=> this.refresh())
+    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=>{ this.refresh()
+      this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
+    
+    })
 
 
 
@@ -123,11 +129,15 @@ watchlistdata:any;
   //deletecomment
  delete (key, username,review,movie){
   this.http.delete('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json').subscribe(data=>
-  { this.userinfo.myreviews().subscribe(data => this.activities = data)})
+  { this.userinfo.myreviews().subscribe(data => this.activities = data
+    
+    )})
 
   //delete from all comment
   this.http.delete('https://team4-506c8.firebaseio.com/allreviews/'+movie+'/'+this.userinfo.user+'/.json').subscribe(data=>
-  { })
+  {
+    this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
+   })
   
  }
 
