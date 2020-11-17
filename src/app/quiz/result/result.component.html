@@ -1,27 +1,46 @@
+<div
+  class="container"
+  style="background-color: rgb(28, 204, 57); margin-top: 50px"
+>
+  <h1 style="color: white; text-align: center; padding-top: 30px">
+    CONGRATULATION
+  </h1>
+  <div class="congrats row">
+    <img
+      class="col-5"
+      style="height: 350px; margin-bottom: 50px"
+      src="https://cdn2.iconfinder.com/data/icons/award-and-reward/128/Golden-badges-star-award-winner-512.png"
+    />
 
-
-<div class="container" style=" background-color: rgb(28, 204, 57); margin-top: 50px;">
-    
-        <h1 style="color: white;text-align: center; padding-top:30px ;">CONGRATULATION</h1>
-        <div class="congrats row">
-            <img  class="col-5" style="height: 350px;margin-bottom: 50px;" src="https://cdn2.iconfinder.com/data/icons/award-and-reward/128/Golden-badges-star-award-winner-512.png">
-          
-            <div class="col-7">
-                <div class="row justify-content-around">
-                    <span class="badge badge-secondary col-4" style="margin-top: 100px;"><h3>Your Score:</h3></span>
-                    <span class="badge badge-primary col-2" style=margin-top:100px;><h3>{{UrScore}}</h3></span>
-    
-
-                </div>
-                <button class="btn btn-warning" style="margin-top: 170px; margin-left: 100px;" routerLink="">Return to Home Page</button>
-                <button class="btn btn-warning" style="margin-top:170px; margin-left:100px;" routerLink="/quiz">Try More</button>
-               
-            </div>
-
-        </div>
-
-
-    
-    
+    <div class="col-7">
+      <div class="row justify-content-around">
+        <span class="badge badge-secondary col-4" style="margin-top: 100px"
+          ><h3>Your Score:</h3></span
+        >
+        <span class="badge badge-primary col-2" style="margin-top: 100px"
+          ><h3>{{ UrScore }}</h3></span
+        >
+      </div>
+      <div *ngIf="isCongo === true" class="py-5 text-white h2 text-center">
+        Well played!!!
+      </div>
+      <div *ngIf="isCongo === false" class="py-5 text-white h2 text-center">
+        Better luck next time!!!
+      </div>
+      <button
+        class="btn btn-warning"
+        style="margin-top: 170px; margin-left: 100px"
+        routerLink=""
+      >
+        Return to Home Page
+      </button>
+      <button
+        class="btn btn-warning"
+        style="margin-top: 170px; margin-left: 100px"
+        routerLink="/quiz"
+      >
+        Try More
+      </button>
+    </div>
+  </div>
 </div>
-
