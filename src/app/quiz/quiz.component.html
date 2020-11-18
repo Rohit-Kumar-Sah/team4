@@ -1,22 +1,48 @@
-
 <div class="container">
-<div class="card"  *ngFor="let item of quizset; let j=index;let value of marking">
+  <div class="card" *ngFor="let item of quizset; let j = index">
     <div class="card-body">
-      <span class="card-title h5 px-3 py-2 " style="background-color: rgb(58, 58, 70);color:rgb(246, 252, 241);box-sizing: border-box;">Question {{j+1}} </span>
-      
+      <span
+        class="card-title h5 px-3 py-2"
+        style="
+          background-color: rgb(58, 58, 70);
+          color: rgb(246, 252, 241);
+          box-sizing: border-box;
+        "
+        >Question {{ j + 1 }}
+      </span>
+
       <p class="card-text p mt-2 h5" [innerHTML]="item.question"></p>
-       <ul class="list-group" >
-       <li     class="list-group-item list-group-item-action list-group-item-secondary" *ngFor="let items of item.optionsArray; let i =index; ">
-        <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-          <label class="btn btn-secondary " [style.background-color]="item.difficulty[i]?'red':'green'" (click)="option(item.Q_id,i)">
-            <input type="radio" name="options" id="option1" autocomplete="off" (click)="Answer(item.Q_id,items)"  ><span >{{items}} </span>
-          </label>
-          </div> 
-       </li>
-      </ul> 
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-action list-group-item-secondary"
+          *ngFor="let items of item.optionsArray; let i = index"
+        >
+          <div *ngIf="isSelected[j][i]">
+            <button
+              class="btn btn-success w-100"
+              (click)="Answer(item.Q_id, items, i, j)"
+            >
+              {{ items }}
+            </button>
+          </div>
+          <div *ngIf="!isSelected[j][i]">
+            <button
+              class="btn btn-warning w-100"
+              (click)="Answer(item.Q_id, items, i, j)"
+            >
+              {{ items }}
+            </button>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
-  <button class="btn btn-primary px-5 py-2  "(click)="check()" style="margin-left: 70%;margin-top: 30px;;margin-bottom: 50px;" ><h6>Submit</h6></button>
-  </div> 
-  <!-- <pre>{{quiz|json}}</pre>  -->
-  
+  <button
+    class="btn btn-primary px-5 py-2"
+    (click)="check()"
+    style="margin-left: 70%; margin-top: 30px; margin-bottom: 50px"
+  >
+    <h6>Submit</h6>
+  </button>
+</div>
+<!-- <pre>{{ quiz | json }}</pre> -->
