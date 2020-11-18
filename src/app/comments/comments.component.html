@@ -28,12 +28,16 @@
 <div>
     
     <div class="card w-75 container bg-info mt-1" *ngFor="let item of allcomments | keyvalue">
-        <div class="card-body"   >
-          <h5 class="card-title">{{item.value.commentedBy.slice(0, item.value.commentedBy.indexOf('&'))}}</h5>
+        <div class="card-body">
+          
+            <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png"
+                class="card-img dp" alt="...">
+       
+          <a class="card-title h5 ml-3 text-weight-bold text-dark" (click)="grabotheruser(item.value.commentedBy,item.value.commentedBy.slice(0, item.value.commentedBy.indexOf('&')))">{{item.value.commentedBy.slice(0, item.value.commentedBy.indexOf('&')) | uppercase}}</a>
           <p class="card-text">{{item.value.comment}}</p>
           <p class="card-text">a minute ago</p>
           <hr>
-          <button (click)="deletecomment(item.key)">delete </button>
+          <button class="btn btn-primary" (click)="deletecomment(item.key)">delete </button>
         </div>
       </div>
 </div>
