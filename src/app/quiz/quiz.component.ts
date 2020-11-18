@@ -62,7 +62,7 @@ export class QuizComponent implements OnInit {
 
     console.log(this.isSelected);
   }
-
+  //changes for color changing
   Answer(Q_id, choice, i, j) {
     this.isSelected[j][0] = false;
     this.isSelected[j][1] = false;
