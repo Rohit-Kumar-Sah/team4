@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FireBaseService } from '../firebase.service';
 import { Location } from '@angular/common'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otherusercomments',
@@ -20,7 +21,7 @@ export class OtherusercommentsComponent implements OnInit {
   submitComment
   allcomments
 
-  constructor(private post: FireBaseService, private http: HttpClient, private fb: FormBuilder, private location : Location) { }
+  constructor( private userinfo : FireBaseService, private router : Router , private post: FireBaseService, private http: HttpClient, private fb: FormBuilder, private location : Location) { }
 
   ngOnInit(): void {
     this.submitComment = this.fb.group(
@@ -56,5 +57,19 @@ export class OtherusercommentsComponent implements OnInit {
     this.http.delete('https://team4-506c8.firebaseio.com/testuser/' + this.post.theotherusername + '/activities/' + this.post.commentId + '/comments/'+key+'.json').subscribe(data => {  this.showComment() })
 
   }
+
+  grabotheruser(username,user)
+  {
+    if(user != this.userinfo.username){
+    this.userinfo.theotheruser = user  
+    this.userinfo.theotherusername= username
+    this.router.navigate([`/otheruser/${user}`])
+
+    }
+    else
+    {
+      this.router.navigate([`/mywall`])
+    }
+}
 
 }
