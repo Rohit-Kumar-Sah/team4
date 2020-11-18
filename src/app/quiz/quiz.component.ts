@@ -52,7 +52,7 @@ export class QuizComponent implements OnInit {
       this.fillArray();
     });
   }
-
+  //added
   fillArray() {
     this.isSelected = new Array();
 
