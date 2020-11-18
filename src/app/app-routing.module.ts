@@ -15,7 +15,9 @@ import { NewreleaseslodhiComponent } from './newreleaseslodhi/newreleaseslodhi.c
 import { WatchlistpageComponent } from './watchlistpage/watchlistpage.component';
 import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
+import {MoviecriticComponent} from './moviecritic/moviecritic.component';
 import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
+
 
 
 const routes: Routes = [
@@ -34,8 +36,12 @@ const routes: Routes = [
   {path:'quiz',component:QuizComponent},
   {path:'otheruser/:user',component : OtheruserComponent},
   {path:'otherusercomments',component : OtherusercommentsComponent},
+
+  {path:'moviecritic',component:MoviecriticComponent},
+
   {path:'likedmovies',component:LikedmoviesComponent},
 ];
+
 
 
 

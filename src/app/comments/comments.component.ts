@@ -53,6 +53,13 @@ showComment(){
   this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.post.user+'/activities/'+this.post.commentId+'/comments.json').subscribe(data=> {this.allcomments=data ; console.log(data)})
 
 }
-  
 
+deletecomment(key)
+{
+  // https://team4-506c8.firebaseio.com/testuser/rohit&r@gmail/activities/-MLh240EbkImxg7iKLj4/comments/-MLkUxEEdbAD03aCIT8u
+
+  console.log('https://team4-506c8.firebaseio.com/testuser/'+this.post.user+'/activities/'+this.post.commentId+'/comments/'+key+'.json')
+  this.http.delete('https://team4-506c8.firebaseio.com/testuser/'+this.post.user+'/activities/'+this.post.commentId+'/comments/'+key+'.json').subscribe(data=> this.showComment())
+
+}
 }

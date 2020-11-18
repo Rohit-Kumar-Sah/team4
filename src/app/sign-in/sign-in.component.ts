@@ -37,7 +37,9 @@ invalid=false
     this.userinfo.signinUser(formdata.controls.name.value, formdata.controls.password.value).subscribe(data =>{
        this.success= data; 
        if(this.success)
-      {   this.watchlist.loadliked();
+      {  
+        this.watchlist.loadliked();//we are calling backend once the credentials are true to load liked movie and watchlist dataof particular user;
+        this.watchlist.loadwatchlist();
         this.router.navigate(['/'])
        }
       else{

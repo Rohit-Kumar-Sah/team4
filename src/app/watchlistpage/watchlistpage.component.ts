@@ -18,10 +18,7 @@ export class WatchlistpageComponent implements OnInit {
   }
 
   deletefromwatchlist(data:any){
-   let index=this.watchlistitems.watchlistarray.indexOf(data);
-    if (index > -1) {
-      this.watchlistitems.watchlistarray.splice(index, 1);
-    }
+   this.watchlistitems.watchlistcontrol(data,false);
   }
 
   pintotopofwatchlist(data:any){
@@ -30,10 +27,6 @@ export class WatchlistpageComponent implements OnInit {
       this.watchlistitems.watchlistarray.splice(index, 1);
     }
     this.watchlistitems.watchlistarray.unshift(data);
-  
-    let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
-    this.watchlistitems.watchlistarray=uniqueChars;
-    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
   }
 
 }

@@ -1,11 +1,23 @@
-.container-fluid, .nav, .card{
-    background-color: black;
+.container-fluid{
+    background-color: #CAFAFE;
+}
+.nav{
+    background-color: #55BCC9;
+}
+h2{
+    color: #FC4445;
+    margin-left: 17px;
+}
+.d-flex{
+    padding-top: 10px;
+    justify-content: space-around
 }
 .card{
-    padding:0 5px 0 5px;
+    
+    background-color: #3FEEE6;
 }
 .card-body{
-    background-color: brown;
+    background-color: #3FEEE6;
 }
 .likecomment{
     padding-bottom: 5px;;
