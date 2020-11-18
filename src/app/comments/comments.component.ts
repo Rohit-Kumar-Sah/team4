@@ -21,7 +21,8 @@ export class CommentsComponent implements OnInit {
   allcomments
   //  = {fdfd:{comment: "wowwa", commentedBy :"raa"}}
 
-  constructor(private post : FireBaseService , private http : HttpClient, private fb : FormBuilder,private location : Location ) { }
+  constructor(private userinfo : FireBaseService,
+    private post : FireBaseService , private http : HttpClient, private fb : FormBuilder,private location : Location, private router : Router ) { }
   
   ngOnInit(): void {
     this.submitComment = this.fb.group(
@@ -61,5 +62,17 @@ deletecomment(key)
   console.log('https://team4-506c8.firebaseio.com/testuser/'+this.post.user+'/activities/'+this.post.commentId+'/comments/'+key+'.json')
   this.http.delete('https://team4-506c8.firebaseio.com/testuser/'+this.post.user+'/activities/'+this.post.commentId+'/comments/'+key+'.json').subscribe(data=> this.showComment())
 
+}
+grabotheruser(otheruser,otherusername){
+  if(otherusername== this.author){
+    this.router.navigate([`/mywall`])
+
+  }
+  else{
+    this.userinfo.theotheruser =   otherusername
+    this.userinfo.theotherusername= otheruser
+    this.router.navigate([`/otheruser/${otherusername}`])
+
+  }
 }
 }
