@@ -24,6 +24,7 @@ const routes: Routes = [
   {path:'',component: HomepageComponent},
   {path :'sign-up' , component : SignUpComponent},
   {path:'topmovies/:id',component:MoviedetailsComponent},
+  {path:'newreleases/:id',component:MoviedetailsComponent},
   {path:'topmovies',component:TopmoviesComponent},
   {path:'commentpage/:id',component:Commentpage872957Component},
   {path:'carrers',component:CarrerspageComponent},

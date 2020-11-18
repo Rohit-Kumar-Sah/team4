@@ -110,4 +110,8 @@ export class NewreleaseslodhiComponent implements OnInit {
      })
    }
 
+   console(id){
+     this.router.navigate(['newreleases',id]);
+   }
+
 }
