@@ -5,3 +5,13 @@
     height: 20px;
     background-color:black;
 }
+
+.ion{
+    font-weight: 649;
+    font-size: large;
+}
+
+.dp{
+border: 3px solid #213f85;
+    border-radius: 50%;
+}

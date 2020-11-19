@@ -78,7 +78,9 @@
       <div class="card text-white bg-success mb-3">
         <div class="card-header">
         
-           <a (click)="grabOtherUser(commentsInfo.key,commentsInfo.key.slice(0,commentsInfo.key.indexOf('&')) )"> 
+          <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png"
+          class="card-img dp mr-3" alt="...">
+           <a class="text-dark  text-weight-bold" (click)="grabOtherUser(commentsInfo.key,commentsInfo.key.slice(0,commentsInfo.key.indexOf('&')) )"> 
               {{commentsInfo.key.slice(0,commentsInfo.key.indexOf('&')) }}  </a>  </div>
         <div class="card-body">
           <h5 class="card-title">{{commentsInfo.value.review}}</h5>

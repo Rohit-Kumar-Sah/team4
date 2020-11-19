@@ -96,7 +96,7 @@
 
     <div id="carouselExampleIndicators" class="carousel slide text-center " data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active " data-interval="4000">
+        <div class="carousel-item active " data-interval="400">
           <img src=" https://i.pinimg.com/originals/d3/ac/b9/d3acb9142153ef98200d0b66601ff11e.jpg"
             width="70%" height="300px" alt="..." style="object-fit:fill;">
           
@@ -143,7 +143,7 @@
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
                 <button class="btn btn-block text-primary watchlistbutton" (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)">
-                  <div *ngIf="data.adult" style="color:red;font-style: italic;">Added</div><div *ngIf="!data.adult" > watchlist+</div></button>
+                  <div *ngIf="data.adult" style="color:red;font-style: italic;"><b>Added</b></div><div *ngIf="!data.adult" > watchlist+</div></button>
               </div>
               
                
@@ -167,8 +167,8 @@
                   <b>{{data.original_title}}</b>
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
-                <button class="btn btn-block text-primary watchlistbutton"  (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)" >
-                  <div *ngIf="data.adult" style="color:red;font-style: italic;">Added</div><div *ngIf="!data.adult"> watchlist+ </div></button>
+                <button class="btn btn-block text-primary watchlistbutton"  (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)">
+                  <div *ngIf="data.adult" style="color:red;font-style: italic;"><b>Added</b></div><div *ngIf="!data.adult"> watchlist+ </div></button>
               </div>
              </div>
           </div>
