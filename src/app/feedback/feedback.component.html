@@ -12,34 +12,42 @@
 		<div class="row">
 			<div class="col-md-4 login-sec">
 				<h2 class="text-center">CONTACT</h2>
-				<form class="login-form" [formGroup]="inquiryForm" (ngSubmit)="onSubmit()">
+				<form class="login-form" #form="ngForm" >
 					<div class="form-group">
 						<label class="text-uppercase">Full Name *</label>
-						<input type="text" class="form-control" formControlName="full_name">
-					</div>
-					<div class="form-group">
-						<label class="text-uppercase">Email *</label>
-						<input type="text" class="form-control" formControlName="email">
-					</div>
+						<input type="text" class="form-control" required name="name" ngModel pattern="[A-Z a-z]{3,20}" >
+                    </div>
+                    
+					<div class="form-group "> 
+                        <label for="inputEmail4">Email</label>
+                        <div class="input-group">
+                         <div class="input-group-prepend">
+                          <span class="input-group-text text-danger" id="inputGroupPrepend" >@</span>
+                         </div>
+                         <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email" required ngModel aria-describedby="inputGroupPrepend" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                       </div>
+                        
+                      </div>
+
 					<div class="form-group">
 						<label class="text-uppercase">Phone Number *</label>
-						<input type="number" class="form-control" formControlName="phone_number">
+						<input type="text" class="form-control" required name="number" ngModel  pattern=[0-9]{6,14}>
 					</div>
 
 					<div class="form-group">
 						<label class="text-uppercase">TYPE OF REQUEST? *</label>
-						<select class="form-control" formControlName="purpose">
-							<option>SUGGESTION</option>
-							<option>COMPLAINT</option>
-							<option>OTHERS</option>
+						<select class="form-control" required name="request" ngModel>
+							<option ngModel>SUGGESTION</option>
+							<option ngModel>COMPLAINT</option>
+							<option ngModel>OTHERS</option>
 						</select>
 					</div>
 
 					<div class="form-group">
 						<label class="text-uppercase">Message</label>
-						<textarea class="form-control" formControlName="message" rows="3"></textarea>
+						<textarea class="form-control"  rows="3" required name="body" ngModel></textarea>
 					</div>
-					<button [disabled]="!inquiryForm.valid" type="submit" class="btn btn-login float-right">Submit</button>
+					<button  type="submit" [disabled]="!form.valid" class="btn btn-login float-right">Submit</button>
 				</form>
 			</div>
 			<div class="col-md-8 banner-sec">
