@@ -16,6 +16,7 @@ export class TopmoviesComponent implements OnInit {
   public rated: any;
   public isLoggedin: boolean;
   public moviePopular: any;
+  public Switch: boolean;
   constructor(
     private _movieapi: MovieapiService,
     private watchlist: WatchlistdataService,
@@ -99,5 +100,11 @@ export class TopmoviesComponent implements OnInit {
       item.adult = false;
       alert('Please sign in first');
     }
+  }
+  switchPtoT() {
+    this.Switch = true;
+  }
+  switchTtoP() {
+    this.Switch = false;
   }
 }
