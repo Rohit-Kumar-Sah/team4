@@ -162,5 +162,11 @@ grabAllUser()
         
     )
 }
+isLoggedin(){
+    if(this.username)
+    return true;
+    else
+    return false;
+}
 
 }
