@@ -32,6 +32,7 @@ invalid=false
       name: ['', [Validators.required, Validators.pattern('^[A-Za-z_]+$'), Validators.minLength(2)]],
       password: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9]+$'), Validators.minLength(5)]]
     })
+    this.watchlist.routing=false;
   }
 
   signin(formdata) {

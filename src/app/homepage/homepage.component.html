@@ -82,11 +82,14 @@
       </li>  
 
       <li *ngIf="loggedin">
-        <b><i>{{user}}</i></b>
+        <b><i>{{user | uppercase}}</i></b>
+        
         <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png" width="70px" height="40px" 
-                            class="ml-2"     alt="..." style="border-radius: 50%;border: 1px solid red; object-fit: fill;">
-      </li>    
-
+        class="ml-2"     alt="..." style="border-radius: 50%;border: 1px solid red; object-fit: fill;">
+      </li> 
+      <li *ngIf="loggedin">
+               <a class="nav-link text-dark " (click)="logout()" >Logout <i class="fas fa-sign-in-alt" ></i> </a>
+    </li> 
     </ul>
     
   </nav>
