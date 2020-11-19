@@ -220,6 +220,15 @@ export class HomepageComponent implements OnInit {
       },1000)
     }
 
+    logout(){
+      this.userinfo.user=null;
+      this.userinfo.username=null;
+      this.userinfo.theotheruser=null;
+      this.userinfo.theotherusername=null;
+      this.router.navigate(["/sign-in"]);
+
+    }
+
     
 
 }//end of component class
