@@ -32,7 +32,7 @@ const routes: Routes = [
   {path:'commentpage/:id',component:Commentpage872957Component, canActivate:[AuthGuard]},
   {path:'carrers',component:CarrerspageComponent, canActivate:[AuthGuard]},
   {path:'sign-in' , component : SignInComponent},
-  {path:'mywall' , component : MyWallComponent, canActivate:[AuthGuard]},
+  {path:'mywall' , component : MyWallComponent},
   {path:'comments' , component : CommentsComponent, canActivate:[AuthGuard]},
   {path:'newreleases',component:NewreleaseslodhiComponent, canActivate:[AuthGuard]},
   {path:'watchlist',component:WatchlistpageComponent,  canActivate:[AuthGuard]},
