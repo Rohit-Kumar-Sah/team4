@@ -71,14 +71,39 @@
                 Details
               </button>
               <button
-                class="btn text-primary watchlistbutton"
+                class="mx-5 text-primary watchlistbutton"
+                style="border: none; background-color: #0062cc; padding: 0"
                 (click)="item.adult = !item.adult"
                 (click)="pushdataintowatchlist(item, item.adult)"
               >
-                <div *ngIf="item.adult" style="color: red; font-style: italic">
+                <span
+                  *ngIf="item.adult"
+                  style="
+                    color: white;
+                    font-style: italic;
+                    background-color: green;
+                    border: none;
+                    margin: 0;
+                    padding: 10px;
+
+                    display: inline-block;
+                  "
+                >
                   Added
-                </div>
-                <div *ngIf="!item.adult">watchlist+</div>
+                </span>
+                <span
+                  *ngIf="!item.adult"
+                  style="
+                    border: none;
+                    background-color: #0062cc;
+                    margin: 0;
+                    padding: 10px;
+
+                    color: white;
+                    display: inline-block;
+                  "
+                  >watchlist+
+                </span>
               </button>
             </div>
           </div>
@@ -152,14 +177,40 @@
                 Details
               </button>
               <button
-                class="btn text-primary watchlistbutton"
+                class="text-primary watchlistbutton"
+                style="border: none; background-color: #0062cc; padding: 0"
                 (click)="item.adult = !item.adult"
                 (click)="pushdataintowatchlist(item, item.adult)"
               >
-                <div *ngIf="item.adult" style="color: red; font-style: italic">
+                <span
+                  *ngIf="item.adult"
+                  style="
+                    color: white;
+                    font-style: italic;
+                    background-color: green;
+                    border: none;
+                    margin: 0;
+                    padding: 10px;
+
+                    display: inline-block;
+                  "
+                >
                   Added
-                </div>
-                <div *ngIf="!item.adult">watchlist+</div>
+                </span>
+                <span
+                  *ngIf="!item.adult"
+                  style="
+                    border: none;
+                    background-color: #0062cc;
+                    margin: 0;
+                    padding: 10px;
+
+                    color: white;
+                    display: inline-block;
+                  "
+                >
+                  watchlist+</span
+                >
               </button>
             </div>
           </div>
@@ -168,6 +219,7 @@
     </div>
   </div>
 </div>
+<!-- <pre>{{ moviePopular | json }}</pre> -->
 
 <!--<style>
           img{
