@@ -31,6 +31,7 @@ export class FireBaseService {
         this.http.post('https://team4-506c8.firebaseio.com/testuser/' + username + '.json', { password: password })
         .subscribe(data=> {alert("Account created. Sign-in to continue")
         this.http.put('https://team4-506c8.firebaseio.com/testuser/'+ username +'/info.json',{bio:"my bio is here"}).subscribe()
+        this.http.put('https://team4-506c8.firebaseio.com/testuser/'+ username +'/notifications.json',["all notifications."]).subscribe()
     }
         );
 
