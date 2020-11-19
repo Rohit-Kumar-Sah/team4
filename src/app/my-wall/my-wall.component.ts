@@ -78,10 +78,19 @@ watchlistdata:any;
       // this.saveLikedMovies()
   
   
-      
+      this.loadnotifications()
 
   }
+notifications
 
+  loadnotifications(){
+    this.http.get('https://team4-506c8.firebaseio.com/testuser/'+ this.userinfo.user +'/notifications.json').subscribe(data=>{
+this.notifications=data;
+this.notifications.shift()
+this.notifications=this.notifications.reverse()
+console.log("notificains",this.notifications)
+    })
+  }
 
 
   saveLikedMovies()
