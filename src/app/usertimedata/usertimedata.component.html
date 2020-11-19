@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="30" height="30" alt="">
+      <a class="navbar-brand text-light ml-3" >
+        Movie King
+      </a>
+      <h3 style="margin-left:24%;color:yellow" class="pr-5 mr-5">RECENT LOGIN DETAILS</h3>
+      <button class="btn btn-primary ml-5" (click)="remainder()">REMAINDER <i class="fas fa-cog"></i></button>
+    <button class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0" type="submit" routerLink="/">Home <i class="fas fa-home"></i></button>
+  </nav>
+ <div  [style.display]="show?'block':'none'">
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">DATE</th>
+        <th scope="col">DAY</th>
+        <th scope="col">MONTH</th>
+        <th scope="col">YEAR</th>
+        <th scope="col">HOURS</th>
+        <th scope="col">MINS</th>
+        <th scope="col">SECS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of time;let j=index;"  [style.background-color]="!j?'red':'green'">
+        <th >{{j+1}}</th>
+        <th scope="row">{{data.date}}</th>
+        <th scope="row">{{data.day}}</th>
+        <td>{{data.month}}</td>
+        <td>{{data.year}}</td>
+        <td>{{data.hrs}}</td>
+        <td>{{data.mins}}</td>
+        <td>{{data.secs}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>   
+
+<div  [style.display]="!show?'block':'none'"
+  style="background-image:url('https://thumbs.dreamstime.com/z/wood-wall-brick-floor-your-home-background-wallpaper-58960586.jpg');height:500px;text-align: center;"><br><br>
+     <h2> please choose your preference</h2><br><br>
+    <form #form="ngForm" >
+      <input type="radio" name="option" id="yes" ngModel value="true" required #option1="ngModel"><label for="yes"><h5>YES,I NEED THESE FEATURE</h5></label>
+      <select [disabled]="((form.value?.option) == 'false')" style="width:100px ;" ngModel name="time" required #options="ngModel">
+          <option ngModel  value="120">2mins</option>
+          <option ngModel  value="240">4mins</option>
+          <option ngModel  value="1800">1/2 hour</option>
+          <option ngModel  value="3600"> 1 hour</option>
+          <option ngModel  value="7200">2 hour</option>
+      </select><br><br>
+
+
+      <input type="radio" name="option" ID="NO" ngModel value="false" required #option1="ngModel"><label for="NO"><h5>NO,I AM NOT INTERESTED!!</h5></label>
+      <button class="btn btn-block btn-info  pl-2 pr-2 text-black" 
+        (click)="thankyou(form)" [disabled]="(option1.hasError('required') )"> 
+        <b>SUBMIT</b>
+      </button>
+      <br><br>
+   </form>
+    <div [style.visibility]="tkstatus?'visible':'hidden'"><h2 style="width: fit-content;background-color: white;margin-left:32%">YOUR SETTINGS IS UPDATED <i class="fas fa-grin-stars"style="color:orange"></i></h2></div>
+</div>    

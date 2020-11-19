@@ -32,6 +32,7 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { MoviecriticComponent } from './moviecritic/moviecritic.component';
 
 import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
+import { UsertimedataComponent } from './usertimedata/usertimedata.component';
 
 
 
@@ -62,7 +63,7 @@ import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
 
     MoviecriticComponent, 
 
-    LikedmoviesComponent, 
+    LikedmoviesComponent, UsertimedataComponent, 
 
 
   ],

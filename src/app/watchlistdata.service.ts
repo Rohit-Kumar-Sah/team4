@@ -8,10 +8,12 @@ import { FireBaseService } from './firebase.service';
 })
 
 export class WatchlistdataService {
-
+  timecontrol:any=[];
   likedmovies: any = [];
   watchlistarray: any = [];                  //liked watchlater movies data storing variables
   suggestiondata: any = "hello world";
+
+  routing:boolean=true;  //reload page status controlling variable
   
   
   constructor(private userinfo: FireBaseService, private http: HttpClient) {
@@ -22,10 +24,14 @@ export class WatchlistdataService {
    sec:number=0;
    min:number=0;  //timer of homepage time setting variables
    hrs:number=0;
+   remaindersec:number=0;
 
-   routing:boolean=true;  //reload page status controlling variable
+   remainderstate:boolean=false;
+   remainderpage:boolean=true;
+   duration:number=120;
 
    print=this.numbers.subscribe(val=>{
+    ++this.remaindersec;
       ++this.sec;
       if(this.sec == 60){
        this.sec=0;
@@ -35,6 +41,10 @@ export class WatchlistdataService {
       this.min=0;
       ++this.hrs
     }
+      if((this.remaindersec%this.duration == 0) && (this.remainderpage) ){
+      this.remainderstate=true;
+    }
+    
   })
   
 

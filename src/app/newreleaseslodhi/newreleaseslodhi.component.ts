@@ -114,4 +114,8 @@ export class NewreleaseslodhiComponent implements OnInit {
      this.router.navigate(['newreleases',id]);
    }
 
+   reloadpage(){
+     this.watchlistitems.routing=true;
+   }
+
 }
