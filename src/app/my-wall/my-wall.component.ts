@@ -78,10 +78,19 @@ watchlistdata:any;
       // this.saveLikedMovies()
   
   
-      
+      this.loadnotifications()
 
   }
+notifications
 
+  loadnotifications(){
+    this.http.get('https://team4-506c8.firebaseio.com/testuser/'+ this.userinfo.user +'/notifications.json').subscribe(data=>{
+this.notifications=data;
+this.notifications.shift()
+this.notifications=this.notifications.reverse()
+console.log("notificains",this.notifications)
+    })
+  }
 
 
   saveLikedMovies()
@@ -109,7 +118,7 @@ watchlistdata:any;
     // console.log("the credit of user", this.userinfo.user)
 
     this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=>{ this.refresh()
-      this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
+      this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length;  this.review.reset(); console.log(this.totalmoviereviewed)})
     
     })
 

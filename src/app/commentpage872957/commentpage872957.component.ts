@@ -112,8 +112,9 @@ me = this.post.user;
       // as soon as comments is posted , a fetch is called for adding the newly made comment available in comments section
       this.post.addreview(this.commentdata.original_title, this.comment_review.controls.myreview.value, this.comment_review.controls.stars.value,this.post.user).subscribe(
         response=>
-        this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>this.CommentsArray = data )
-      )
+        {
+          this.post.getAllCommentsOf(this.commentdata.original_title).subscribe( data=>{this.CommentsArray = data ;  this.comment_review.reset()} )
+         } )
       // 
 
     }

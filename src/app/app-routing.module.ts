@@ -17,6 +17,8 @@ import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 import {MoviecriticComponent} from './moviecritic/moviecritic.component';
 import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
+import { UsertimedataComponent } from './usertimedata/usertimedata.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 
 
@@ -37,10 +39,11 @@ const routes: Routes = [
   {path:'quiz',component:QuizComponent},
   {path:'otheruser/:user',component : OtheruserComponent},
   {path:'otherusercomments',component : OtherusercommentsComponent},
-
   {path:'moviecritic',component:MoviecriticComponent},
-
+  {path:'usertimedata',component:UsertimedataComponent},
   {path:'likedmovies',component:LikedmoviesComponent},
+  {path:'remainderpage',component:UsertimedataComponent},
+  {path:'feedback',component:FeedbackComponent}
 ];
 
 

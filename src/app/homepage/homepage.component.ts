@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FireBaseService } from '../firebase.service';
 import { MovieapiService } from '../movieapi.service';
 import{interval} from 'rxjs';
+import { timestamp } from 'rxjs/operators';
 
 
 @Component({
@@ -22,7 +23,13 @@ export class HomepageComponent implements OnInit {
   likedmoviearray:any="hii";
   public somedata:any;
   loggedin = false;
-  user = ""
+  user = "";
+  timerstatus1:any;
+  times=interval(100);
+  shows=this.times.subscribe( data=>{
+      this.timerstatus1=this.watchlistitems.routing;
+     
+  })
 
   public sec:number=0;
   public min:number=0; //timer variables
@@ -41,9 +48,7 @@ export class HomepageComponent implements OnInit {
       this.dataset1 = this.somedata.results.slice(0,6);
        this.dataset2 = this.somedata.results.slice(6,12); //calls movieapi sevice to get movie data
 
-       setTimeout(()=>{
-        this.watchlistitems.routing=false; //shutdowns reloading page 
-        },1500); 
+       
 
         function shuffle(array) {
           array.sort(() => Math.random() - 0.5);  //shuffling array for questions of movie critics
@@ -58,6 +63,7 @@ export class HomepageComponent implements OnInit {
         setTimeout(() => {
           this.preservelike(); //2s time delay is provided as data from backend related to liked movies is taking some time to load
           this.preservewatchlist();
+          this.watchlistitems.routing=false; //shutdowns reloading page
         },2000);
         
 
@@ -108,7 +114,7 @@ export class HomepageComponent implements OnInit {
       })
     })
   }
-  
+
 
   ngOnInit(): void {
     if (this.userinfo.user) {
@@ -125,9 +131,7 @@ export class HomepageComponent implements OnInit {
 
 
   pushdataintowatchlist(data:any,state:any){
-    console.log(state);
     this.watchlistitems.watchlistcontrol(data,state);
-    //this.watchlistitems.watchlistarray.push(data); //upon clicking add to watch list button corresponding movie data gets exported to services.
   }
     
   loadcommentpage(data: any) {
@@ -172,6 +176,9 @@ export class HomepageComponent implements OnInit {
 
     likedmovie(data,liked){
       this.watchlistitems.likedfunction(data,liked); //upon liking particular movie movie details gets pushed into corresponding service
+      let d=new Date();
+      console.log(d);
+       
     }
 
     i:any=0;
@@ -179,27 +186,34 @@ export class HomepageComponent implements OnInit {
     uservalue:any;
     feedback:any;
 
-    critic(type){
-      if(type == 'next'){
-         if(this.i<20){
-          this.question = this.somedata.results[this.i].title;
-          this.uservalue=0;
-          this.i++;
-         }
-      }  
-      if(type == 'check'){
-        console.log(this.somedata.results[this.i].vote_average*10 - this.uservalue);
-        let s=this.somedata.results[this.i].vote_average*10 - this.uservalue
-        if (s>0){
-          this.feedback="you are too high";
-        }
-      }
-  
+    feedback1(){
+       this.router.navigate(['/feedback'])
     }
 
     quizz(){
       this.router.navigate(['/quiz']); //upon clicking on quizz button it takes to quizzcomponent
       this.reloadpage();
+    }
+  
+
+    newreleases(){
+      this.reloadpage();
+      setTimeout(()=>{
+        this.router.navigate(["newreleases"]);
+      },2000)
+    }
+    topmovies(){
+      this.reloadpage();
+      setTimeout(()=>{
+        this.router.navigate(["topmovies"]);
+      },2000)
+    }
+
+    mywall(){
+      this.reloadpage();
+      setTimeout(()=>{
+        this.router.navigate(["mywall"]);
+      },1000)
     }
 
     
