@@ -16,7 +16,7 @@ export class TopmoviesComponent implements OnInit {
   public rated: any;
   public isLoggedin: boolean;
   public moviePopular: any;
-  public Switch: boolean;
+  public Switch: boolean=true;
   constructor(
     private _movieapi: MovieapiService,
     private watchlist: WatchlistdataService,
