@@ -118,7 +118,7 @@ console.log("notificains",this.notifications)
     // console.log("the credit of user", this.userinfo.user)
 
     this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=>{ this.refresh()
-      this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
+      this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length;  this.review.reset(); console.log(this.totalmoviereviewed)})
     
     })
 

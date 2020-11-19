@@ -33,6 +33,7 @@ import { MoviecriticComponent } from './moviecritic/moviecritic.component';
 
 import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
 import { UsertimedataComponent } from './usertimedata/usertimedata.component';
+import { AuthGuard } from './auth-guard.service';
 
 
 
@@ -76,7 +77,7 @@ import { UsertimedataComponent } from './usertimedata/usertimedata.component';
     FormsModule,
     NgbModule
   ],
-  providers: [WatchlistdataService],
+  providers: [WatchlistdataService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
