@@ -135,7 +135,7 @@
               <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="250px"
                 class="text-center" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
-                <div class="likecomment" style="width: 100%;display: flex;">
+                <div class="likecomment" style="width: 100%;display: flex;" [style.display]="loggedin?'block':'none'">
                   <div style="margin-left:5px ;" (click)="data.video=!data.video"
                     [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i>
                   </div>
@@ -147,8 +147,8 @@
                   <b>{{data.original_title}}</b>
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
-                <button class="btn btn-block text-primary watchlistbutton" (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)">
-                  <div *ngIf="data.adult" style="color:red;font-style: italic;"><b>Added</b></div><div *ngIf="!data.adult" > watchlist+</div></button>
+                <button class="btn btn-block text-primary watchlistbutton" (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)" [style.display]="loggedin?'block':'none'">
+                  <div *ngIf="data.adult" style="color:red;font-style: italic;"><b>Added</b></div><div *ngIf="!data.adult"  > watchlist+</div></button>
               </div>
               
                
@@ -162,8 +162,8 @@
               <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="250px"
                 class="text-center imagesuggestion" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
-                <div class="likecomment" style="width: 100%;display: flex;">
-                  <div style="margin-left:5px ;" (click)="data.video=!data.video"
+                <div class="likecomment" style="width: 100%;display: flex;" [style.display]="loggedin?'block':'none'">
+                  <div style="margin-left:5px ;" (click)="data.video=!data.video" 
                     [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i></div>
                   <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
                       class="far fa-comment"></i></div>
@@ -172,7 +172,7 @@
                   <b>{{data.original_title}}</b>
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
-                <button class="btn btn-block text-primary watchlistbutton"  (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)">
+                <button class="btn btn-block text-primary watchlistbutton"  (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)" [style.display]="loggedin?'block':'none'">
                   <div *ngIf="data.adult" style="color:red;font-style: italic;"><b>Added</b></div><div *ngIf="!data.adult"> watchlist+ </div></button>
               </div>
              </div>

@@ -8,6 +8,7 @@ import {
   NavigationError
 } from '@angular/router';
 
+
 import { WatchlistdataService } from './watchlistdata.service';
 import{interval} from'rxjs';
 

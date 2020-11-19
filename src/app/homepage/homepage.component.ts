@@ -175,10 +175,14 @@ export class HomepageComponent implements OnInit {
    }
 
     likedmovie(data,liked){
+      if(this.userinfo.isLoggedin()){
       this.watchlistitems.likedfunction(data,liked); //upon liking particular movie movie details gets pushed into corresponding service
       let d=new Date();
       console.log(d);
-       
+      }
+      else{
+        console.log("please login");
+      } 
     }
 
     i:any=0;
