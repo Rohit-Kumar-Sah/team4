@@ -34,8 +34,10 @@
 .navPopular,
 .navToprated {
   padding: 15px 10px;
-  background-color: black;
-  color: yellow;
-  border: yellow;
+  background-color: yellow;
+  color: black;
+  border: black;
+  border-width: 3px;
   margin-left: 3px;
+  margin-top: 10px;
 }

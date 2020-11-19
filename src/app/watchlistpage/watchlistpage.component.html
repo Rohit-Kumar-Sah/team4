@@ -1,44 +1,127 @@
-<div style="background-color: black; min-height: 1000px;">
+<div style="background-color: black; min-height: 1000px">
   <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="30" height="30" alt=""><a class="navbar-brand text-light ml-3" >Movie King</a>
-    <h2 style="color:yellow ;margin-left:24% ; margin-top: 2px; border-radius: 5px; vertical-align: middle;"class="text-center">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU"
+      width="30"
+      height="30"
+      alt=""
+    /><a class="navbar-brand text-light ml-3">Movie King</a>
+    <h2
+      style="
+        color: yellow;
+        margin-left: 24%;
+        margin-top: 2px;
+        border-radius: 5px;
+        vertical-align: middle;
+      "
+      class="text-center"
+    >
       MY WATCH LIST
-     <span *ngIf="watchlistdata.length" style="color:red;position: relative;">
-       <i class="fas fa-shopping-bag"></i>
-       <span style="position: absolute;left:5px;top:22px;color: purple;border-radius:50%;background-color: white;width:16px;height:16px;font-size: 15px;padding-left:2px;padding-top:0px;">
-        {{watchlistdata.length}}
-       </span>
-     </span>
+      <span *ngIf="watchlistdata.length" style="color: red; position: relative">
+        <i class="fas fa-shopping-bag"></i>
+        <span
+          style="
+            position: absolute;
+            left: 5px;
+            top: 22px;
+            color: purple;
+            border-radius: 50%;
+            background-color: white;
+            width: 16px;
+            height: 16px;
+            font-size: 15px;
+            padding-left: 2px;
+            padding-top: 0px;
+          "
+        >
+          {{ watchlistdata.length }}
+        </span>
+      </span>
     </h2>
-    <button class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0" type="submit" routerLink="/">Home <i class="fas fa-home"></i></button>
+    <button
+      class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0"
+      type="submit"
+      routerLink="/"
+    >
+      Home <i class="fas fa-home"></i>
+    </button>
   </nav>
- 
-  
-  <div class="watch list d-flex" *ngIf="watchlistdata?.length>0; else elseblock"
-    style=" flex-wrap: wrap; max-width:1000px; margin: auto; background-color: black; justify-content: space-evenly;">
 
-    <div class="wistlistitem" style="width:250px; text-align: center; background-image: url(https://img.freepik.com/free-photo/dark-blue-texture-cement-wall-background_28629-1627.jpg?size=626&ext=jpg&ga=GA1.2.38978375.1604361600); margin:10px"
-      *ngFor="let data of watchlistdata">
-      <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="250px" height="300px;">
-      <div class="details text-left" style=" color:black">
-        <h6 style="color: white;">RATING: <ngb-rating [rate]="data.vote_average" style="color:yellow"></ngb-rating>
+  <div
+    class="watch list d-flex"
+    *ngIf="watchlistdata?.length > 0; else elseblock"
+    style="
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: auto;
+      background-color: black;
+      justify-content: space-evenly;
+    "
+  >
+    <div
+      class="wistlistitem"
+      style="
+        width: 250px;
+        text-align: center;
+        background-image: url(https://img.freepik.com/free-photo/dark-blue-texture-cement-wall-background_28629-1627.jpg?size=626&ext=jpg&ga=GA1.2.38978375.1604361600);
+        margin: 10px;
+      "
+      *ngFor="let data of watchlistdata"
+    >
+      <img
+        src="https://image.tmdb.org/t/p/w500{{ data.poster_path }}"
+        width="250px"
+        height="300px;"
+      />
+      <div class="details text-left" style="color: black">
+        <h6 style="color: white">
+          RATING:
+          <ngb-rating
+            [rate]="data.vote_average"
+            style="color: yellow"
+          ></ngb-rating>
         </h6>
-        <h6 style="min-height: 50px;color: white;">NAME : {{data.original_title}}</h6>
+        <h6 style="min-height: 50px; color: white">
+          NAME : {{ data.original_title }}
+        </h6>
         <div class="text-center">
-         <a href="https://youtu.be/KK8FHdFluOQ" target="_blank"><button title="watch"><i class="fab fa-youtube text-danger" ></i></button></a>
-         <button  (click)="deletefromwatchlist(data)" style="margin-left:10%;"title="delete" ><i class="fas fa-trash-alt"></i></button>
-         <button (click)="pintotopofwatchlist(data)" style="margin-left:10%;color: hotpink;" title="move to top"><i class="fas fa-thumbtack"></i></button>
-        </div> <br>
+          <a href="https://youtu.be/KK8FHdFluOQ" target="_blank"
+            ><button title="watch">
+              <i class="fab fa-youtube text-danger"></i></button
+          ></a>
+          <button
+            (click)="deletefromwatchlist(data)"
+            style="margin-left: 10%"
+            title="delete"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button
+            (click)="pintotopofwatchlist(data)"
+            style="margin-left: 10%; color: hotpink"
+            title="move to top"
+          >
+            <i class="fas fa-thumbtack"></i>
+          </button>
+        </div>
+        <br />
       </div>
     </div>
-
-  </div><br><br>
+  </div>
+  <br /><br />
   <ng-template #elseblock>
-  <div ><h3 style=" color: white; vertical-align: middle;text-align:center;">Nothing in Your Watchlist</h3></div>
-</ng-template>
-
-
+    <div>
+      <h2
+        style="
+          color: white;
+          vertical-align: middle;
+          text-align: center;
+          margin-top: 20%;
+        "
+      >
+        <h2>OOPS!!<br /></h2>
+        Nothing in Your Watchlist
+      </h2>
+    </div>
+  </ng-template>
 </div>
-
-
-
