@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FireBaseService } from '../firebase.service';
 import { Location } from '@angular/common'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-otherusercomments',
@@ -16,10 +17,11 @@ export class OtherusercommentsComponent implements OnInit {
   responsesGenerated = false
   thepost
   author = this.post.theotheruser
+  visitor = this.post.user
   submitComment
   allcomments
 
-  constructor(private post: FireBaseService, private http: HttpClient, private fb: FormBuilder, private location : Location) { }
+  constructor( private userinfo : FireBaseService, private router : Router , private post: FireBaseService, private http: HttpClient, private fb: FormBuilder, private location : Location) { }
 
   ngOnInit(): void {
     this.submitComment = this.fb.group(
@@ -42,7 +44,20 @@ export class OtherusercommentsComponent implements OnInit {
   postIt() {
     console.log("hero")
     console.log(this.submitComment.controls.mycomment.value)
-    this.http.post('https://team4-506c8.firebaseio.com/testuser/' + this.post.theotherusername + '/activities/' + this.post.commentId + '/comments.json', { comment: this.submitComment.controls.mycomment.value, commentedBy: this.post.user }).subscribe(data=>this.showComment())
+    this.http.post('https://team4-506c8.firebaseio.com/testuser/' + this.post.theotherusername + '/activities/' + this.post.commentId + '/comments.json', { comment: this.submitComment.controls.mycomment.value, commentedBy: this.post.user })
+    .subscribe(data=>{this.showComment();
+    
+         //notify
+      this.http.get('https://team4-506c8.firebaseio.com/testuser/'+this.post.theotherusername+'.json').subscribe(
+        data=> {  
+          let objt=data
+         objt['notifications'].push(`${this.userinfo.username} has commented on your ${this.thepost.movie} movie review`)
+           console.log(objt)
+           this.http.put('https://team4-506c8.firebaseio.com/testuser/'+this.post.theotherusername+'.json',objt).subscribe()         
+          
+        })
+ //notify
+    })
 
   }
 
@@ -51,5 +66,23 @@ export class OtherusercommentsComponent implements OnInit {
 
   }
 
+  deletecomment(key){
+    this.http.delete('https://team4-506c8.firebaseio.com/testuser/' + this.post.theotherusername + '/activities/' + this.post.commentId + '/comments/'+key+'.json').subscribe(data => {  this.showComment() })
+
+  }
+
+  grabotheruser(username,user)
+  {
+    if(user != this.userinfo.username){
+    this.userinfo.theotheruser = user  
+    this.userinfo.theotherusername= username
+    this.router.navigate([`/otheruser/${user}`])
+
+    }
+    else
+    {
+      this.router.navigate([`/mywall`])
+    }
+}
 
 }

@@ -17,29 +17,34 @@ import { OtheruserComponent } from './otheruser/otheruser.component';
 import { OtherusercommentsComponent } from './otherusercomments/otherusercomments.component';
 import {MoviecriticComponent} from './moviecritic/moviecritic.component';
 import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
+import { UsertimedataComponent } from './usertimedata/usertimedata.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { AuthGuard } from './auth-guard.service';
 
 
 
 const routes: Routes = [
   {path:'',component: HomepageComponent},
   {path :'sign-up' , component : SignUpComponent},
-  {path:'topmovies/:id',component:MoviedetailsComponent},
-  {path:'topmovies',component:TopmoviesComponent},
-  {path:'commentpage/:id',component:Commentpage872957Component},
-  {path:'carrers',component:CarrerspageComponent},
+  {path:'topmovies/:id',component:MoviedetailsComponent, canActivate:[AuthGuard]},
+  {path:'newreleases/:id',component:MoviedetailsComponent, canActivate:[AuthGuard]},
+  {path:'topmovies',component:TopmoviesComponent, canActivate:[AuthGuard]},
+  {path:'commentpage/:id',component:Commentpage872957Component, canActivate:[AuthGuard]},
+  {path:'carrers',component:CarrerspageComponent, canActivate:[AuthGuard]},
   {path:'sign-in' , component : SignInComponent},
-  {path:'mywall' , component : MyWallComponent},
-  {path:'comments' , component : CommentsComponent},
-  {path:'newreleases',component:NewreleaseslodhiComponent},
-  {path:'watchlist',component:WatchlistpageComponent},
-  {path:'result',component:ResultComponent},
-  {path:'quiz',component:QuizComponent},
-  {path:'otheruser/:user',component : OtheruserComponent},
-  {path:'otherusercomments',component : OtherusercommentsComponent},
-
-  {path:'moviecritic',component:MoviecriticComponent},
-
-  {path:'likedmovies',component:LikedmoviesComponent},
+  {path:'mywall' , component : MyWallComponent,canActivate:[AuthGuard]},
+  {path:'comments' , component : CommentsComponent, canActivate:[AuthGuard]},
+  {path:'newreleases',component:NewreleaseslodhiComponent, canActivate:[AuthGuard]},
+  {path:'watchlist',component:WatchlistpageComponent,  canActivate:[AuthGuard]},
+  {path:'result',component:ResultComponent, canActivate:[AuthGuard]},
+  {path:'quiz',component:QuizComponent, canActivate:[AuthGuard]},
+  {path:'otheruser/:user',component : OtheruserComponent, canActivate:[AuthGuard]},
+  {path:'otherusercomments',component : OtherusercommentsComponent, canActivate:[AuthGuard]},
+  {path:'moviecritic',component:MoviecriticComponent, canActivate:[AuthGuard]},
+  {path:'usertimedata',component:UsertimedataComponent, canActivate:[AuthGuard]},
+  {path:'likedmovies',component:LikedmoviesComponent, canActivate:[AuthGuard]},
+  {path:'remainderpage',component:UsertimedataComponent, canActivate:[AuthGuard]},
+  {path:'feedback',component:FeedbackComponent}
 ];
 
 

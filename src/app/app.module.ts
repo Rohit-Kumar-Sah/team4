@@ -32,6 +32,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { MoviecriticComponent } from './moviecritic/moviecritic.component';
 
 import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
+import { UsertimedataComponent } from './usertimedata/usertimedata.component';
+import { AuthGuard } from './auth-guard.service';
 
 
 
@@ -62,7 +64,7 @@ import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
 
     MoviecriticComponent, 
 
-    LikedmoviesComponent, 
+    LikedmoviesComponent, UsertimedataComponent, 
 
 
   ],
@@ -75,7 +77,7 @@ import { LikedmoviesComponent } from './likedmovies/likedmovies.component';
     FormsModule,
     NgbModule
   ],
-  providers: [WatchlistdataService],
+  providers: [WatchlistdataService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -27,20 +27,25 @@ watchlistdata:any;
   alllikes
   likedlistdata: any;
   mybio 
+  totalmoviereviewed
 
   constructor(private watchlistitems:WatchlistdataService,private watchlist : WatchlistdataService ,private userinfo: FireBaseService, private fb: FormBuilder, private http : HttpClient,private router : Router) { }
   
   review = this.fb.group({
-    movieName: this.fb.control(''),
-    movieReview: this.fb.control(''),
-    stars: this.fb.control('')
+    movieName: this.fb.control('', Validators.required),
+    movieReview: this.fb.control('' , Validators.required),
+    stars: this.fb.control('',[Validators.required,Validators.pattern('^([0-9]|10)$')])
     // http://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1
     // https://api.themoviedb.org/3/movie/popular?api_key=2bbe64170f89b9b53d9786f59e530815&language=en-US&page=1
 
   }
   )
 
+  
+
   ngOnInit(): void {
+
+    this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
 
     this.loadBio()
 
@@ -73,10 +78,19 @@ watchlistdata:any;
       // this.saveLikedMovies()
   
   
-      
+      this.loadnotifications()
 
   }
+notifications
 
+  loadnotifications(){
+    this.http.get('https://team4-506c8.firebaseio.com/testuser/'+ this.userinfo.user +'/notifications.json').subscribe(data=>{
+this.notifications=data;
+this.notifications.shift()
+this.notifications=this.notifications.reverse()
+console.log("notificains",this.notifications)
+    })
+  }
 
 
   saveLikedMovies()
@@ -103,7 +117,10 @@ watchlistdata:any;
 
     // console.log("the credit of user", this.userinfo.user)
 
-    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=> this.refresh())
+    this.userinfo.addreview(this.review.controls.movieName.value, this.review.controls.movieReview.value, this.review.controls.stars.value).subscribe(data=>{ this.refresh()
+      this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length;  this.review.reset(); console.log(this.totalmoviereviewed)})
+    
+    })
 
 
 
@@ -117,7 +134,21 @@ watchlistdata:any;
 
   
   }
- 
+  res
+  //deletecomment
+ delete (key, username,review,movie){
+  this.http.delete('https://team4-506c8.firebaseio.com/testuser/'+this.userinfo.user+'/activities/'+key+'.json').subscribe(data=>
+  { this.userinfo.myreviews().subscribe(data => this.activities = data
+    
+    )})
+
+  //delete from all comment
+  this.http.delete('https://team4-506c8.firebaseio.com/allreviews/'+movie+'/'+this.userinfo.user+'/.json').subscribe(data=>
+  {
+    this.userinfo.totalreview( this.userinfo.user ).subscribe(data=>{this.totalmoviereviewed=Object.keys(data).length; console.log(this.totalmoviereviewed)})
+   })
+  
+ }
 
 like(key,username){
   let obje;

@@ -8,6 +8,7 @@ import {
   NavigationError
 } from '@angular/router';
 
+
 import { WatchlistdataService } from './watchlistdata.service';
 import{interval} from'rxjs';
 
@@ -18,18 +19,25 @@ import{interval} from'rxjs';
 })
 export class AppComponent {
   title = 'TeamD';
-  
+  remainder=false;
   showOverlay = this.watchlist.routing ;
-  sastra1 = interval(100);
+  sastra1 = interval(1000);
   sastra:any=10;
   overlay:boolean=true;
   sast=this.sastra1.subscribe(val=>{
     this.showOverlay=this.watchlist.routing ;
+    this.remainder=this.watchlist.remainderstate;
+    
   })
   constructor(private router: Router,private watchlist:WatchlistdataService) {
  
   }
-    
-
+   backtonormal(){
+     this.watchlist.remainderstate=false;
+   } 
+   configure(){
+     this.backtonormal();
+     this.router.navigate(['remainderpage'])
+   }
     
 }

@@ -1,19 +1,23 @@
 <div style="background-color:white; min-height: 1000px;">
  
- 
-
-    <h1
-       style="color:rgba(238, 0, 255, 0.637) ;vertical-align: middle;text-align: center ;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark mb-3">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="30" height="30" alt="">
+    <a class="navbar-brand text-light ml-3" >
+      Movie King
+    </a>
+    <h2 style="color:rgba(238, 0, 255, 0.637) ;vertical-align: middle;margin-left:25% ;">
        LIKED MOVIES LIST
        <span *ngIf="watchlistdata.length" style="color:red;position: relative;">
-        <i class="fas fa-heart"></i>
-         <span
-           style="position: absolute;left:9px;top:15px;color: purple;border-radius:50%;background-color: white;width: 20px;height: 20px;font-size: 20px;padding-left:6px;padding-bottom: 23px;">{{watchlistdata.length}}</span>
+        <i class="fas fa-heart">
+        </i>
+        <span style="position: absolute;left:9px;top:15px;color: purple;border-radius:50%;background-color: white;width:15px;height:15px;font-size:13px;padding-left:4px;padding-bottom:0px;">
+           {{watchlistdata.length}}
+        </span>
        </span>
-   </h1>
-     
-    
-     
+    </h2>
+    <button class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0" type="submit" routerLink="/">Home <i class="fas fa-home"></i></button>
+  </nav> 
+   
   <div class="watch list d-flex flex-wrap justify-content-center" *ngIf="watchlistdata?.length>0; else elseblock"style="
     max-width:1000px; margin: auto; background-color: white; ">
    
@@ -29,9 +33,9 @@
          </div>
 
          <div class="text-center buttons bg-dark" style="position: absolute;">
-            <a href="https://youtu.be/KK8FHdFluOQ" target="_blank"><button><i class="fab fa-youtube text-danger" ></i></button></a><br><br>
-            <button  (click)="deletefromwatchlist(data)" style="margin-left:10%;"><i class="fas fa-trash-alt"></i></button><br><br>
-            <button (click)="pintotopofwatchlist(data)" style="margin-left:10%;color: hotpink;"><i class="fas fa-thumbtack"></i></button>
+            <a href="https://youtu.be/KK8FHdFluOQ" target="_blank"><button  title="watch online"><i class="fab fa-youtube text-danger" ></i></button></a><br><br>
+            <button  (click)="deletefromwatchlist(data)" style="margin-left:10%;" title="delete"><i class="fas fa-trash-alt"></i></button><br><br>
+            <button (click)="pintotopofwatchlist(data)" style="margin-left:10%;color: hotpink;"   title="pin to top"><i class="fas fa-thumbtack"></i></button>
          </div>
           
        </div>

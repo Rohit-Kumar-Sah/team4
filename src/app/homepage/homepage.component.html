@@ -1,113 +1,126 @@
 
-  <div id="mypage"></div>
+<div id="mypage"></div>
 <div class="container-fluid  text-dark " style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);" >
-  <div class="row" >
-    <div class="col-sm-12 " style="margin-left: 35%;position: relative;">
-      <h1 class="align-middle">MOVIE KING 
-         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
-      </h1>
-      <span style="margin-right: 70%;position: absolute;color: rgba(180, 22, 17, 0.884);top: 0%;left:50%;"[style.visibility]="timerstatus?'visible':'hidden'">
-        <table style="background-color: rgb(61, 206, 216);box-shadow: 5px 5px 3px grey;" class="rounded">
-          <thead class="text-light text-bold text-center border " style="color: silver;">
-           <td><h3 class="m-0 ">{{hrs}}:</h3></td><td><h3 class="m-0 ">{{min}}:</h3></td><td><h3 class="m-0 pr-3" style="min-width: 20px;">{{sec}}</h3></td>
-          </thead>
-          <tbody>
-            <tr style="font-size: 10px;">
+  <div class="row" style="position: relative;">
+        <div class="col-sm-8 text-right">
+          <h1 class="align-middle">MOVIE KING 
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="70px" height="70px" style="object-fit: cover;">
+          </h1>
+        </div>
+        <div class="col-sm-4"  > 
+         <span style="margin-right: 70%;position: absolute;color: rgba(180, 22, 17, 0.884);top: 0%;left:50%;"[style.visibility]="timerstatus && !timerstatus1?'visible':'hidden'">
+          <table style="background-color: rgb(61, 206, 216);box-shadow: 5px 5px 3px grey;" class="rounded">
+            <thead class="text-light text-bold text-center border " style="color: silver;">
+             <td><h3 class="m-0 ">{{hrs}}:</h3></td><td><h3 class="m-0 ">{{min}}:</h3></td><td><h3 class="m-0 pr-3" style="min-width: 20px;">{{sec}}</h3></td>
+            </thead>
+            <tbody>
+             <tr style="font-size: 10px;">
               <td>hours</td>
               <td>mins</td>
               <td>seconds</td>
-            </tr>
-          </tbody>
-
-        </table>
-        <span class="text-danger cancelbtn" style="position: absolute;top:-5px;right:2%;" (click)="timerhide()">
+             </tr>
+            </tbody>
+          </table>
+          <span class="text-danger cancelbtn" style="position: absolute;top:-5px;right:2%;" (click)="timerhide()">
           <i class="fas fa-window-close"></i>
-        </span>
-        <span [style.visibility]="!timerstatus?'visible':'hidden'" style="position: absolute;top: 0%;color:rgb(255, 0, 128);right:39%;font-size:30px;" (click)="timerhide()" class="cancelbtn">
-          <i class="fas fa-user-clock"></i>
-        </span>
-      </span>
-    </div>
-    
+          </span>
+          <span [style.visibility]="!timerstatus?'visible':'hidden'" style="position: absolute;top: 0%;color:rgb(255, 0, 128);right:39%;font-size:30px;" (click)="timerhide()" class="cancelbtn">
+           <i class="fas fa-user-clock"></i>
+          </span>
+         </span>
+        </div>
   </div>
 </div>
 
 
   
-  <nav class="navbar navbar-expand-sm  navbar-light" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);">
-    
-  
-    <!-- Links -->
-    <ul class="navbar-nav ml-sm-5 text-center w-sm-100 topheader1" >
-      <li class="nav-item mr-sm-2 text-light rounded-circle">
-        <a class="nav-link bg-info text-light rounded  " routerLink="/mywall" (click)="reloadpage()">MY WALL</a>
+  <nav class="navbar navbar-expand-sm  navbar-light" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);font-size: 15px;">
+    <ul class="navbar-nav  text-center  topheader1" >
+      <li class="nav-item mr-sm-2 text-light rounded bg-info">
+        <a class="nav-link  text-light rounded  "  (click)="mywall()">MY WALL</a>
       </li>
-      <li class="nav-item mr-sm-2 ">
-        <a class="nav-link  text-light rounded"  routerLink="/topmovies" style="background-color: darkmagenta;" (click)="reloadpage()">TOP MOVIES</a>
+      <li class="nav-item mr-sm-2 " style="background-color: darkmagenta;">
+        <a class="nav-link  text-light rounded"    (click)="topmovies()">TOP MOVIES</a>
       </li>
       <li class="nav-item mr-sm-2   rounded" style="background-color:chocolate;">
-        <a class="nav-link text-light "  routerLink="/newreleases" (click)="reloadpage()">NEW RELEASES</a>
+        <a class="nav-link text-light rounded "   (click)="newreleases()" >NEW MOVIES <i class="fas fa-bullhorn"></i></a>
       </li>
       <li class="nav-item mr-sm-2 bg-danger text-light rounded" >
-        <a class="nav-link text-light" routerLink="/carrers">CAREERS</a>
+        <a class="nav-link text-light" routerLink="/carrers">CAREERS </a>
       </li>
       <li class="nav-item mr-sm-2 bg-secondary text-light rounded" >
-        <a class="nav-link text-light" routerLink="/watchlist">WATCHLIST</a>
+        <a class="nav-link text-light" routerLink="/watchlist">WATCHLIST  <i class="fas fa-sd-card text-light"></i></a>
       </li>
-      <li class="nav-item mr-sm-2 bg-secondary text-light rounded" >
-        <a class="nav-link text-light" routerLink="/moviecritic" >Movie Critic</a>
+      <li class="nav-item mr-sm-2 bg-danger text-light rounded  " >
+       <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle btn-block" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MORE
+        </button>
+        <div class="dropdown-menu" style="box-shadow: 5px 5px 4px grey;">
+         <a class="dropdown-item" routerLink="likedmovies">LIKED MOVIES <i class="fas fa-heart text-danger"></i></a>
+         <div class="dropdown-divider"></div>
+         <a class="dropdown-item" (click)="quizz()">QUIZZ <i class="fab fa-quora text-primary"></i></a>
+         <div class="dropdown-divider"></div>
+         <a class="dropdown-item" routerLink="/moviecritic">MOVIE CRITIC <i class="fas fa-star text-warning"></i></a>
+        <div class="dropdown-divider"></div>
+         <a class="dropdown-item" routerLink="usertimedata">CONTROLS &nbsp;<i class="fas fa-user-cog" style="color: orchid;"></i> </a>
+        </div>
+      </div>
       </li>
-      <form class="form-inline mr-sm-5 ml-sm-5 searchform " action="/action_page.php" #searchform="ngForm" >
+
+      <form class="form-inline mr-sm-2 ml-sm-2 searchform " action="/action_page.php" #searchform="ngForm" >
         <input class="form-control " type="search" placeholder="Search for any movie" name="moviename" ngModel [(ngModel)]="searchmovie">
-        <button class="btn text-light" type="submit"  (click)="searchpage()" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpaOHHA6w_9atYh5bMeENznlEt48ZSJUz_QA&usqp=CAU)">Search</button>
+        <button class="btn text-light " type="submit"  (click)="searchpage()" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpaOHHA6w_9atYh5bMeENznlEt48ZSJUz_QA&usqp=CAU)">Search</button>
       </form>
 
-      <li class="nav-item ml-sm-5  rounded" style="background-color:steelblue;">
-        <a class="nav-link text-light" routerLink="/sign-in" *ngIf="!loggedin">Login </a>
+      <li class="nav-item   rounded" style="background-color:steelblue;">
+        <a class="nav-link text-light" routerLink="/sign-in" *ngIf="!loggedin">Login <i class="fas fa-sign-in-alt "></i></a>
       </li>  
 
-      <li class="nav-item ml-sm-4 rounded" style="background-color:coral;">
-        <a class="nav-link text-light" routerLink="/sign-up" *ngIf="!loggedin">signup </a>
+      <li class="nav-item ml-4 rounded" style="background-color:coral;">
+        <a class="nav-link text-light" routerLink="/sign-up" *ngIf="!loggedin">signup <i class="fas fa-user-plus" ></i> </a>
       </li>  
 
       <li *ngIf="loggedin">
-        <b><i>{{user}}</i></b>
+        <b><i>{{user | uppercase}}</i></b>
+        
         <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png" width="70px" height="40px" 
-                            class="ml-2"     alt="..." style="border-radius: 50%;border: 1px solid red; object-fit: fill;">
-      </li>    
-
+        class="ml-2"     alt="..." style="border-radius: 50%;border: 1px solid red; object-fit: fill;">
+      </li> 
+      <li *ngIf="loggedin">
+               <a class="nav-link text-dark " (click)="logout()" >Logout <i class="fas fa-sign-in-alt" ></i> </a>
+    </li> 
     </ul>
     
   </nav>
-  <br>
 
-  <div  style="background-color: black;" >
 
-  <div id="carouselExampleIndicators" class="carousel slide text-center " data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active " data-interval="2000">
-        <img
-          src="https://dynaimage.cdn.cnn.com/cnn/q_auto,h_600/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F160505174531-18-coca-cola-anniversary.jpg "
-          width="900px" height="300px" style="object-fit:fill;" alt="...">
-      </div>
-      <div class="carousel-item" data-interval="5000">
-        <img src=" https://mir-s3-cdn-cf.behance.net/projects/404/4d0bed88579211.Y3JvcCw5NjcsNzU3LDIxNSww.png"
-          width="900px" height="300px" alt="..." style="object-fit: cover;">
-      </div>
-      <div class="carousel-item " data-interval="5000">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTCtoca3yKNhwNVGouU9IbOOstXC9YGu-VT5g&usqp=CAU "
-          width="900px" height="300px" alt="..." style="object-fit:fill;">
-      </div>
-    </div>
-  </div><br>
-  <!--- end of advertisement section-->
 
-  <h1
-    style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">
+
+  <div style="background-color: black;" >
+
+    <div id="carouselExampleIndicators" class="carousel slide text-center " data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active " data-interval="400">
+          <img src=" https://i.pinimg.com/originals/d3/ac/b9/d3acb9142153ef98200d0b66601ff11e.jpg"
+            width="70%" height="300px" alt="..." style="object-fit:fill;">
+          
+        </div>
+        <div class="carousel-item" data-interval="4000">
+          <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img20/Wireless/SamsungM/14thNov/M51/Rv1/Amazon_GRD_DesktopHero_Template_1500x600._CB417122895_.jpg"
+            width="70%" height="300px" style="object-fit:cover" alt="...">
+        </div>
+        <div class="carousel-item " data-interval="4000">
+          <img src="https://i.ytimg.com/vi/ndbLqNcWLfU/maxresdefault.jpg"
+            width="70%" height="300px" alt="..." >
+        </div>
+      </div>
+    </div><br>
+
+  <h1 style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">
     suggestions</h1>
 
-  <!--corousel start-->
+  
   <div style="margin:auto;width:75%">
     <div id="carouselExampleIndicators872957" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -117,16 +130,16 @@
       <div class="carousel-inner ">
 
         <div class="carousel-item active ">
-          <div class="row  " style="background-color: black; color: silver;">
+          <div class="row  " style="background-color:black; color: silver;">
             <div class="col-sm-2 suggestiondata" *ngFor="let data of dataset1">
-              <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px"
+              <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="250px"
                 class="text-center" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
-                <div class="likecomment" style="width: 100%;display: flex;">
-                  <div style="margin-left:5px ;" (click)="data.video=!data.video"
+                <div class="likecomment d-flex" style="width: 100%;" >
+                  <div style="margin-left:5px ;" (click)="data.video=!data.video" [style.display]="loggedin?'block':'none'"
                     [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i>
                   </div>
-                  <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
+                  <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);" [style.display]="loggedin?'block':'none'"><i
                       class="far fa-comment"></i>
                   </div>
                 </div>
@@ -134,8 +147,8 @@
                   <b>{{data.original_title}}</b>
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
-                <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data)">
-                  watch list </button>
+                <button class="btn btn-block text-primary watchlistbutton" (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)" [style.display]="loggedin?'block':'none'">
+                  <div *ngIf="data.adult" style="color:red;font-style: italic;"><b>Added</b></div><div *ngIf="!data.adult"  > watchlist+</div></button>
               </div>
               
                
@@ -145,22 +158,22 @@
 
         <div class="carousel-item ">
           <div class="row  " style="background-color: black; color: silver;">
-            <div class="col-sm-2" *ngFor="let data of dataset2">
-              <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="300px"
+            <div class="col-sm-2" *ngFor="let data of dataset2;let i=index;">
+              <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" width="100%" height="250px"
                 class="text-center imagesuggestion" alt="...">
               <div class="moviedetails" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRuKH97Xd5Di-m4Y29c346XbE8tAxkDmcjTKA&usqp=CAU); ">
-                <div class="likecomment" style="width: 100%;display: flex;">
-                  <div style="margin-left:5px ;" (click)="data.video=!data.video"
+                <div class="likecomment" style="width: 100%;display: flex;" >
+                  <div style="margin-left:5px ;" (click)="data.video=!data.video" [style.display]="loggedin?'block':'none'"
                     [style.color]="data.video?'red':'white'" class="lovebtn" (click)="likedmovie(data,data.video)"> <i class="fas fa-heart"></i></div>
-                  <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);"><i
+                  <div (click)="loadcommentpage(data.id)" style="margin-left:65%;color:rgb(220, 43, 226);" [style.display]="loggedin?'block':'none'"><i
                       class="far fa-comment"></i></div>
                 </div>
                 <div class="moviename" style="text-align: center; height:50px; overflow: hidden;">
                   <b>{{data.original_title}}</b>
                 </div>
                 <span class=" pl-2" style="color: yellow;"><i class="fas fa-star"></i></span>{{data.vote_average}}<br>
-                <button class="btn btn-block text-primary watchlistbutton" (click)="pushdataintowatchlist(data)">
-                  watch list </button>
+                <button class="btn btn-block text-primary watchlistbutton"  (click)="data.adult = !data.adult" (click)="pushdataintowatchlist(data,data.adult)" [style.display]="loggedin?'block':'none'">
+                  <div *ngIf="data.adult" style="color:red;font-style: italic;"><b>Added</b></div><div *ngIf="!data.adult"> watchlist+ </div></button>
               </div>
              </div>
           </div>
@@ -176,10 +189,10 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-    <!--end of corousel-->
+   
   </div><br><br>
 
-  <!--born tis day-->
+  
   <h1
     style="color:yellow ;margin-left:13%; border-left: 7px solid silver; margin-top: 2px; border-radius: 5px; vertical-align: middle;">
     PEOPLE BORN TODAY</h1>
@@ -262,10 +275,10 @@
 
 
 
-  <!--footer-->
+ 
   <div class="row" style="width:75%; margin: auto;">
-    <div class="col-sm-6" style="color:silver">
-      Contact us
+    <div class="col-sm-6" style="color:silver" (click)="feedback1()">
+      <button class="btn btn-warning">Contact us</button>
     </div>
     <div class="col-sm-6">
       <div class="text-center footer ">
@@ -279,23 +292,16 @@
       </div>
     </div>
   </div>
-  <!--end of footer-->
-  <a href="#mypage"><button class="btn" style="color: silver;border: 1px solid yellow;">MOVE TO TOP</button></a>
+ 
+
+  <a href="#mypage"><button class="btn" style="color: silver;border: 1px solid yellow;">MOVE TO TOP <i class="fas fa-home"></i></button></a>
 
 </div>
-<!--<div>
-  critic question part
-  {{question}}
-  <input type="number" name="answer" [(ngModel)]="uservalue" ngModel>
-  <button (click)="critic('next')">submit</button>
-  <button (click)="critic('check')">check</button>
-  {{feedback}}
-</div>-->
+
 <div>
- <button (click)="quizz()">quizz</button>
- <a routerLink="likedmovies"><button>LIKED MOVIES</button></a>
+ 
+ 
 </div>
-
 
 
 

@@ -1,1 +1,92 @@
-<p>feedback works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS4-MCYbTIEW_V2Zj1EcyVC4LoMAJtFAzIsKg&usqp=CAU" width="30" height="30" alt="">
+      <a class="navbar-brand text-light ml-3" >
+        Movie King
+      </a>
+      
+    <button class="btn btn-outline-warning ml-auto mr-1 my-2 my-sm-0" type="submit" routerLink="/" >Home <i class="fas fa-home"></i></button>
+  </nav>
+
+<section class="login-block">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 login-sec">
+				<h2 class="text-center">CONTACT</h2>
+				<form class="login-form" #form="ngForm" >
+					<div class="form-group">
+						<label class="text-uppercase">Full Name *</label>
+						<input type="text" class="form-control" required name="name" ngModel pattern="[A-Z a-z]{3,20}" >
+                    </div>
+                    
+					<div class="form-group "> 
+                        <label for="inputEmail4">Email *</label>
+                        <div class="input-group">
+                         <div class="input-group-prepend">
+                          <span class="input-group-text text-danger" id="inputGroupPrepend" >@</span>
+                         </div>
+                         <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email" required ngModel aria-describedby="inputGroupPrepend" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                       </div>
+                        
+                      </div>
+
+					<div class="form-group">
+						<label class="text-uppercase">Phone Number *</label>
+						<input type="text" class="form-control" required name="number" ngModel  pattern=[0-9]{6,14}>
+					</div>
+
+					<div class="form-group">
+						<label class="text-uppercase">TYPE OF REQUEST? *</label>
+						<select class="form-control" required name="request" ngModel>
+							<option ngModel>SUGGESTION</option>
+							<option ngModel>COMPLAINT</option>
+							<option ngModel>OTHERS</option>
+						</select>
+					</div>
+
+					<div class="form-group">
+						<label class="text-uppercase">Message *</label>
+						<textarea class="form-control"  rows="3" required name="body" ngModel></textarea>
+					</div>
+					<button  type="submit" [disabled]="!form.valid" class="btn btn-login float-right">Submit</button>
+				</form>
+			</div>
+			<div class="col-md-8 banner-sec">
+				<img src="https://www.phoenixonline.io/wp-content/uploads/best-contact-us-pages-1080x423.jpg" width="100%" height="100%" style="object-fit:fill;">
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+.login-block{
+background: linear-gradient(to bottom, #FFB88C, #DE6262);
+float:left;
+width:100%;
+padding : 50px 0;
+}
+.banner-sec{min-height:400px; border-radius: 0 10px 10px 0; padding:0;}
+
+.container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);margin-top:-30px ;}
+
+
+
+.login-sec{padding: 0px 30px; position:relative;}
+
+.login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+
+.login-sec .copy-text i{color:#FEB58A;}
+
+.login-sec .copy-text a{color:#E36262;}
+
+.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
+
+.login-sec h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+
+.btn-login{background: #DE6262; color:#fff; font-weight:600;}
+
+
+
+
+
+
+</style>

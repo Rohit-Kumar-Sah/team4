@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WatchlistdataService } from '../watchlistdata.service';
+import{interval, timer} from 'rxjs';
 
 @Component({
   selector: 'app-watchlistpage',
@@ -11,17 +12,14 @@ export class WatchlistpageComponent implements OnInit {
   constructor(private watchlistitems:WatchlistdataService) { }
 
   ngOnInit(): void {
-    let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
-    this.watchlistitems.watchlistarray=uniqueChars;
-    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
+    
+    this.watchlistdata=this.watchlistitems.watchlistarray;
     
   }
 
   deletefromwatchlist(data:any){
-   let index=this.watchlistitems.watchlistarray.indexOf(data);
-    if (index > -1) {
-      this.watchlistitems.watchlistarray.splice(index, 1);
-    }
+   this.watchlistitems.watchlistcontrol(data,false);
+   this.watchlistdata=this.watchlistitems.watchlistarray;
   }
 
   pintotopofwatchlist(data:any){
@@ -30,10 +28,10 @@ export class WatchlistpageComponent implements OnInit {
       this.watchlistitems.watchlistarray.splice(index, 1);
     }
     this.watchlistitems.watchlistarray.unshift(data);
-  
-    let uniqueChars = [...new Set(this.watchlistitems.watchlistarray)];
-    this.watchlistitems.watchlistarray=uniqueChars;
-    this.watchlistdata=this.watchlistitems.watchlistarray;//code to remove duplicates from watchlistdata
   }
-
+  
+  timer=interval(10);
+  const=this.timer.subscribe(dat=>{
+   
+  })
 }

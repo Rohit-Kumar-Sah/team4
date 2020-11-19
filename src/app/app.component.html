@@ -1,18 +1,41 @@
 
 
 
-
-<div class="loader" *ngIf="showOverlay" >
-</div>
-
-
-<div [style.visibility]="showOverlay?'hidden':'visible'">
-<router-outlet ></router-outlet>
-</div>
-
-
-
- 
-
+<div style="position: relative;">
+  <div class=" mt-5 pt-5" *ngIf="showOverlay" >
+     <br><br><br>
+  </div>    
+ <div class="loader mt-5 pt-5" *ngIf="showOverlay" ><!--loader-->
+     
+ </div>
  
  
+ <div [style.visibility]="showOverlay || remainder?'hidden':'visible'">
+ <router-outlet ></router-outlet>
+ </div><!--content -->
+ 
+   <div  class="remaindercss" [style.display]="remainder?'block':'none'" >
+    <div class="d-sm-flex">
+      <div>   
+        <img src='https://thumbs.dreamstime.com/z/take-break-chalkboard-colourful-d-rendered-blackboard-illustration-showing-51148965.jpg'
+         width="300px" height="400px">
+      </div> 
+ 
+      <div style="margin-top:12%;">
+        <H3>TIME TO TAKE A SMALL BREAK?</H3>
+        you have been online since long time!!just take a refreshment and get back...... 
+        <div class="text-danger">Configure these page as per your wish in settings page!!!!</div ><button class="btn btn-primary text-center" (click)="configure()" style="margin-left:39%;">configure<i class="fas fa-tools"></i></button>
+        <div>
+           <button class="btn btn-block btn-danger btn-outline-warning" (click)="backtonormal()">cancel</button>
+        </div>
+      </div>
+ 
+    </div>
+   </div><!--take a small break content-->
+ 
+ 
+ </div> 
+  
+    
+    
+    

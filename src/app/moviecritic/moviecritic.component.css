@@ -56,14 +56,14 @@ a:hover {
         justify-content: center;
         flex-direction: column;
 }
-button {
+.checkbtn {
     color: rgb(49, 155, 49);
     font-weight: bold;
     font-family: 'Times New Roman';
     text-decoration: underline;
     margin: 0px;
 }
-button:hover, button:focus {
+.checkbtn:hover, .checkbtn:focus {
       background-color: transparent;
       outline: none;
     }
