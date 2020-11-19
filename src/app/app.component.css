@@ -9,11 +9,10 @@
     height: 150px;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
-    position: absolute;
-    top: 35%;
+    position: relative;
+    padding-top:75px;
     font-size: 50PX;
-    left: 50%;
-    text-align: center;
+    margin: auto;
   }
   
   @-webkit-keyframes spin {
@@ -26,3 +25,10 @@
     100% { transform: rotate(360deg); }
   }
  
+  .remaindercss{
+    top:3%;
+    left:19%;
+    width:700px;
+    height: 300px;
+    position: absolute;
+  }
