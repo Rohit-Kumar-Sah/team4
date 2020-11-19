@@ -1,9 +1,7 @@
-*{
-  background-color: #F7C138;
-  
-}
-.container-fluid {
-    min-height: 900px;
+
+.main-content {
+    background-color: #F7C138;
+    min-height: 550px;
     font-family: 'Cabin', sans-serif !important;
     font-weight: 400;
     display: flex;

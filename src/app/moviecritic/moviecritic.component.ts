@@ -55,7 +55,22 @@ export class MoviecriticComponent implements OnInit {
     if(type == 'check'){
       console.log(this.somedata.results[this.i].vote_average*10 - this.uservalue);
       let s=this.somedata.results[this.i].vote_average*10 - this.uservalue
-      
+      if(s<0){
+        s=s*(-1);
+        if (s==0){
+          this.feedback="Is this Roger Ebert?";
+        }
+        else if (s>0 && s<10){
+          this.feedback="WOW! Nice Job!"
+        }
+        else if (s>10 && s<25){
+          this.feedback="Meh. I'm assuming you enjoy Adam Sandler movies."
+      }
+      else{
+        this.feedback="Are you high?"
+      }
+      }
+    else{
       if (s==0){
         this.feedback="Is this Roger Ebert?";
       }
@@ -68,6 +83,8 @@ export class MoviecriticComponent implements OnInit {
     else{
       this.feedback="Are you high?"
     }
+    }
+      
     }
     
 
