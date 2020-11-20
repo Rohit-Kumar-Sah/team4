@@ -35,7 +35,7 @@
 
   
   <nav class="navbar navbar-expand-sm  navbar-light" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnIDLoT6G0Q4Tp4odEgt5pIQcAh49DR8hphA&usqp=CAU);font-size: 15px;">
-    <ul class="navbar-nav  text-center  topheader1" >
+    <ul class="navbar-nav  text-center  topheader w-100" >
       <li class="nav-item mr-sm-2 text-light rounded bg-info">
         <a class="nav-link  text-light rounded  "  (click)="mywall()">MY WALL</a>
       </li>
@@ -73,7 +73,7 @@
         <button class="btn text-light " type="submit"  (click)="searchpage()" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQpaOHHA6w_9atYh5bMeENznlEt48ZSJUz_QA&usqp=CAU)">Search</button>
       </form>
 
-      <li class="nav-item   rounded" style="background-color:steelblue;">
+      <li class="nav-item   rounded ml-auto" style="background-color:steelblue;">
         <a class="nav-link text-light" routerLink="/sign-in" *ngIf="!loggedin">Login <i class="fas fa-sign-in-alt "></i></a>
       </li>  
 
@@ -81,7 +81,7 @@
         <a class="nav-link text-light" routerLink="/sign-up" *ngIf="!loggedin">signup <i class="fas fa-user-plus" ></i> </a>
       </li>  
 
-      <li *ngIf="loggedin">
+      <li *ngIf="loggedin ml-auto">
         <b><i>{{user | uppercase}}</i></b>
         
         <img src="https://icons-for-free.com/iconfiles/png/512/business+costume+male+man+office+user+icon-1320196264882354682.png" width="70px" height="40px" 
